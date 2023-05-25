@@ -174,14 +174,7 @@ class _lawyerprofileState extends State<lawyerprofile> {
                                   ])
                         ],
                       ),
-                      FirebaseAnimatedList(
-                          defaultChild:
-                              roundButton(title: 'Add ', onpress: () {}),
-                          query: ref,
-                          itemBuilder: (BuildContext context,
-                              DataSnapshot snapshot,
-                              Animation<double> animation,
-                              int index) {})
+                     
                     ],
                   ),
                 ),
