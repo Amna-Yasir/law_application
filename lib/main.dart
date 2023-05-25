@@ -34,55 +34,55 @@ class MyApp extends StatelessWidget {
                       fontFamily: AppFonts.sfProDisplayMedium,
                       color: AppColors.primaryTextTextColor)),
               textTheme: const TextTheme(
-                headline1: TextStyle(
+                displayLarge: TextStyle(
                     fontSize: 40,
                     fontFamily: AppFonts.sfProDisplayMedium,
                     color: AppColors.primaryTextTextColor,
                     fontWeight: FontWeight.w500,
                     height: 1.6),
-                headline2: TextStyle(
+                displayMedium: TextStyle(
                     fontSize: 32,
                     fontFamily: AppFonts.sfProDisplayMedium,
                     color: AppColors.primaryTextTextColor,
                     fontWeight: FontWeight.w500,
                     height: 1.6),
-                headline3: TextStyle(
+                displaySmall: TextStyle(
                     fontSize: 28,
                     fontFamily: AppFonts.sfProDisplayMedium,
                     color: AppColors.primaryTextTextColor,
                     fontWeight: FontWeight.w500,
                     height: 1.9),
-                headline4: TextStyle(
+                headlineMedium: TextStyle(
                     fontSize: 24,
                     fontFamily: AppFonts.sfProDisplayMedium,
                     color: AppColors.primaryTextTextColor,
                     fontWeight: FontWeight.w500,
                     height: 1.6),
-                headline5: TextStyle(
+                headlineSmall: TextStyle(
                     fontSize: 20,
                     fontFamily: AppFonts.sfProDisplayMedium,
                     color: AppColors.primaryTextTextColor,
                     fontWeight: FontWeight.w500,
                     height: 1.6),
-                headline6: TextStyle(
+                titleLarge: TextStyle(
                     fontSize: 17,
                     fontFamily: AppFonts.sfProDisplayBold,
                     color: AppColors.primaryTextTextColor,
                     fontWeight: FontWeight.w700,
                     height: 1.6),
-                bodyText1: TextStyle(
+                bodyLarge: TextStyle(
                     fontSize: 17,
                     fontFamily: AppFonts.sfProDisplayBold,
                     color: AppColors.primaryTextTextColor,
                     fontWeight: FontWeight.w700,
                     height: 1.6),
-                bodyText2: TextStyle(
+                bodyMedium: TextStyle(
                     fontSize: 14,
                     fontFamily: AppFonts.sfProDisplayRegular,
                     color: AppColors.primaryTextTextColor,
                     fontWeight: FontWeight.w700,
                     height: 1.6),
-                caption: TextStyle(
+                bodySmall: TextStyle(
                     fontSize: 12,
                     fontFamily: AppFonts.sfProDisplayBold,
                     color: AppColors.primaryTextTextColor,

@@ -35,11 +35,8 @@ class lawyersignupController with ChangeNotifier {
         ref.child(value.user!.uid.toString()).set({
           'Uid': value.user!.uid.toString(),
           'email': value.user!.email.toString(),
-          'Profilepicture': '',
           'username': username,
-          'phone': '',
           'role': role,
-          'address': '',
         }).then((value) {
           setloaading(false);
 
