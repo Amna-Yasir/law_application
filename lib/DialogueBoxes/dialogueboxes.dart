@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class dialogueboxes {
-  Future<void> personalInformation(BuildContext context) async {
+  Future<void> _personalInformation(BuildContext context) async {
     return await showDialog(
         context: context,
         builder: (context) {

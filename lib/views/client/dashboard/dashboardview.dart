@@ -85,7 +85,7 @@ class _dashboardViewState extends State<dashboardView> {
       decoration: NavBarDecoration(
           borderRadius: BorderRadius.circular(0),
           colorBehindNavBar: Colors.red),
-      navBarStyle: NavBarStyle.style3,
+      navBarStyle: NavBarStyle.style1,
       popAllScreensOnTapAnyTabs: false,
     );
   }

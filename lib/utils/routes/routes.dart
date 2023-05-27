@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:law_application/utils/routes/routesname.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/dashboardview.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer_profile.dart';
 import 'package:law_application/views/Lawyer/lawyer%20signup/lawyersignup_screen.dart';
 
 import 'package:law_application/views/client/dashboard/dashboardview.dart';
@@ -21,6 +22,8 @@ class Routes {
     switch (settings.name) {
       case RouteName.usermanagerView:
         return MaterialPageRoute(builder: (_) => const usermanager());
+      case RouteName.lawyerProfileView:
+        return MaterialPageRoute(builder: (_) => const lawyerprofile());
       case RouteName.splashScreen:
         return MaterialPageRoute(builder: (_) => const splashScreen());
       case RouteName.loginView:

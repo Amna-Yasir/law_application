@@ -6,6 +6,7 @@ class RouteName {
   static const String signUpView = 'signUp-view';
   static const String dashboardView = 'dashboard_view';
   static const String lawyerdashboardView = 'lawyerdashboard_view';
+  static const String lawyerProfileView = 'lawyerProfile_view';
 
   static const String forgotscreen = 'forgot-screen';
   static const String VerifyCodescreen = 'VerifyCodescreen ';
