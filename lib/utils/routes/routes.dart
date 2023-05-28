@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:law_application/utils/routes/routesname.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/dashboardview.dart';
+import 'package:law_application/views/Lawyer/lawyer%20Login/lawyer_extra_info.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer_profile.dart';
 import 'package:law_application/views/Lawyer/lawyer%20signup/lawyersignup_screen.dart';
 
@@ -30,6 +31,9 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const loginscreen());
       case RouteName.lawyerloginView:
         return MaterialPageRoute(builder: (_) => const lawyerloginscreen());
+      case RouteName.lawyerExtraInfo:
+        return MaterialPageRoute(builder: (_) => const lawyerExtraInfo());
+
       case RouteName.lawyersignupView:
         return MaterialPageRoute(builder: (_) => const lawyersignUpScreen());
       case RouteName.signUpView:

@@ -27,20 +27,37 @@ class _lawyerExtraInfoState extends State<lawyerExtraInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Law Firm'),
+        automaticallyImplyLeading: false,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Text(
+                'Personal Information',
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Please fill out the following section it is manadatory. So your client can check all of your details',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
                 child: TextFormField(
                   controller: category,
                   maxLines: 1,
                   decoration: InputDecoration(
-                      hintText: 'Category', border: OutlineInputBorder()),
+                      hintText: 'Category',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
                 ),
               ),
               Padding(
@@ -49,7 +66,9 @@ class _lawyerExtraInfoState extends State<lawyerExtraInfo> {
                   controller: phonenumber,
                   maxLines: 1,
                   decoration: InputDecoration(
-                      hintText: 'Phone Number', border: OutlineInputBorder()),
+                      hintText: 'Phone Number',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
                 ),
               ),
               Padding(
@@ -58,7 +77,9 @@ class _lawyerExtraInfoState extends State<lawyerExtraInfo> {
                   controller: zipcode,
                   maxLines: 1,
                   decoration: InputDecoration(
-                      hintText: 'Zip Code', border: OutlineInputBorder()),
+                      hintText: 'Zip Code',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
                 ),
               ),
               Padding(
@@ -67,7 +88,9 @@ class _lawyerExtraInfoState extends State<lawyerExtraInfo> {
                   controller: feeperhour,
                   maxLines: 1,
                   decoration: InputDecoration(
-                      hintText: 'Fee Per Hour', border: OutlineInputBorder()),
+                      hintText: 'Fee Per Hour',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
                 ),
               ),
               Padding(
@@ -77,7 +100,8 @@ class _lawyerExtraInfoState extends State<lawyerExtraInfo> {
                   maxLines: 1,
                   decoration: InputDecoration(
                       hintText: 'Current Practicing At?',
-                      border: OutlineInputBorder()),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
                 ),
               ),
               Padding(
@@ -86,7 +110,9 @@ class _lawyerExtraInfoState extends State<lawyerExtraInfo> {
                   controller: address,
                   maxLines: 2,
                   decoration: InputDecoration(
-                      hintText: 'Address', border: OutlineInputBorder()),
+                      hintText: 'Address',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
                 ),
               ),
               Padding(
@@ -95,7 +121,9 @@ class _lawyerExtraInfoState extends State<lawyerExtraInfo> {
                   controller: aboutyourself,
                   maxLines: 4,
                   decoration: InputDecoration(
-                      hintText: 'About Yourself', border: OutlineInputBorder()),
+                      hintText: 'About Yourself',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10))),
                 ),
               ),
               roundButton(

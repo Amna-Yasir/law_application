@@ -13,7 +13,7 @@ class usermanager extends StatefulWidget {
 }
 
 class _usermanagerState extends State<usermanager> {
-  splashservices Splashservices = splashservices();
+  splashServices Splashservices = splashServices();
   void initState() {
     super.initState();
   }

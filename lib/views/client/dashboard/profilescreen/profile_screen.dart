@@ -168,79 +168,76 @@ class _profilescreenState extends State<profilescreen> {
                         }
                       })),
             ),
-            StreamBuilder(
-              stream: ref
-                  .child(SessionController().userid.toString())
-                  .child('personalinfo')
-                  .onValue,
-              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                Map<dynamic, dynamic> map = snapshot.data.snapshot.value;
-                final phone = map['Address'];
-                final address = map['Phone number'];
-                if (!snapshot.hasData) {
-                  return CircularProgressIndicator();
-                } else if (snapshot.hasData) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: AppColors.grayColor),
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Padding(
-                        padding: const EdgeInsets.all(11.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Personal Information',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium,
-                                ),
-                                PopupMenuButton(
-                                    itemBuilder: (context) => [
-                                          PopupMenuItem(
-                                              child: ListTile(
-                                            onTap: () {
-                                              _personalInformation(context);
-                                            },
-                                            leading: Icon(Icons.add),
-                                            title: Text('Add'),
-                                          )),
-                                          PopupMenuItem(
-                                              child: ListTile(
-                                            onTap: () {
-                                              _showinfoupdatedialogue(
-                                                  address, phone);
-                                            },
-                                            leading: Icon(Icons.edit),
-                                            title: Text('Edit'),
-                                          )),
-                                        ])
-                              ],
-                            ),
-                            reusableRow(
-                                leadingicon: Icons.location_on_outlined,
-                                value: map != null ? map['Address'] : null,
-                                title: 'Address'),
-                            reusableRow(
-                                leadingicon: Icons.phone,
-                                value: map['Phone number'],
-                                title: 'Phone'),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                } else {
-                  Text('Something went wrong');
-                }
-                throw '';
-              },
-            ),
+            // StreamBuilder(
+            //   stream: ref.child(SessionController().userid.toString()).onValue,
+            //   builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+            //     Map<dynamic, dynamic> map = snapshot.data.snapshot.value;
+            //     final phone = map['phone'];
+            //     final address = map['address'];
+            //     if (!snapshot.hasData) {
+            //       return CircularProgressIndicator();
+            //     } else if (snapshot.hasData) {
+            //       return Padding(
+            //         padding: const EdgeInsets.symmetric(horizontal: 15),
+            //         child: Container(
+            //           decoration: BoxDecoration(
+            //               border: Border.all(color: AppColors.grayColor),
+            //               borderRadius: BorderRadius.all(Radius.circular(10))),
+            //           child: Padding(
+            //             padding: const EdgeInsets.all(11.0),
+            //             child: Column(
+            //               crossAxisAlignment: CrossAxisAlignment.start,
+            //               children: [
+            //                 Row(
+            //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //                   children: [
+            //                     Text(
+            //                       'Personal Information',
+            //                       style: Theme.of(context)
+            //                           .textTheme
+            //                           .headlineMedium,
+            //                     ),
+            //                     PopupMenuButton(
+            //                         itemBuilder: (context) => [
+            //                               PopupMenuItem(
+            //                                   child: ListTile(
+            //                                 onTap: () {
+            //                                   _personalInformation(context);
+            //                                 },
+            //                                 leading: Icon(Icons.add),
+            //                                 title: Text('Add'),
+            //                               )),
+            //                               PopupMenuItem(
+            //                                   child: ListTile(
+            //                                 onTap: () {
+            //                                   _showinfoupdatedialogue(
+            //                                       address, phone);
+            //                                 },
+            //                                 leading: Icon(Icons.edit),
+            //                                 title: Text('Edit'),
+            //                               )),
+            //                             ])
+            //                   ],
+            //                 ),
+            //                 reusableRow(
+            //                     leadingicon: Icons.location_on_outlined,
+            //                     value: map['address'],
+            //                     title: 'Address'),
+            //                 reusableRow(
+            //                     leadingicon: Icons.phone,
+            //                     value: map['phone'],
+            //                     title: 'Phone'),
+            //               ],
+            //             ),
+            //           ),
+            //         ),
+            //       );
+            //     } else {
+            //       Text('Something went wrong');
+            //     }
+            //     throw '';
+            //   },
+            // ),
             roundButton(
                 title: 'Signout',
                 onpress: () {
