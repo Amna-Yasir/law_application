@@ -35,7 +35,7 @@ class _usermanagerState extends State<usermanager> {
             roundButton(
                 title: 'Continue as a lawyer',
                 onpress: () {
-                  Navigator.pushNamed(context, RouteName.lawyerloginView);
+                  Navigator.pushNamed(context, RouteName.lawyersplashScreen);
                 }),
             SizedBox(
               height: 10,
@@ -43,7 +43,7 @@ class _usermanagerState extends State<usermanager> {
             roundButton(
                 title: 'Continue as a Client',
                 onpress: () {
-                  Navigator.pushNamed(context, RouteName.loginView);
+                  Navigator.pushNamed(context, RouteName.clientsplashScreen);
                 }),
           ],
         ),

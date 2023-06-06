@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:law_application/res/colors.dart';
 import '../../../res/components/list/categoryList.dart';
 import '../../../res/components/list/profilelist.dart';
 
@@ -184,6 +185,7 @@ class FullProfileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        color: AppColors.whiteColor,
         border: Border.all(color: Colors.black12),
         borderRadius: BorderRadius.circular(5),
       ),

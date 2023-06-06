@@ -7,19 +7,19 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import '../../res/fonts.dart';
 import '../services/splash-services.dart';
 
-class lawyersplashScreen extends StatefulWidget {
-  const lawyersplashScreen({super.key});
+class clientsplashScreen extends StatefulWidget {
+  const clientsplashScreen({super.key});
 
   @override
-  State<lawyersplashScreen> createState() => _lawyersplashScreenState();
+  State<clientsplashScreen> createState() => _clientsplashScreenState();
 }
 
 // ignore: camel_case_types
-class _lawyersplashScreenState extends State<lawyersplashScreen> {
+class _clientsplashScreenState extends State<clientsplashScreen> {
   splashServices services = splashServices();
   @override
   void initState() {
-    services.isLogin(context);
+    services.clientlogin(context);
     // TODO: implement initState
     super.initState();
   }

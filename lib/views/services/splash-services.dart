@@ -16,11 +16,26 @@ class splashServices {
     if (user != null) {
       SessionController().userid = user.uid.toString();
 
-      Timer(Duration(seconds: 5),
+      Timer(Duration(seconds: 3),
+          () => Navigator.pushNamed(context, RouteName.lawyerdashboardView));
+    } else {
+      Timer(Duration(seconds: 3),
+          () => Navigator.pushNamed(context, RouteName.lawyerloginView));
+    }
+  }
+
+  void clientlogin(BuildContext context) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final user = auth.currentUser;
+
+    if (user != null) {
+      SessionController().userid = user.uid.toString();
+
+      Timer(Duration(seconds: 3),
           () => Navigator.pushNamed(context, RouteName.dashboardView));
     } else {
       Timer(Duration(seconds: 3),
-          () => Navigator.pushNamed(context, RouteName.usermanagerView));
+          () => Navigator.pushNamed(context, RouteName.loginView));
     }
   }
 }

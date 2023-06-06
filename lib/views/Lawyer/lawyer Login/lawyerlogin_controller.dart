@@ -32,7 +32,7 @@ class lawyerloginController with ChangeNotifier {
         SessionController().userid = value.user!.uid.toString();
 
         utils.toastmessage('Succesfully');
-        Navigator.pushNamed(context, RouteName.lawyerExtraInfo);
+        Navigator.pushNamed(context, RouteName.lawyerdashboardView);
       }).onError((error, stackTrace) {
         print(error);
         setloaading(false);

@@ -25,9 +25,9 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
               primarySwatch: AppColors.primaryMaterialColor,
-              scaffoldBackgroundColor: Colors.white,
+              scaffoldBackgroundColor: Color.fromARGB(255, 255, 254, 254),
               appBarTheme: const AppBarTheme(
-                  color: AppColors.whiteColor,
+                  color: Color.fromARGB(255, 255, 254, 254),
                   centerTitle: true,
                   titleTextStyle: TextStyle(
                       fontSize: 22,
@@ -89,7 +89,7 @@ class MyApp extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     height: 2.26),
               )),
-          initialRoute: RouteName.splashScreen,
+          initialRoute: RouteName.usermanagerView,
           onGenerateRoute: Routes.generateRoute,
         );
       },

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:law_application/utils/routes/routesname.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/dashboardview.dart';
-import 'package:law_application/views/Lawyer/lawyer%20Login/lawyer_extra_info.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer_extra_info.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer_profile.dart';
 import 'package:law_application/views/Lawyer/lawyer%20signup/lawyersignup_screen.dart';
 
@@ -10,6 +10,7 @@ import 'package:law_application/views/client/dashboard/case_managment.dart';
 
 import 'package:law_application/views/client/login/Auth/loginwithPhone.dart';
 import 'package:law_application/views/client/login/Auth/verifycode.dart';
+import 'package:law_application/views/splashscreen/clientSplashScreen.dart';
 import 'package:law_application/views/user_manage.dart';
 
 import '../../views/Lawyer/lawyer Login/lawyerlogin_screen.dart';
@@ -25,8 +26,10 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const usermanager());
       case RouteName.lawyerProfileView:
         return MaterialPageRoute(builder: (_) => const lawyerprofile());
-      case RouteName.splashScreen:
-        return MaterialPageRoute(builder: (_) => const splashScreen());
+      case RouteName.lawyersplashScreen:
+        return MaterialPageRoute(builder: (_) => const lawyersplashScreen());
+      case RouteName.clientsplashScreen:
+        return MaterialPageRoute(builder: (_) => const clientsplashScreen());
       case RouteName.loginView:
         return MaterialPageRoute(builder: (_) => const loginscreen());
       case RouteName.lawyerloginView:

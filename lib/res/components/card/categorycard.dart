@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+
+import '../../colors.dart';
 
 class categorycard extends StatelessWidget {
   categorycard({
@@ -16,6 +17,7 @@ class categorycard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+          color: AppColors.whiteColor,
           border: Border.all(color: Colors.black12),
           borderRadius: BorderRadius.circular(15)),
       child: Column(
@@ -29,9 +31,7 @@ class categorycard extends StatelessWidget {
                 height: 100,
                 width: 150,
                 child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10)),
+                    borderRadius: BorderRadius.circular(10),
                     child: Image(image: NetworkImage(imageurl)))),
           ),
           Text(

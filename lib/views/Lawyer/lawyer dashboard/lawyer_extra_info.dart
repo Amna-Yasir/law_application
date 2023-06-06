@@ -1,3 +1,4 @@
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -133,6 +134,7 @@ class _lawyerExtraInfoState extends State<lawyerExtraInfo> {
                         .child(SessionController().userid.toString())
                         .child('extrainfo')
                         .set({
+                      'category': category.text,
                       'Phone': phonenumber.text,
                       'ZipCode': zipcode.text,
                       'feeperhour': feeperhour.text,
@@ -143,7 +145,7 @@ class _lawyerExtraInfoState extends State<lawyerExtraInfo> {
                       Navigator.pop(context);
                       utils.toastmessage('Save Successfully');
 
-                      Navigator.pushNamed(context, RouteName.lawyerProfileView);
+                      Navigator.pushNamed(context, RouteName.lawyerloginView);
                     }).onError((error, stackTrace) {
                       error.toString();
                     }).then((value) {});

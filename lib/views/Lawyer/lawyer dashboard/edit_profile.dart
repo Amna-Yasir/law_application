@@ -76,7 +76,8 @@ class _editprofileState extends State<editprofile> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
               child: TextFormField(
-                // controller: ,
+                controller: editcategory,
+                // controller: cate,
                 maxLines: 1,
                 decoration: InputDecoration(
                     hintText: 'Category',

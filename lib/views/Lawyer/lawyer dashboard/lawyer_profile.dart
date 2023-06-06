@@ -3,12 +3,13 @@ import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:law_application/DialogueBoxes/dialogueboxes.dart';
 import 'package:law_application/res/components/roundbutton.dart';
-import 'package:law_application/views/Lawyer/lawyer%20Login/lawyer_extra_info.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer_extra_info.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/edit_profile.dart';
 import '../../../../utils/utils.dart';
 
@@ -128,6 +129,7 @@ class _lawyerprofileState extends State<lawyerprofile> {
                         Map<dynamic, dynamic> map =
                             snapshot.data.snapshot.value;
                         final phone = map['Phone'];
+                        final category = map['category'];
                         final address = map['address'];
                         final zipCode = map['ZipCode'];
                         final hourlyrate = map['feeperhour'];
@@ -142,6 +144,9 @@ class _lawyerprofileState extends State<lawyerprofile> {
                                 content: map['address'], titleName: 'Address'),
                             contentRow(
                                 content: map['ZipCode'], titleName: 'Zip Code'),
+                            contentRow(
+                                content: map['category'],
+                                titleName: 'Category'),
                             contentRow(
                                 content: map['feeperhour'],
                                 titleName: 'Hourly Rate'),
@@ -163,12 +168,14 @@ class _lawyerprofileState extends State<lawyerprofile> {
                                 ),
                                 onPressed: () {
                                   _showinfoupdatedialogue(
-                                      phone,
-                                      address,
-                                      zipCode,
-                                      hourlyrate,
-                                      aboutyourself,
-                                      currentlyworking);
+                                    phone,
+                                    address,
+                                    zipCode,
+                                    category,
+                                    hourlyrate,
+                                    aboutyourself,
+                                    currentlyworking,
+                                  );
                                   // edit.showupdatedialogue(
                                   //     phone,
                                   //     address,
@@ -193,8 +200,9 @@ class _lawyerprofileState extends State<lawyerprofile> {
     );
   }
 
-  Future<void> _showinfoupdatedialogue(String phone, address, zipCode,
+  Future<void> _showinfoupdatedialogue(String phone, address, zipCode, category,
       hourlyrate, aboutyourself, currentlyworking) async {
+    editcategory.text = category;
     editphonenumber.text = phone;
     editaboutyourself.text = aboutyourself;
     editzipcode.text = zipCode;
@@ -214,7 +222,7 @@ class _lawyerprofileState extends State<lawyerprofile> {
                 child: Column(
                   children: [
                     TextFormField(
-                      // controller: ,
+                      controller: editcategory,
                       maxLines: 1,
                       decoration: InputDecoration(
                           hintText: 'Category',
@@ -287,6 +295,7 @@ class _lawyerprofileState extends State<lawyerprofile> {
                       .child(SessionController().userid.toString())
                       .child('extrainfo')
                       .update({
+                    'category': editcategory.text.toLowerCase(),
                     'Phone': editphonenumber.text.toLowerCase(),
                     'ZipCode': editzipcode.text.toLowerCase(),
                     'feeperhour': editfeeperhour.text.toLowerCase(),

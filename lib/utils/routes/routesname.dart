@@ -1,5 +1,7 @@
 class RouteName {
-  static const String splashScreen = 'splash';
+  static const String lawyersplashScreen = 'splash';
+  static const String clientsplashScreen = 'clientsplash';
+
   static const String loginView = 'login-view';
   static const String lawyerloginView = 'lawyerlogin-view';
   static const String lawyersignupView = 'lawyersign-view';

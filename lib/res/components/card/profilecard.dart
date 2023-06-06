@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer_detail.dart';
 
 import '../../colors.dart';
 
@@ -9,28 +10,28 @@ class profilecard extends StatelessWidget {
       required this.imageurl,
       required this.LawyerName,
       required this.lawyercategory,
-      required this.rating});
+      required this.finalRating,
+      required this.ontap});
   final String lawyercategory;
+  final VoidCallback ontap;
   final String LawyerName;
   final String imageurl;
-  final String rating;
+  final double finalRating;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+          color: AppColors.whiteColor,
           border: Border.all(color: Colors.black12),
           borderRadius: BorderRadius.circular(5)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           InkWell(
-            onTap: () {
-              print('lawyer');
-            },
+            onTap: ontap,
             child: Stack(children: [
               Container(
-                color: Colors.white,
                 height: 105,
                 width: 130,
                 child: ClipRRect(
@@ -75,11 +76,11 @@ class profilecard extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          rating,
+                          finalRating.toString(),
                           style: TextStyle(fontSize: 10),
                         ),
                         RatingBarIndicator(
-                          rating: 5,
+                          rating: finalRating,
                           itemSize: 10,
                           itemBuilder: (context, index) {
                             return Icon(

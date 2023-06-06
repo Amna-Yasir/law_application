@@ -40,7 +40,7 @@ class lawyersignupController with ChangeNotifier {
         }).then((value) {
           setloaading(false);
 
-          Navigator.pushNamed(context, RouteName.lawyerloginView);
+          Navigator.pushNamed(context, RouteName.lawyerExtraInfo);
         }).onError((error, stackTrace) {
           utils.toastmessage(error.toString());
           setloaading(false);
