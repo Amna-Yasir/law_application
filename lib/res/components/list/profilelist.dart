@@ -17,7 +17,7 @@ class profilelist extends StatelessWidget {
     FirebaseAuth auth = FirebaseAuth.instance;
     DatabaseReference ref = FirebaseDatabase.instance.ref().child('lawyer');
     return FirebaseAnimatedList(
-        defaultChild: CircularProgressIndicator(),
+        defaultChild: Center(child: CircularProgressIndicator()),
         scrollDirection: Axis.horizontal,
         query: ref,
         itemBuilder: (context, snapshot, animation, index) {

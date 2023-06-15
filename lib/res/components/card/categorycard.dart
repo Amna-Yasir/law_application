@@ -8,10 +8,12 @@ class categorycard extends StatelessWidget {
     required this.lawyercategory,
     required this.noOfLawyers,
     required this.imageurl,
+    required this.ontap,
   });
   final String lawyercategory;
   final String noOfLawyers;
   final String imageurl;
+  final VoidCallback ontap;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +25,7 @@ class categorycard extends StatelessWidget {
       child: Column(
         children: [
           InkWell(
-            onTap: () {
-              print('lawyer');
-            },
+            onTap: ontap,
             child: Container(
                 color: Colors.white,
                 height: 100,

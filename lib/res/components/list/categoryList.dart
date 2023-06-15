@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/categorydetail.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/categorydetailwidget.dart';
 import '../card/categorycard.dart';
 
 class CategoryList extends StatelessWidget {
@@ -13,6 +15,12 @@ class CategoryList extends StatelessWidget {
         child: Row(
           children: [
             categorycard(
+                ontap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => categorydetail()));
+                },
                 lawyercategory: 'Criminal',
                 noOfLawyers: '400 lawyers',
                 imageurl:
@@ -21,6 +29,7 @@ class CategoryList extends StatelessWidget {
               width: 10,
             ),
             categorycard(
+              ontap: () {},
               lawyercategory: 'Divorce',
               noOfLawyers: '200 lawyers',
               imageurl:
@@ -34,6 +43,7 @@ class CategoryList extends StatelessWidget {
               noOfLawyers: '20 lawyers',
               imageurl:
                   'https://www.thomsonreuters.com/en-us/posts/wp-content/uploads/sites/20/2022/11/pursuit-of-justice-gavel.jpg',
+              ontap: () {},
             ),
             SizedBox(
               width: 10,
@@ -43,6 +53,7 @@ class CategoryList extends StatelessWidget {
               noOfLawyers: '10 lawyers',
               imageurl:
                   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQC5WU0kyuoA-C5zRNsVabieBzyZMrEWJ44xpeKSgmHpjL1SCyP-SEdFO1HyfBMoSyIbs&usqp=CAU',
+              ontap: () {},
             ),
             SizedBox(
               width: 10,
