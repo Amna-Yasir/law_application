@@ -24,6 +24,13 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+              timePickerTheme: TimePickerThemeData(
+                  dayPeriodTextColor: AppColors.whiteColor,
+                  dayPeriodColor: AppColors.primaryColor,
+                  hourMinuteColor: AppColors.whiteColor,
+                  dialBackgroundColor: AppColors.whiteColor,
+                  dialHandColor: AppColors.primaryColor,
+                  hourMinuteTextColor: AppColors.primaryColor),
               primarySwatch: AppColors.primaryMaterialColor,
               scaffoldBackgroundColor: Color.fromARGB(255, 255, 254, 254),
               appBarTheme: const AppBarTheme(

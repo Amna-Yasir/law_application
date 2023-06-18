@@ -6,6 +6,7 @@ import 'package:law_application/res/colors.dart';
 import 'package:law_application/res/components/card/profilecard.dart';
 import 'package:law_application/utils/routes/routes.dart';
 import 'package:law_application/utils/routes/routesname.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/booking_screen.dart';
 
 class lawyerdetail extends StatelessWidget {
   const lawyerdetail(
@@ -224,7 +225,12 @@ class lawyerdetail extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15)),
                       //
                       child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => bookingcalender()));
+                          },
                           icon: Icon(Icons.calendar_month_outlined,
                               color: Colors.blueAccent)),
                     )
