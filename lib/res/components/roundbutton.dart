@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../colors.dart';
 
 class roundButton extends StatelessWidget {
-  String title;
+  final String title;
   final VoidCallback onpress;
   final Color color, textcolor;
   final bool loading;

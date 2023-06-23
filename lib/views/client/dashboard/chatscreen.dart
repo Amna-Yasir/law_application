@@ -4,10 +4,7 @@ import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:law_application/res/components/roundbutton.dart';
 import 'package:law_application/utils/utils.dart';
 import 'package:law_application/views/services/session_manager.dart';
@@ -50,6 +47,7 @@ class _chatscreenState extends State<chatscreen> {
                 title: 'Signout',
                 onpress: () {
                   FirebaseAuth auth = FirebaseAuth.instance;
+                  // ignore: unused_local_variable
                   final user = auth.signOut().then((value) => {
                         SessionController().userid = '',
                         Navigator.pushNamed(context, RouteName.loginView)

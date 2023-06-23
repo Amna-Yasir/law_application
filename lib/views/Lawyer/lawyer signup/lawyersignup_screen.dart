@@ -1,10 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:law_application/res/colors.dart';
 import 'package:law_application/views/Lawyer/lawyer%20signup/lawyersignup_controller.dart';
-import 'package:law_application/views/client/signup/signup_controller.dart';
 import 'package:lottie/lottie.dart';
 import '../../../res/components/roundbutton.dart';
 import '../../../utils/utils.dart';
@@ -23,7 +21,6 @@ class lawyersignUpScreen extends StatefulWidget {
 class _lawyersignUpScreenState extends State<lawyersignUpScreen> {
   String userType = 'Client';
   List<String> userTypeList = ['Client', 'lawyer'];
-  final _auth = FirebaseAuth.instance;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -58,7 +55,6 @@ class _lawyersignUpScreenState extends State<lawyersignUpScreen> {
               create: (_) => lawyersignupController(),
               child: Consumer<lawyersignupController>(
                 builder: (context, provider, child) {
-                  var center = TextAlign.center;
                   return SingleChildScrollView(
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,

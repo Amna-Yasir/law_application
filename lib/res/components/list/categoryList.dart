@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/categorydetail.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/categorydetailwidget.dart';
+
 import '../card/categorycard.dart';
 
 class CategoryList extends StatelessWidget {

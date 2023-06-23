@@ -1,8 +1,6 @@
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:law_application/res/components/roundbutton.dart';
 import 'package:law_application/utils/routes/routesname.dart';
 import 'package:law_application/utils/utils.dart';

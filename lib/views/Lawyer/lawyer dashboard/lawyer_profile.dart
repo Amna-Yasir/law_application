@@ -2,19 +2,11 @@ import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:law_application/DialogueBoxes/dialogueboxes.dart';
-import 'package:law_application/res/components/roundbutton.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer_extra_info.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/edit_profile.dart';
 import '../../../../utils/utils.dart';
 
 import '../../../res/colors.dart';
-import '../../../res/components/reusablerow.dart';
 import '../../services/session_manager.dart';
 
 class lawyerprofile extends StatefulWidget {
@@ -44,7 +36,6 @@ class _lawyerprofileState extends State<lawyerprofile> {
 
   @override
   Widget build(BuildContext context) {
-    dialogueboxes boxes = dialogueboxes();
     return Scaffold(
       appBar: AppBar(
         title: Text('Lawyer Profile'),
@@ -103,11 +94,11 @@ class _lawyerprofileState extends State<lawyerprofile> {
                                 ],
                               ),
                             ),
-                            contentRow(
+                            ContentRow(
                               titleName: 'Name',
                               content: map['username'],
                             ),
-                            contentRow(
+                            ContentRow(
                               titleName: 'Email',
                               content: map['email'],
                             ),
@@ -137,23 +128,23 @@ class _lawyerprofileState extends State<lawyerprofile> {
                         final currentlyworking = map['practicing'];
                         return Column(
                           children: [
-                            contentRow(
+                            ContentRow(
                                 content: map['Phone'],
                                 titleName: 'Phone Number'),
-                            contentRow(
+                            ContentRow(
                                 content: map['address'], titleName: 'Address'),
-                            contentRow(
+                            ContentRow(
                                 content: map['ZipCode'], titleName: 'Zip Code'),
-                            contentRow(
+                            ContentRow(
                                 content: map['category'],
                                 titleName: 'Category'),
-                            contentRow(
+                            ContentRow(
                                 content: map['feeperhour'],
                                 titleName: 'Hourly Rate'),
-                            contentRow(
+                            ContentRow(
                                 content: map['aboutyourself'],
                                 titleName: 'About Yourself'),
-                            contentRow(
+                            ContentRow(
                                 content: map['practicing'],
                                 titleName: 'Currently Working'),
                             Align(
@@ -330,14 +321,14 @@ class _lawyerprofileState extends State<lawyerprofile> {
   }
 }
 
-class contentRow extends StatelessWidget {
-  contentRow({
+class ContentRow extends StatelessWidget {
+  ContentRow({
     required this.content,
     required this.titleName,
     super.key,
   });
-  String content;
-  String titleName;
+  final String content;
+  final String titleName;
   @override
   Widget build(BuildContext context) {
     return Padding(

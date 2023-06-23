@@ -2,7 +2,6 @@ import 'package:animate_gradient/animate_gradient.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../../res/fonts.dart';
 import '../services/splash-services.dart';

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:law_application/res/colors.dart';
-import 'package:law_application/res/components/card/profilecard.dart';
-import 'package:law_application/utils/routes/routes.dart';
-import 'package:law_application/utils/routes/routesname.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/booking_screen.dart';
 
 class lawyerdetail extends StatelessWidget {

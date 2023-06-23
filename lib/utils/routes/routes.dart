@@ -4,12 +4,9 @@ import 'package:law_application/views/Lawyer/lawyer%20dashboard/dashboardview.da
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer_extra_info.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer_profile.dart';
 import 'package:law_application/views/Lawyer/lawyer%20signup/lawyersignup_screen.dart';
-
-import 'package:law_application/views/client/dashboard/dashboardview.dart';
 import 'package:law_application/views/client/dashboard/case_managment.dart';
-
+import 'package:law_application/views/client/dashboard/dashboardview.dart';
 import 'package:law_application/views/client/login/Auth/loginwithPhone.dart';
-import 'package:law_application/views/client/login/Auth/verifycode.dart';
 import 'package:law_application/views/splashscreen/clientSplashScreen.dart';
 import 'package:law_application/views/user_manage.dart';
 

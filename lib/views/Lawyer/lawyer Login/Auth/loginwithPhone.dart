@@ -1,11 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:law_application/res/components/input_text_field.dart';
 import 'package:law_application/res/components/roundbutton.dart';
-import 'package:law_application/utils/routes/routesname.dart';
 import 'package:law_application/utils/utils.dart';
 import 'package:law_application/views/client/login/Auth/verifycode.dart';
 
@@ -39,6 +35,7 @@ class _LoginwithPhonenumberState extends State<LoginwithPhonenumber> {
                   onFilledSubmittedvalue: (value) {},
                   onValidator: (value) {
                     value.isEmpty ? 'Enter Email' : null;
+                    return null;
                   },
                   keyboardtype: TextInputType.phone,
                   hint: '+9203684508',

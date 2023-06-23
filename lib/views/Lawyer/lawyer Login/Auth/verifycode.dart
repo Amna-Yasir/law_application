@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class verifycode extends StatefulWidget {
-  String verificaionid;
+  final String verificaionid;
   verifycode({super.key, required this.verificaionid});
 
   @override

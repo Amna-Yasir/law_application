@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer_detail.dart';
 
 import '../../colors.dart';
 

@@ -1,15 +1,12 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:law_application/DialogueBoxes/dialogueboxes.dart';
-import 'package:law_application/res/components/input_text_field.dart';
 import 'package:law_application/res/components/roundbutton.dart';
 import 'package:law_application/utils/routes/routesname.dart';
 import 'package:law_application/views/services/session_manager.dart';

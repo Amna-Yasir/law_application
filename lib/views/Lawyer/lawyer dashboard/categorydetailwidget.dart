@@ -1,13 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:law_application/res/colors.dart';
-import 'package:law_application/res/components/card/profilecard.dart';
-import 'package:law_application/views/services/session_manager.dart';
 
 class categoryDetailwidget extends StatelessWidget {
   const categoryDetailwidget({

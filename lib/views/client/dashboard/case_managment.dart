@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, camel_case_types
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -69,7 +69,7 @@ class _casemanagementState extends State<casemanagement> {
                     side: CardSide.FRONT,
                     back: Padding(
                       padding: const EdgeInsets.all(20.0),
-                      child: detailbutton(
+                      child: DetailButton(
                         color1: AppColors.primaryColor,
                         color2: Colors.purpleAccent,
                       ),
@@ -81,7 +81,7 @@ class _casemanagementState extends State<casemanagement> {
                     side: CardSide.FRONT,
                     back: Padding(
                       padding: const EdgeInsets.all(20.0),
-                      child: detailbutton(
+                      child: DetailButton(
                         color1: AppColors.primaryColor,
                         color2: Colors.pink.shade500,
                       ),
@@ -97,7 +97,7 @@ class _casemanagementState extends State<casemanagement> {
                     side: CardSide.FRONT,
                     back: Padding(
                       padding: const EdgeInsets.all(20.0),
-                      child: detailbutton(
+                      child: DetailButton(
                         color1: AppColors.primaryColor,
                         color2: Colors.blueGrey,
                       ),
@@ -112,7 +112,7 @@ class _casemanagementState extends State<casemanagement> {
               ListView(
                 children: [
                   Container(
-                      child: appointmentCard(
+                      child: AppointmentCard(
                     color1: AppColors.primaryColor,
                     color2: AppColors.primaryColor,
                   ))
@@ -124,8 +124,9 @@ class _casemanagementState extends State<casemanagement> {
   }
 }
 
-class detailbutton extends StatelessWidget {
-  detailbutton({
+// ignore: must_be_immutable
+class DetailButton extends StatelessWidget {
+  DetailButton({
     required this.color1,
     required this.color2,
     super.key,
@@ -153,10 +154,10 @@ class detailbutton extends StatelessWidget {
   }
 }
 
-class appointmentCard extends StatelessWidget {
-  appointmentCard({super.key, required this.color1, required this.color2});
-  Color color1;
-  Color color2;
+class AppointmentCard extends StatelessWidget {
+  AppointmentCard({super.key, required this.color1, required this.color2});
+  final Color color1;
+  final Color color2;
 
   @override
   Widget build(BuildContext context) {
@@ -209,8 +210,8 @@ class appointmentlist extends StatelessWidget {
       required this.trailingtext,
       required this.title});
   final Widget leadingicon;
-  String trailingtext;
-  String title;
+  final String trailingtext;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -235,8 +236,8 @@ class appointmentlist extends StatelessWidget {
 
 class caseCard extends StatelessWidget {
   caseCard({super.key, required this.color1, required this.color2});
-  Color color1;
-  Color color2;
+  final Color color1;
+  final Color color2;
 
   @override
   Widget build(BuildContext context) {
@@ -296,8 +297,8 @@ class caselist extends StatelessWidget {
       required this.trailingtext,
       required this.title});
   final Widget leadingicon;
-  String trailingtext;
-  String title;
+  final String trailingtext;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return ListTile(

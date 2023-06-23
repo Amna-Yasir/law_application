@@ -1,10 +1,13 @@
+// ignore_for_file: unused_local_variable
+
+import 'dart:math';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer_detail.dart';
-import 'package:law_application/views/services/session_manager.dart';
-import 'dart:math';
+
 import '../card/profilecard.dart';
 
 class profilelist extends StatelessWidget {
