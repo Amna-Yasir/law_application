@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:law_application/res/colors.dart';
 import 'package:law_application/views/Lawyer/lawyer%20Login/lawyerlogin_controller.dart';
-import 'package:law_application/views/client/login/login_controller.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
