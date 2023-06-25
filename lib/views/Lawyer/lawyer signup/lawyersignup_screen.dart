@@ -7,7 +7,7 @@ import 'package:lottie/lottie.dart';
 import '../../../res/components/roundbutton.dart';
 import '../../../utils/utils.dart';
 
-import '../../../res/components/input_text_field.dart';
+import '../../../res/components/textfield and row/input_text_field.dart';
 import '../../../utils/routes/routesname.dart';
 import 'package:provider/provider.dart';
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer_profile.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20appointment%20secreens/lawyer_appointment_screen.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20profile%20section/lawyer_profile.dart';
 import 'package:law_application/views/client/dashboard/chatscreen.dart';
 import 'package:law_application/views/client/homescreen/homepage.dart';
 import 'package:law_application/views/client/dashboard/case_managment.dart';
@@ -18,7 +19,13 @@ class lawyerdashboardView extends StatefulWidget {
 class _lawyerdashboardViewState extends State<lawyerdashboardView> {
   final PersistentController = PersistentTabController(initialIndex: 0);
   List<Widget> _buildscreens() {
-    return [homescreen(), chatscreen(), casemanagement(), lawyerprofile()];
+    return [
+      homescreen(),
+      chatscreen(),
+      lawyer_appointment_screen(),
+      casemanagement(),
+      lawyerprofile()
+    ];
   }
 
   List<PersistentBottomNavBarItem> _navbarItem() {
@@ -40,6 +47,16 @@ class _lawyerdashboardViewState extends State<lawyerdashboardView> {
         activeColorPrimary: AppColors.primaryColor,
         inactiveIcon: Icon(
           Icons.message,
+          color: Colors.grey,
+        ),
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(
+          Icons.calendar_month_outlined,
+        ),
+        activeColorPrimary: AppColors.primaryColor,
+        inactiveIcon: Icon(
+          Icons.calendar_month_outlined,
           color: Colors.grey,
         ),
       ),

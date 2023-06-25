@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
-import '../../../res/components/input_text_field.dart';
+import '../../../res/components/textfield and row/input_text_field.dart';
 import '../../../res/components/roundbutton.dart';
 import 'forgotpasswordController.dart';
 
