@@ -12,7 +12,7 @@ import 'package:law_application/utils/routes/routesname.dart';
 import 'package:law_application/views/services/session_manager.dart';
 import '../../../../utils/utils.dart';
 import '../../../../res/colors.dart';
-import '../../../../res/components/reusablerow.dart';
+import '../../../../res/components/textfield and row/reusablerow.dart';
 
 class profilescreen extends StatefulWidget {
   const profilescreen({super.key});

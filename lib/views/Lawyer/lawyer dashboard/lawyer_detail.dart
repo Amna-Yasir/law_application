@@ -2,26 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:law_application/res/colors.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/booking_screen.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20appointment%20secreens/booking_screen.dart';
 
 class lawyerdetail extends StatelessWidget {
-  const lawyerdetail(
-      {required this.Username,
-      super.key,
-      required this.address,
-      required this.rating,
-      required this.about,
-      required this.feeperhour,
-      required this.phone,
-      required this.currentlyWorking});
+  const lawyerdetail({
+    required this.lawyerName,
+    super.key,
+    required this.address,
+    required this.rating,
+    required this.about,
+    required this.feeperhour,
+    required this.phone,
+    required this.currentlyWorking,
+    required this.lawyerid,
+  });
 
-  final String Username;
+  final String lawyerName;
   final String address;
   final double rating;
   final String about;
   final String feeperhour;
   final String phone;
   final String currentlyWorking;
+  final String lawyerid;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +67,7 @@ class lawyerdetail extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            Username,
+                            lawyerName,
                             style: Theme.of(context).textTheme.displaySmall,
                           ),
                           Row(
@@ -225,7 +228,11 @@ class lawyerdetail extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => bookingcalender()));
+                                    builder: (context) => bookingcalender(
+                                        username: lawyerName,
+                                        location: address,
+                                        phonenumber: phone,
+                                        lawyerid: lawyerid)));
                           },
                           icon: Icon(Icons.calendar_month_outlined,
                               color: Colors.blueAccent)),

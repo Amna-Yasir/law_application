@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:law_application/views/client/dashboard/clientappointment_screen.dart.dart';
 import 'package:law_application/views/client/dashboard/case_managment.dart';
 import 'package:law_application/views/client/dashboard/chatscreen.dart';
 import 'package:law_application/views/client/dashboard/profilescreen/profile_screen.dart';
@@ -20,6 +21,7 @@ class _dashboardViewState extends State<dashboardView> {
     return [
       homescreen(),
       chatscreen(),
+      clientappointmentscreen(),
       casemanagement(),
       profilescreen(),
     ];
@@ -44,6 +46,16 @@ class _dashboardViewState extends State<dashboardView> {
         activeColorPrimary: AppColors.primaryColor,
         inactiveIcon: Icon(
           Icons.message,
+          color: Colors.grey,
+        ),
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(
+          Icons.calendar_month_outlined,
+        ),
+        activeColorPrimary: AppColors.primaryColor,
+        inactiveIcon: Icon(
+          Icons.calendar_month_outlined,
           color: Colors.grey,
         ),
       ),

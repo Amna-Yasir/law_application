@@ -5,7 +5,7 @@ import 'package:law_application/views/client/login/login_controller.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
-import '../../../res/components/input_text_field.dart';
+import '../../../res/components/textfield and row/input_text_field.dart';
 import '../../../res/components/roundbutton.dart';
 import '../../../utils/routes/routesname.dart';
 

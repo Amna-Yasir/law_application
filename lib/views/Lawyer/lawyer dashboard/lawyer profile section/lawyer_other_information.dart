@@ -6,14 +6,14 @@ import 'package:law_application/utils/routes/routesname.dart';
 import 'package:law_application/utils/utils.dart';
 import 'package:law_application/views/services/session_manager.dart';
 
-class lawyerExtraInfo extends StatefulWidget {
-  const lawyerExtraInfo({super.key});
+class lawyerOtherInfo extends StatefulWidget {
+  const lawyerOtherInfo({super.key});
 
   @override
-  State<lawyerExtraInfo> createState() => _lawyerExtraInfoState();
+  State<lawyerOtherInfo> createState() => _lawyerOtherInfoState();
 }
 
-class _lawyerExtraInfoState extends State<lawyerExtraInfo> {
+class _lawyerOtherInfoState extends State<lawyerOtherInfo> {
   TextEditingController category = TextEditingController();
   TextEditingController phonenumber = TextEditingController();
   TextEditingController zipcode = TextEditingController();

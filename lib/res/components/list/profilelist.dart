@@ -49,7 +49,8 @@ class profilelist extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => lawyerdetail(
-                          Username: snapshot.child('username').value.toString(),
+                          lawyerName:
+                              snapshot.child('username').value.toString(),
                           address: snapshot
                               .child('extrainfo')
                               .child('address')
@@ -76,6 +77,7 @@ class profilelist extends StatelessWidget {
                               .child('practicing')
                               .value
                               .toString(),
+                          lawyerid: snapshot.child('Uid').value.toString(),
                         ),
                       ));
                 },

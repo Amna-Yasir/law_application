@@ -10,7 +10,7 @@ class RouteName {
   static const String lawyerdashboardView = 'lawyerdashboard_view';
   static const String lawyerProfileView = 'lawyerProfile_view';
   static const String lawyerExtraInfo = 'lawyerExtraInfo';
-  static const String lawyerEditInfo = 'lawyerEditInfo';
+  static const String lawyerotherInfo = 'lawyerEditInfo';
 
   static const String forgotscreen = 'forgot-screen';
   static const String VerifyCodescreen = 'VerifyCodescreen ';
