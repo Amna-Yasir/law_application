@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/categorydetail.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20screen/categorydetail.dart';
 
 import '../card/categorycard.dart';
 

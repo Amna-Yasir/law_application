@@ -4,8 +4,8 @@ import 'package:law_application/views/Lawyer/lawyer%20Login/lawyerlogin_controll
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
-import '../../../res/components/textfield and row/input_text_field.dart';
 import '../../../res/components/roundbutton.dart';
+import '../../../res/components/textfield and row/input_text_field.dart';
 import '../../../utils/routes/routesname.dart';
 
 class lawyerloginscreen extends StatefulWidget {

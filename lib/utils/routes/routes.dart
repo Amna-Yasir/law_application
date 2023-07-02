@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:law_application/utils/routes/routesname.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/dashboardview.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20screen/dashboardview.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20profile%20section/lawyer_other_information.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20profile%20section/lawyer_profile.dart';
 import 'package:law_application/views/Lawyer/lawyer%20signup/lawyersignup_screen.dart';

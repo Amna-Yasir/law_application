@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import '../../../utils/utils.dart';
 
 import '../../../utils/routes/routesname.dart';
+import '../../../utils/utils.dart';
 import '../../services/session_manager.dart';
 
 class lawyerloginController with ChangeNotifier {
@@ -30,6 +30,9 @@ class lawyerloginController with ChangeNotifier {
               email: emailaddress.trim(), password: Password.trim())
           .then((value) async {
         SessionController().userid = value.user!.uid.toString();
+        FutureBuilder(
+          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {},
+        );
 
         utils.toastmessage('Succesfully');
         Navigator.pushNamed(context, RouteName.lawyerdashboardView);

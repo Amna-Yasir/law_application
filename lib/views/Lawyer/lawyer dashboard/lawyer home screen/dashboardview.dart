@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20appointment%20secreens/lawyer_appointment_screen.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20profile%20section/lawyer_profile.dart';
+import 'package:law_application/views/client/dashboard/case_managment.dart';
 import 'package:law_application/views/client/dashboard/chatscreen.dart';
 import 'package:law_application/views/client/homescreen/homepage.dart';
-import 'package:law_application/views/client/dashboard/case_managment.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-import '../../../res/colors.dart';
+import '../../../../res/colors.dart';
 
 class lawyerdashboardView extends StatefulWidget {
   const lawyerdashboardView({super.key});

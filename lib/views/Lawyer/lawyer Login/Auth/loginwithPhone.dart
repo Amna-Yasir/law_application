@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:law_application/res/components/textfield%20and%20row/input_text_field.dart';
 import 'package:law_application/res/components/roundbutton.dart';
+import 'package:law_application/res/components/textfield%20and%20row/input_text_field.dart';
 import 'package:law_application/utils/utils.dart';
 import 'package:law_application/views/client/login/Auth/verifycode.dart';
 
