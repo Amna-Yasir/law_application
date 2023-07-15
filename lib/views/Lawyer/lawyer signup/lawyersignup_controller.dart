@@ -36,6 +36,7 @@ class lawyersignupController with ChangeNotifier {
           'email': value.user!.email.toString(),
           'username': username,
           'role': role,
+          'profile': '',
         }).then((value) {
           setloaading(false);
 

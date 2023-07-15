@@ -4,13 +4,14 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../colors.dart';
 
 class profilecard extends StatelessWidget {
-  profilecard(
-      {super.key,
-      required this.imageurl,
-      required this.LawyerName,
-      required this.lawyercategory,
-      required this.finalRating,
-      required this.ontap});
+  profilecard({
+    super.key,
+    required this.imageurl,
+    required this.LawyerName,
+    required this.lawyercategory,
+    required this.finalRating,
+    required this.ontap,
+  });
   final String lawyercategory;
   final VoidCallback ontap;
   final String LawyerName;

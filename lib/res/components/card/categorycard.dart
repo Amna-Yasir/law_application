@@ -6,12 +6,11 @@ class categorycard extends StatelessWidget {
   categorycard({
     super.key,
     required this.lawyercategory,
-    required this.noOfLawyers,
     required this.imageurl,
     required this.ontap,
   });
   final String lawyercategory;
-  final String noOfLawyers;
+
   final String imageurl;
   final VoidCallback ontap;
 
@@ -38,13 +37,7 @@ class categorycard extends StatelessWidget {
             lawyercategory,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
-          Text(
-            noOfLawyers,
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium
-                ?.copyWith(color: Colors.purple),
-          ),
+          
         ],
       ),
     );

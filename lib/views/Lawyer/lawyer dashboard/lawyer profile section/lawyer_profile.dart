@@ -1,8 +1,11 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20profile%20section/lawyer_profile_controller.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../utils/utils.dart';
 import '../../../../res/colors.dart';
@@ -36,158 +39,202 @@ class _lawyerprofileState extends State<lawyerprofile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Lawyer Profile'),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 15),
-        child: SingleChildScrollView(
-          child: Expanded(
-            child: Column(
-              children: [
-                StreamBuilder(
-                    stream: ref
-                        .child(SessionController().userid.toString())
-                        .onValue,
-                    builder: (context, AsyncSnapshot snapshot) {
-                      if (!snapshot.hasData) {
-                        return Center(child: CircularProgressIndicator());
-                      } else if (snapshot.hasData) {
-                        Map<dynamic, dynamic> map =
-                            snapshot.data.snapshot.value;
+        appBar: AppBar(
+          title: Text('Lawyer Profile'),
+          centerTitle: true,
+        ),
+        body: ChangeNotifierProvider(
+          create: (_) => ProfileController(),
+          child:
+              Consumer<ProfileController>(builder: (context, provider, child) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 15),
+              child: SingleChildScrollView(
+                child: Expanded(
+                  child: Column(
+                    children: [
+                      StreamBuilder(
+                          stream: ref
+                              .child(SessionController().userid.toString())
+                              .onValue,
+                          builder: (context, AsyncSnapshot snapshot) {
+                            if (!snapshot.hasData) {
+                              return Center(child: CircularProgressIndicator());
+                            } else if (snapshot.hasData) {
+                              Map<dynamic, dynamic> map =
+                                  snapshot.data.snapshot.value;
 
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Center(
-                              child: Column(
+                              return Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Container(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(100),
-                                      child: Image(
-                                          fit: BoxFit.cover,
-                                          image: NetworkImage(
-                                              'https://images.pexels.com/photos/3781545/pexels-photo-3781545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')),
-                                    ),
-                                    height: 70,
-                                    width: 70,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            color: AppColors.primaryColor,
-                                            width: 4)),
+                                  Stack(
+                                      alignment: Alignment.bottomCenter,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 10.0),
+                                          child: Center(
+                                            child: Container(
+                                                height: 130,
+                                                width: 130,
+                                                decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                        color: AppColors
+                                                            .primaryColor,
+                                                        width: 2)),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          100),
+                                                  child: provider.image == null
+                                                      ? map['profile']
+                                                                  .toString() ==
+                                                              ''
+                                                          ? const Icon(
+                                                              Icons.person)
+                                                          : Image(
+                                                              fit: BoxFit.cover,
+                                                              image: NetworkImage(
+                                                                  map['profile']
+                                                                      .toString()),
+                                                              loadingBuilder:
+                                                                  (context,
+                                                                      child,
+                                                                      loadingProgress) {
+                                                                if (loadingProgress ==
+                                                                    null)
+                                                                  return child;
+                                                                return Center(
+                                                                    child:
+                                                                        CircularProgressIndicator());
+                                                              },
+                                                            )
+                                                      : Image.file(
+                                                          File(provider
+                                                                  .image!.path)
+                                                              .absolute,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                )),
+                                          ),
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            provider.pickimage(context);
+                                          },
+                                          child: CircleAvatar(
+                                            radius: 14,
+                                            backgroundColor:
+                                                AppColors.primaryColor,
+                                            child: Icon(
+                                              Icons.add,
+                                              color: Colors.white,
+                                              size: 18,
+                                            ),
+                                          ),
+                                        )
+                                      ]),
+                                  ContentRow(
+                                    titleName: 'Name',
+                                    content: map['username'],
                                   ),
-                                  TextButton(
-                                    onPressed: () {},
-                                    child: Text('Edit Profile',
+                                  ContentRow(
+                                    titleName: 'Email',
+                                    content: map['email'],
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return Text('Something Went Wrong');
+                            }
+                          }),
+                      StreamBuilder(
+                          stream: ref
+                              .child(SessionController().userid.toString())
+                              .child('extrainfo')
+                              .onValue,
+                          builder: (context, AsyncSnapshot snapshot) {
+                            if (!snapshot.hasData) {
+                              return CircularProgressIndicator();
+                            } else if (snapshot.hasData) {
+                              Map<dynamic, dynamic> map =
+                                  snapshot.data.snapshot.value;
+                              final phone = map['Phone'];
+                              final category = map['category'];
+                              final address = map['address'];
+                              final zipCode = map['ZipCode'];
+                              final hourlyrate = map['feeperhour'];
+                              final aboutyourself = map['aboutyourself'];
+                              final currentlyworking = map['practicing'];
+                              return Column(
+                                children: [
+                                  ContentRow(
+                                      content: map['Phone'],
+                                      titleName: 'Phone Number'),
+                                  ContentRow(
+                                      content: map['address'],
+                                      titleName: 'Address'),
+                                  ContentRow(
+                                      content: map['ZipCode'],
+                                      titleName: 'Zip Code'),
+                                  ContentRow(
+                                      content: map['category'],
+                                      titleName: 'Category'),
+                                  ContentRow(
+                                      content: map['feeperhour'],
+                                      titleName: 'Hourly Rate'),
+                                  ContentRow(
+                                      content: map['aboutyourself'],
+                                      titleName: 'About Yourself'),
+                                  ContentRow(
+                                      content: map['practicing'],
+                                      titleName: 'Currently Working'),
+                                  Align(
+                                    alignment: Alignment.topRight,
+                                    child: TextButton(
+                                      child: Text(
+                                        'Edit',
                                         style: Theme.of(context)
                                             .textTheme
-                                            .bodyMedium!
-                                            .copyWith(
-                                                decoration:
-                                                    TextDecoration.underline)),
-                                  )
+                                            .bodyLarge
+                                            ?.copyWith(
+                                                color: AppColors.primaryColor),
+                                      ),
+                                      onPressed: () {
+                                        _showinfoupdatedialogue(
+                                          phone,
+                                          address,
+                                          zipCode,
+                                          category,
+                                          hourlyrate,
+                                          aboutyourself,
+                                          currentlyworking,
+                                        );
+                                        // edit.showupdatedialogue(
+                                        //     phone,
+                                        //     address,
+                                        //     zipCode,
+                                        //     hourlyrate,
+                                        //     aboutyourself,
+                                        //     currentlyworking);
+                                      },
+                                    ),
+                                  ),
                                 ],
-                              ),
-                            ),
-                            ContentRow(
-                              titleName: 'Name',
-                              content: map['username'],
-                            ),
-                            ContentRow(
-                              titleName: 'Email',
-                              content: map['email'],
-                            ),
-                          ],
-                        );
-                      } else {
-                        return Text('Something Went Wrong');
-                      }
-                    }),
-                StreamBuilder(
-                    stream: ref
-                        .child(SessionController().userid.toString())
-                        .child('extrainfo')
-                        .onValue,
-                    builder: (context, AsyncSnapshot snapshot) {
-                      if (!snapshot.hasData) {
-                        return CircularProgressIndicator();
-                      } else if (snapshot.hasData) {
-                        Map<dynamic, dynamic> map =
-                            snapshot.data.snapshot.value;
-                        final phone = map['Phone'];
-                        final category = map['category'];
-                        final address = map['address'];
-                        final zipCode = map['ZipCode'];
-                        final hourlyrate = map['feeperhour'];
-                        final aboutyourself = map['aboutyourself'];
-                        final currentlyworking = map['practicing'];
-                        return Column(
-                          children: [
-                            ContentRow(
-                                content: map['Phone'],
-                                titleName: 'Phone Number'),
-                            ContentRow(
-                                content: map['address'], titleName: 'Address'),
-                            ContentRow(
-                                content: map['ZipCode'], titleName: 'Zip Code'),
-                            ContentRow(
-                                content: map['category'],
-                                titleName: 'Category'),
-                            ContentRow(
-                                content: map['feeperhour'],
-                                titleName: 'Hourly Rate'),
-                            ContentRow(
-                                content: map['aboutyourself'],
-                                titleName: 'About Yourself'),
-                            ContentRow(
-                                content: map['practicing'],
-                                titleName: 'Currently Working'),
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: TextButton(
-                                child: Text(
-                                  'Edit',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge
-                                      ?.copyWith(color: AppColors.primaryColor),
-                                ),
-                                onPressed: () {
-                                  _showinfoupdatedialogue(
-                                    phone,
-                                    address,
-                                    zipCode,
-                                    category,
-                                    hourlyrate,
-                                    aboutyourself,
-                                    currentlyworking,
-                                  );
-                                  // edit.showupdatedialogue(
-                                  //     phone,
-                                  //     address,
-                                  //     zipCode,
-                                  //     hourlyrate,
-                                  //     aboutyourself,
-                                  //     currentlyworking);
-                                },
-                              ),
-                            ),
-                          ],
-                        );
-                      } else {
-                        return Text('Something Went Wrong');
-                      }
-                    })
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+                              );
+                            } else {
+                              return Text('Something Went Wrong');
+                            }
+                          })
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }),
+        ));
   }
 
   Future<void> _showinfoupdatedialogue(String phone, address, zipCode, category,

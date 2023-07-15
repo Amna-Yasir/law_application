@@ -15,9 +15,11 @@ class lawyerdetail extends StatelessWidget {
     required this.phone,
     required this.currentlyWorking,
     required this.lawyerid,
+    required this.imageUrl,
   });
 
   final String lawyerName;
+
   final String address;
   final double rating;
   final String about;
@@ -25,6 +27,8 @@ class lawyerdetail extends StatelessWidget {
   final String phone;
   final String currentlyWorking;
   final String lawyerid;
+
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +62,7 @@ class lawyerdetail extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15),
                           child: Image(
                               fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  'https://images.unsplash.com/photo-1599834562135-b6fc90e642ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'))),
+                              image: NetworkImage(imageUrl))),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 30),
@@ -107,8 +110,8 @@ class lawyerdetail extends StatelessWidget {
                           SizedBox(
                             height: 10,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 10),
                             child: Row(
                               children: [
                                 Column(

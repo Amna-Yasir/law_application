@@ -30,11 +30,8 @@ class lawyerloginController with ChangeNotifier {
               email: emailaddress.trim(), password: Password.trim())
           .then((value) async {
         SessionController().userid = value.user!.uid.toString();
-        FutureBuilder(
-          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {},
-        );
-
         utils.toastmessage('Succesfully');
+
         Navigator.pushNamed(context, RouteName.lawyerdashboardView);
       }).onError((error, stackTrace) {
         print(error);

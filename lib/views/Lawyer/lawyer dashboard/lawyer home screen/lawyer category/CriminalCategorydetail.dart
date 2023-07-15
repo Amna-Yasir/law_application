@@ -2,24 +2,25 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 
-import 'categorydetailwidget.dart';
+import '../categorydetailwidget.dart';
 
-class categorydetail extends StatefulWidget {
-  const categorydetail({super.key});
+class CriminalCategorydetail extends StatefulWidget {
+  const CriminalCategorydetail({super.key});
 
   @override
-  State<categorydetail> createState() => _categorydetailState();
+  State<CriminalCategorydetail> createState() => _CriminalCategorydetailState();
 }
 
-class _categorydetailState extends State<categorydetail> {
+class _CriminalCategorydetailState extends State<CriminalCategorydetail> {
   final serachfilter = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     DatabaseReference ref = FirebaseDatabase.instance.ref().child('lawyer');
+
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Divorce Lawyers'),
+          title: const Text('Criminal Lawyers'),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 30),
@@ -54,9 +55,16 @@ class _categorydetailState extends State<categorydetail> {
                     if (snapshot.exists) {
                       if (category == 'Criminal') {
                         return categoryDetailwidget(
-                            LawyerName: 'Ali',
-                            imageurl:
-                                'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+                          lawyeraddress: snapshot
+                              .child('extrainfo')
+                              .child('address')
+                              .value
+                              .toString(),
+                          LawyerName:
+                              snapshot.child('username').value.toString(),
+                          imageurl:
+                              'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+                        );
                       } else
                         () {
                           return Text('no lawyer found');
