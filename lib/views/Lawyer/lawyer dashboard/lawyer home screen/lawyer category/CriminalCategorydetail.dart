@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20screen/lawyer_detail.dart';
 
 import '../categorydetailwidget.dart';
 
@@ -53,6 +56,14 @@ class _CriminalCategorydetailState extends State<CriminalCategorydetail> {
                         .value
                         .toString();
                     if (snapshot.exists) {
+                      double generateRandomNumberString() {
+                        Random random = Random();
+                        double randomNumber = random.nextDouble() *
+                                (5.0 - 3.0) +
+                            3.0; // Generate a random number between 3.0 and 5.0
+                        return double.parse(randomNumber.toStringAsFixed(1));
+                      }
+
                       if (category == 'Criminal') {
                         return categoryDetailwidget(
                           lawyeraddress: snapshot
@@ -64,6 +75,50 @@ class _CriminalCategorydetailState extends State<CriminalCategorydetail> {
                               snapshot.child('username').value.toString(),
                           imageurl:
                               'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+                          ontap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => lawyerdetail(
+                                    lawyerName: snapshot
+                                        .child('username')
+                                        .value
+                                        .toString(),
+                                    address: snapshot
+                                        .child('extrainfo')
+                                        .child('address')
+                                        .value
+                                        .toString(),
+                                    rating: generateRandomNumberString(),
+                                    about: snapshot
+                                        .child('extrainfo')
+                                        .child('aboutyourself')
+                                        .value
+                                        .toString(),
+                                    feeperhour: snapshot
+                                        .child('extrainfo')
+                                        .child('feeperhour')
+                                        .value
+                                        .toString(),
+                                    phone: snapshot
+                                        .child('extrainfo')
+                                        .child('Phone')
+                                        .value
+                                        .toString(),
+                                    currentlyWorking: snapshot
+                                        .child('extrainfo')
+                                        .child('practicing')
+                                        .value
+                                        .toString(),
+                                    lawyerid:
+                                        snapshot.child('Uid').value.toString(),
+                                    imageUrl: snapshot
+                                        .child('profile')
+                                        .value
+                                        .toString(),
+                                  ),
+                                ));
+                          },
                         );
                       } else
                         () {

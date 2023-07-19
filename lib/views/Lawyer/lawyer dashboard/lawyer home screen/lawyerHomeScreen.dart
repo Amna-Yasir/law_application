@@ -1,33 +1,23 @@
-import 'dart:ui';
-
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import '../../../../res/components/list/categoryList.dart';
+import '../../../../res/components/list/populartlawyerlist.dart';
+import '../../../../res/components/list/profilelist.dart';
 
-import '../../../res/components/list/categoryList.dart';
-import '../../../res/components/list/populartlawyerlist.dart';
-import '../../../res/components/list/profilelist.dart';
-
-class homescreen extends StatefulWidget {
-  const homescreen({super.key});
+class lawyerhomescreen extends StatefulWidget {
+  const lawyerhomescreen({super.key});
 
   @override
-  State<homescreen> createState() => _homescreenState();
+  State<lawyerhomescreen> createState() => _lawyerhomescreenState();
 }
 
-class _homescreenState extends State<homescreen> {
-  FirebaseAuth auth = FirebaseAuth.instance;
-  DatabaseReference ref = FirebaseDatabase.instance.ref().child('User');
+class _lawyerhomescreenState extends State<lawyerhomescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Icon(Icons.arrow_back),
         centerTitle: true,
-        title: Text('Client'),
-        // title: Image.asset(
-        //   'assets/images/Fav icon.png',
-        //   height: 50,
-        // ),
+        title: Text('Lawyer'),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -118,20 +108,6 @@ class _homescreenState extends State<homescreen> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class listTile extends StatelessWidget {
-  listTile({required this.listtile, required this.onTap});
-  final String listtile;
-  final Function() onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(listtile),
-      onTap: onTap,
     );
   }
 }

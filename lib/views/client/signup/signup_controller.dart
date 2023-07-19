@@ -42,7 +42,7 @@ class signupController with ChangeNotifier {
         }).then((value) {
           setloaading(false);
 
-          Navigator.pushNamed(context, RouteName.dashboardView);
+          Navigator.pushNamed(context, RouteName.clientbasicinfo);
         }).onError((error, stackTrace) {
           utils.toastmessage(error.toString());
           setloaading(false);

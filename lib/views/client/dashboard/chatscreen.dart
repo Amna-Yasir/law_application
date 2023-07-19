@@ -50,7 +50,7 @@ class _chatscreenState extends State<chatscreen> {
                   // ignore: unused_local_variable
                   final user = auth.signOut().then((value) => {
                         SessionController().userid = '',
-                        Navigator.pushNamed(context, RouteName.loginView)
+                        Navigator.pushNamed(context, RouteName.clientloginView)
                       });
                 }),
             roundButton(

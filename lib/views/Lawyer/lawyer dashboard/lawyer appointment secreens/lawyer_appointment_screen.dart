@@ -41,6 +41,9 @@ class _lawyer_appointment_screenState extends State<lawyer_appointment_screen> {
                 defaultChild: Text('No appointment'),
                 query: ref,
                 itemBuilder: (context, snapshot, animation, index) {
+                  if (!snapshot.exists) {
+                    return Center(child: CircularProgressIndicator());
+                  }
                   return lawyer_Appointment_Card(
                     color1: AppColors.primaryColor,
                     color2: AppColors.primaryColor,

@@ -24,6 +24,8 @@ class profilelist extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         query: ref,
         itemBuilder: (context, snapshot, animation, index) {
+          String address =
+              snapshot.child('extrainfo').child('address').value.toString();
           double generateRandomNumberString() {
             Random random = Random();
             double randomNumber = random.nextDouble() * (5.0 - 3.0) +
@@ -32,88 +34,65 @@ class profilelist extends StatelessWidget {
           }
 
           if (snapshot.exists) {
-            return Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: profilecard(
-                LawyerName: snapshot.child('username').value.toString(),
-                lawyercategory: snapshot
-                    .child('extrainfo')
-                    .child('category')
-                    .value
-                    .toString(),
-                finalRating: generateRandomNumberString(),
-                ontap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => lawyerdetail(
-                          lawyerName:
-                              snapshot.child('username').value.toString(),
-                          address: snapshot
-                              .child('extrainfo')
-                              .child('address')
-                              .value
-                              .toString(),
-                          rating: generateRandomNumberString(),
-                          about: snapshot
-                              .child('extrainfo')
-                              .child('aboutyourself')
-                              .value
-                              .toString(),
-                          feeperhour: snapshot
-                              .child('extrainfo')
-                              .child('feeperhour')
-                              .value
-                              .toString(),
-                          phone: snapshot
-                              .child('extrainfo')
-                              .child('Phone')
-                              .value
-                              .toString(),
-                          currentlyWorking: snapshot
-                              .child('extrainfo')
-                              .child('practicing')
-                              .value
-                              .toString(),
-                          lawyerid: snapshot.child('Uid').value.toString(),
-                          imageUrl: snapshot.child('profile').value.toString(),
-                        ),
-                      ));
-                },
-                imageurl: snapshot.child('profile').value.toString(),
-              ),
-            );
+            if (address == 'Gujrat') {
+              return Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: profilecard(
+                  LawyerName: snapshot.child('username').value.toString(),
+                  lawyercategory: snapshot
+                      .child('extrainfo')
+                      .child('category')
+                      .value
+                      .toString(),
+                  finalRating: generateRandomNumberString(),
+                  ontap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => lawyerdetail(
+                            lawyerName:
+                                snapshot.child('username').value.toString(),
+                            address: snapshot
+                                .child('extrainfo')
+                                .child('address')
+                                .value
+                                .toString(),
+                            rating: generateRandomNumberString(),
+                            about: snapshot
+                                .child('extrainfo')
+                                .child('aboutyourself')
+                                .value
+                                .toString(),
+                            feeperhour: snapshot
+                                .child('extrainfo')
+                                .child('feeperhour')
+                                .value
+                                .toString(),
+                            phone: snapshot
+                                .child('extrainfo')
+                                .child('Phone')
+                                .value
+                                .toString(),
+                            currentlyWorking: snapshot
+                                .child('extrainfo')
+                                .child('practicing')
+                                .value
+                                .toString(),
+                            lawyerid: snapshot.child('Uid').value.toString(),
+                            imageUrl:
+                                snapshot.child('profile').value.toString(),
+                          ),
+                        ));
+                  },
+                  imageurl: snapshot.child('profile').value.toString(),
+                ),
+              );
+            }
           } else {
             return Text('No Lawyer Registered');
           }
 
-          // profilecard(
-          //   LawyerName: 'Alis Akter',
-          //   lawyercategory: 'Divorce',
-          //   imageurl:
-          //       'https://images.unsplash.com/photo-1581841064838-a470c740e8ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-          //   rating: '800+',
-          // ),
-          // SizedBox(
-          //   width: 10,
-          // ),
-          // profilecard(
-          //   LawyerName: 'Zara Ali',
-          //   lawyercategory: 'Goverment',
-          //   imageurl:
-          //       'https://images.unsplash.com/photo-1603988089669-c041ac2fe196?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-          //   rating: '99+',
-          // ),
-          // SizedBox(
-          //   width: 10,
-          // ),
-          // profilecard(
-          //   LawyerName: 'Kim Jenner',
-          //   lawyercategory: 'Sale',
-          //   imageurl:
-          //       'https://images.unsplash.com/photo-1582141011660-4f8a49ded25b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
-          //   rating: '800+',
-          // );
+          return SizedBox();
         });
   }
 }

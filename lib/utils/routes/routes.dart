@@ -6,6 +6,7 @@ import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20profile
 import 'package:law_application/views/Lawyer/lawyer%20signup/lawyersignup_screen.dart';
 import 'package:law_application/views/client/dashboard/case_managment.dart';
 import 'package:law_application/views/client/dashboard/dashboardview.dart';
+import 'package:law_application/views/client/dashboard/profilescreen/basic_information.dart';
 import 'package:law_application/views/client/login/Auth/loginwithPhone.dart';
 import 'package:law_application/views/splashscreen/clientSplashScreen.dart';
 import 'package:law_application/views/user_manage.dart';
@@ -21,13 +22,15 @@ class Routes {
     switch (settings.name) {
       case RouteName.usermanagerView:
         return MaterialPageRoute(builder: (_) => const usermanager());
+      case RouteName.clientbasicinfo:
+        return MaterialPageRoute(builder: (_) => clientBasicInfo());
       case RouteName.lawyerProfileView:
         return MaterialPageRoute(builder: (_) => const lawyerprofile());
       case RouteName.lawyersplashScreen:
         return MaterialPageRoute(builder: (_) => const lawyersplashScreen());
       case RouteName.clientsplashScreen:
         return MaterialPageRoute(builder: (_) => const clientsplashScreen());
-      case RouteName.loginView:
+      case RouteName.clientloginView:
         return MaterialPageRoute(builder: (_) => const loginscreen());
       case RouteName.lawyerloginView:
         return MaterialPageRoute(builder: (_) => const lawyerloginscreen());

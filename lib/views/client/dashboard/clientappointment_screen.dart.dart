@@ -41,15 +41,20 @@ class _clientappointmentscreenState extends State<clientappointmentscreen> {
                 defaultChild: Text('No appointment'),
                 query: ref,
                 itemBuilder: (context, snapshot, animation, index) {
-                  return AppointmentCard(
-                    color1: AppColors.primaryColor,
-                    color2: AppColors.primaryColor,
-                    date: snapshot.child('date').value.toString(),
-                    time: snapshot.child('time').value.toString(),
-                    location: snapshot.child('location').value.toString(),
-                    Phone: snapshot.child('phone').value.toString(),
-                    username: snapshot.child('lawyername').value.toString(),
-                  );
+                  if (snapshot.exists) {
+                    return AppointmentCard(
+                      color1: AppColors.primaryColor,
+                      color2: AppColors.primaryColor,
+                      date: snapshot.child('date').value.toString(),
+                      time: snapshot.child('time').value.toString(),
+                      location: snapshot.child('location').value.toString(),
+                      Phone: snapshot.child('phone').value.toString(),
+                      username: snapshot.child('lawyername').value.toString(),
+                    );
+                  } else if (!snapshot.exists) {
+                    return Text('No Appointment Schedule');
+                  }
+                  return Text('No Appointment');
                 },
               ),
             ),

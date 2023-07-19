@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:law_application/utils/routes/routesname.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20profile%20section/lawyer_profile_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -41,7 +42,19 @@ class _lawyerprofileState extends State<lawyerprofile> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Lawyer Profile'),
+          automaticallyImplyLeading: false,
           centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  FirebaseAuth auth = FirebaseAuth.instance;
+                  auth.signOut().then((value) {
+                    SessionController().userid = '';
+                    Navigator.pushNamed(context, RouteName.clientloginView);
+                  });
+                },
+                icon: Icon(Icons.logout_outlined))
+          ],
         ),
         body: ChangeNotifierProvider(
           create: (_) => ProfileController(),

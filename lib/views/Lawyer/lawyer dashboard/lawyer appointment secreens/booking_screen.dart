@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:law_application/res/colors.dart';
 import 'package:law_application/res/components/textfield%20and%20row/input_text_field.dart';
-import 'package:law_application/res/components/roundbutton.dart';
-import 'package:law_application/views/client/dashboard/clientappointment_screen.dart.dart';
+
 import 'package:law_application/views/services/session_manager.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -237,15 +236,6 @@ class _bookingcalenderState extends State<bookingcalender> {
                                         SizedBox(
                                           height: 10,
                                         ),
-                                        roundButton(
-                                            title: 'Check my appointments',
-                                            onpress: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          clientappointmentscreen()));
-                                            })
                                       ],
                                     ),
                                   );

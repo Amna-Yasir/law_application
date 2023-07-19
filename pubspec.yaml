@@ -50,6 +50,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   flip_card: ^0.7.0
   table_calendar: ^3.0.9
+  animated_widgets: ^1.1.0
   
 
 dev_dependencies:
@@ -81,6 +82,7 @@ flutter:
   - assets/signup.json
   - assets/login.json
   - assets/password.json
+  - assets/splash.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

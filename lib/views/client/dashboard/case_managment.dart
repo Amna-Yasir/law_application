@@ -45,8 +45,7 @@ class _casemanagementState extends State<casemanagement> {
                 indicatorColor: AppColors.primaryColor,
                 labelStyle: Theme.of(context).textTheme.bodyMedium,
                 tabs: [
-                  Text('Active'),
-                  Text('Appointments'),
+                  Text('Active Cases'),
                 ]),
           ),
           body: SafeArea(

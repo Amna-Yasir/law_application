@@ -1,5 +1,6 @@
 // ignore_for_file: unused_local_variable
 
+import 'dart:io';
 import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,9 +8,11 @@ import 'package:firebase_database/firebase_database.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:law_application/res/components/roundbutton.dart';
 import 'package:law_application/utils/routes/routesname.dart';
+import 'package:law_application/views/client/dashboard/profilescreen/profile_screen_controller.dart';
+
 import 'package:law_application/views/services/session_manager.dart';
+import 'package:provider/provider.dart';
 import '../../../../utils/utils.dart';
 import '../../../../res/colors.dart';
 import '../../../../res/components/textfield and row/reusablerow.dart';
@@ -33,287 +36,228 @@ class _profilescreenState extends State<profilescreen> {
   bool loading = true;
   FirebaseAuth auth = FirebaseAuth.instance;
   DatabaseReference ref = FirebaseDatabase.instance.ref().child('User');
-  DatabaseReference inforef = FirebaseDatabase.instance.ref().child('User');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                FirebaseAuth auth = FirebaseAuth.instance;
+                auth.signOut().then((value) {
+                  SessionController().userid = '';
+                  Navigator.pushNamed(context, RouteName.clientloginView);
+                });
+              },
+              icon: Icon(Icons.logout_outlined))
+        ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            SafeArea(
-              child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                  child: StreamBuilder(
-                      stream: ref
-                          .child(SessionController().userid.toString())
-                          .onValue,
-                      builder: (context, AsyncSnapshot snapshot) {
-                        if (!snapshot.hasData) {
-                          return Center(child: CircularProgressIndicator());
-                        } else if (snapshot.hasData) {
-                          Map<dynamic, dynamic> map =
-                              snapshot.data.snapshot.value;
-                          final username = map['username'];
-                          final email = map['email'];
+      body: ChangeNotifierProvider(
+          create: (_) => clientprofilecontroller(),
+          child: Consumer<clientprofilecontroller>(
+            builder: (context, provider, child) {
+              return SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SafeArea(
+                      child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          child: StreamBuilder(
+                              stream: ref
+                                  .child(SessionController().userid.toString())
+                                  .onValue,
+                              builder: (context, AsyncSnapshot snapshot) {
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                      child: CircularProgressIndicator());
+                                } else if (snapshot.hasData) {
+                                  Map<dynamic, dynamic> map =
+                                      snapshot.data.snapshot.value;
+                                  final username = map['username'];
+                                  final email = map['email'];
+                                  final phone = map['phone'];
+                                  final address = map['address'];
 
-                          return Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Center(
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        child: Image(
-                                            fit: BoxFit.cover,
-                                            image: NetworkImage(
-                                                'https://images.pexels.com/photos/3781545/pexels-photo-3781545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')),
-                                      ),
-                                      height: 100,
-                                      width: 100,
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                              color:
-                                                  AppColors.secondaryTextColor,
-                                              width: 4)),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: Text('Edit Profile',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .copyWith(
-                                                  decoration: TextDecoration
-                                                      .underline)),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                    border:
-                                        Border.all(color: AppColors.grayColor),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10))),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(11.0),
-                                  child: Column(
+                                  return Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Basic Information',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headlineMedium,
-                                          ),
-                                          PopupMenuButton(
-                                              itemBuilder: (context) => [
-                                                    PopupMenuItem(
-                                                        child: ListTile(
-                                                      onTap: () {
-                                                        _showupdatedialogue(
-                                                            username, email);
-                                                        Navigator.pop(context);
-                                                      },
-                                                      leading: Icon(Icons.edit),
-                                                      title: Text('Edit'),
-                                                    )),
-                                                  ])
-                                        ],
+                                      SizedBox(
+                                        height: 20,
                                       ),
-                                      reusableRow(
-                                          leadingicon: Icons.person,
-                                          value: map['username'],
-                                          title: 'Username'),
-                                      reusableRow(
-                                          leadingicon: Icons.email_outlined,
-                                          value: map['email'],
-                                          title: 'Email'),
+                                      Center(
+                                        child: Column(
+                                          children: [
+                                            Stack(
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                                children: [
+                                                  Container(
+                                                    height: 130,
+                                                    width: 130,
+                                                    decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        border: Border.all(
+                                                            color: AppColors
+                                                                .secondaryTextColor,
+                                                            width: 4)),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100),
+                                                      child: provider.image ==
+                                                              null
+                                                          ? map['Profilepicture']
+                                                                      .toString() ==
+                                                                  ''
+                                                              ? const Icon(
+                                                                  Icons.person)
+                                                              : Image(
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                  image: NetworkImage(
+                                                                      map['Profilepicture']
+                                                                          .toString()),
+                                                                  loadingBuilder:
+                                                                      (context,
+                                                                          child,
+                                                                          loadingProgress) {
+                                                                    if (loadingProgress ==
+                                                                        null)
+                                                                      return child;
+                                                                    return const Center(
+                                                                        child:
+                                                                            CircularProgressIndicator());
+                                                                  },
+                                                                )
+                                                          : Image.file(
+                                                              File(provider
+                                                                      .image!
+                                                                      .path)
+                                                                  .absolute,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                    ),
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      provider
+                                                          .pickimage(context);
+                                                    },
+                                                    child: CircleAvatar(
+                                                      radius: 14,
+                                                      backgroundColor: AppColors
+                                                          .primaryColor,
+                                                      child: Icon(
+                                                        Icons.add,
+                                                        color: Colors.white,
+                                                        size: 18,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ]),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: AppColors.grayColor),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10))),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(11.0),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    'Basic Information',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .headlineMedium,
+                                                  ),
+                                                  PopupMenuButton(
+                                                      itemBuilder: (context) =>
+                                                          [
+                                                            PopupMenuItem(
+                                                                child: ListTile(
+                                                              onTap: () {
+                                                                _showupdatedialogue(
+                                                                    username,
+                                                                    email,
+                                                                    address,
+                                                                    phone);
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              leading: Icon(
+                                                                  Icons.edit),
+                                                              title:
+                                                                  Text('Edit'),
+                                                            )),
+                                                          ])
+                                                ],
+                                              ),
+                                              reusableRow(
+                                                  leadingicon: Icons.person,
+                                                  value: map['username'],
+                                                  title: 'Username'),
+                                              reusableRow(
+                                                  leadingicon:
+                                                      Icons.email_outlined,
+                                                  value: map['email'],
+                                                  title: 'Email'),
+                                              reusableRow(
+                                                  leadingicon:
+                                                      Icons.location_on,
+                                                  value: map['address'],
+                                                  title: 'Address'),
+                                              reusableRow(
+                                                  leadingicon: Icons.phone,
+                                                  value: map['Phone'],
+                                                  title: 'Phone'),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
                                     ],
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                            ],
-                          );
-                        } else {
-                          return Text('Something Went Wrong');
-                        }
-                      })),
-            ),
-            // StreamBuilder(
-            //   stream: ref.child(SessionController().userid.toString()).onValue,
-            //   builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-            //     Map<dynamic, dynamic> map = snapshot.data.snapshot.value;
-            //     final phone = map['phone'];
-            //     final address = map['address'];
-            //     if (!snapshot.hasData) {
-            //       return CircularProgressIndicator();
-            //     } else if (snapshot.hasData) {
-            //       return Padding(
-            //         padding: const EdgeInsets.symmetric(horizontal: 15),
-            //         child: Container(
-            //           decoration: BoxDecoration(
-            //               border: Border.all(color: AppColors.grayColor),
-            //               borderRadius: BorderRadius.all(Radius.circular(10))),
-            //           child: Padding(
-            //             padding: const EdgeInsets.all(11.0),
-            //             child: Column(
-            //               crossAxisAlignment: CrossAxisAlignment.start,
-            //               children: [
-            //                 Row(
-            //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //                   children: [
-            //                     Text(
-            //                       'Personal Information',
-            //                       style: Theme.of(context)
-            //                           .textTheme
-            //                           .headlineMedium,
-            //                     ),
-            //                     PopupMenuButton(
-            //                         itemBuilder: (context) => [
-            //                               PopupMenuItem(
-            //                                   child: ListTile(
-            //                                 onTap: () {
-            //                                   _personalInformation(context);
-            //                                 },
-            //                                 leading: Icon(Icons.add),
-            //                                 title: Text('Add'),
-            //                               )),
-            //                               PopupMenuItem(
-            //                                   child: ListTile(
-            //                                 onTap: () {
-            //                                   _showinfoupdatedialogue(
-            //                                       address, phone);
-            //                                 },
-            //                                 leading: Icon(Icons.edit),
-            //                                 title: Text('Edit'),
-            //                               )),
-            //                             ])
-            //                   ],
-            //                 ),
-            //                 reusableRow(
-            //                     leadingicon: Icons.location_on_outlined,
-            //                     value: map['address'],
-            //                     title: 'Address'),
-            //                 reusableRow(
-            //                     leadingicon: Icons.phone,
-            //                     value: map['phone'],
-            //                     title: 'Phone'),
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //       );
-            //     } else {
-            //       Text('Something went wrong');
-            //     }
-            //     throw '';
-            //   },
-            // ),
-            roundButton(
-                title: 'Signout',
-                onpress: () {
-                  FirebaseAuth auth = FirebaseAuth.instance;
-                  final user = auth.signOut().then((value) => {
-                        SessionController().userid = '',
-                        Navigator.pushNamed(context, RouteName.loginView),
-                        Navigator.pop(context)
-                      });
-                }),
-          ],
-        ),
-      ),
+                                  );
+                                } else {
+                                  return Text('Something Went Wrong');
+                                }
+                              })),
+                    ),
+                  ],
+                ),
+              );
+            },
+          )),
     );
   }
 
-  Future<void> _personalInformation(BuildContext context) async {
-    return await showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('Add Personal Information'),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextFormField(
-                  controller: locationcontroller,
-                  decoration: const InputDecoration(
-                    hintText: 'Add address',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                TextFormField(
-                  controller: phonecontroller,
-                  decoration: const InputDecoration(
-                    hintText: 'Add Phone number',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-              ],
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  ref
-                      .child(SessionController().userid.toString())
-                      .child('personalinfo')
-                      .set({
-                    'Address': locationcontroller.text,
-                    'Phone number': phonecontroller.text,
-                  }).then((value) {
-                    utils.toastmessage('Task added');
-                    setState(() {
-                      loading = false;
-                    });
-                  }).onError((error, stackTrace) {
-                    error.toString();
-                  }).then((value) {
-                    Navigator.pop(context);
-                    phonecontroller.clear();
-                    locationcontroller.clear();
-                  });
-                },
-                child: Text('Add'),
-              ),
-              TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('Cancel'))
-            ],
-          );
-        });
-  }
-
-  Future<void> _showupdatedialogue(String username, String email) async {
+  Future<void> _showupdatedialogue(
+      String username, String email, String address, String phone) async {
     editusernamecontroller.text = username;
     editemailcontroller.text = email;
+    editadddressontroller.text = address;
+    editphonecontroller.text = phone;
     return await showDialog(
         context: context,
         builder: (context) {
@@ -337,60 +281,6 @@ class _profilescreenState extends State<profilescreen> {
                     border: OutlineInputBorder(),
                   ),
                 ),
-              ],
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  ref.child(SessionController().userid.toString()).update({
-                    'username': editusernamecontroller.text.toLowerCase(),
-                    'email': editemailcontroller.text.toLowerCase()
-                  }).then((value) {
-                    utils.toastmessage('Information Update');
-                  }).onError((error, stackTrace) {
-                    utils.toastmessage(e.toString());
-                  }).then((value) {
-                    Navigator.pop(context);
-                  });
-                },
-                child: Text(
-                  'Edit',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  'Cancel',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-              )
-            ],
-          );
-        });
-  }
-
-  Future<void> _showinfoupdatedialogue(String address, String phone) async {
-    editphonecontroller.text = phone;
-    editadddressontroller.text = address;
-    return await showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('Edit Informatiom'),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextFormField(
-                  controller: editphonecontroller,
-                  decoration: const InputDecoration(
-                    hintText: 'Edit phone',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(height: 10),
                 TextFormField(
                   controller: editadddressontroller,
                   decoration: const InputDecoration(
@@ -398,17 +288,23 @@ class _profilescreenState extends State<profilescreen> {
                     border: OutlineInputBorder(),
                   ),
                 ),
+                TextFormField(
+                  controller: editphonecontroller,
+                  decoration: const InputDecoration(
+                    hintText: 'Edit phone',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
               ],
             ),
             actions: [
               TextButton(
                 onPressed: () {
-                  ref
-                      .child(SessionController().userid.toString())
-                      .child('personalinfo')
-                      .update({
-                    'Address': editadddressontroller.text.toLowerCase(),
-                    'Phone number': editphonecontroller.text.toLowerCase()
+                  ref.child(SessionController().userid.toString()).update({
+                    'username': editusernamecontroller.text.toLowerCase(),
+                    'email': editemailcontroller.text.toLowerCase(),
+                    'address': editadddressontroller.text.toLowerCase(),
+                    'Phone': editphonecontroller.text.toLowerCase()
                   }).then((value) {
                     utils.toastmessage('Information Update');
                   }).onError((error, stackTrace) {

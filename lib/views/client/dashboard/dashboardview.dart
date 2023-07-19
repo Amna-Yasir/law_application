@@ -61,11 +61,11 @@ class _dashboardViewState extends State<dashboardView> {
       ),
       PersistentBottomNavBarItem(
         icon: Icon(
-          Icons.line_style,
+          Icons.library_books,
         ),
         activeColorPrimary: AppColors.primaryColor,
         inactiveIcon: Icon(
-          Icons.line_style,
+          Icons.library_books,
           color: Colors.grey,
         ),
       ),
@@ -88,13 +88,14 @@ class _dashboardViewState extends State<dashboardView> {
       context,
       screens: _buildscreens(),
       items: _navbarItem(),
-      navBarHeight: 20,
+      navBarHeight: 40,
       controller: persistentcontroller,
       backgroundColor: AppColors.otpBackgroundColor,
+      padding: NavBarPadding.all(5),
       decoration: NavBarDecoration(
-          borderRadius: BorderRadius.circular(0),
-          colorBehindNavBar: Colors.red),
-      navBarStyle: NavBarStyle.style1,
+        borderRadius: BorderRadius.circular(0),
+      ),
+      navBarStyle: NavBarStyle.style8,
       popAllScreensOnTapAnyTabs: false,
     );
   }

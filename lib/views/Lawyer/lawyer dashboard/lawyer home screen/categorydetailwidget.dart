@@ -8,11 +8,12 @@ class categoryDetailwidget extends StatelessWidget {
     required this.LawyerName,
     required this.imageurl,
     required this.lawyeraddress,
+    required this.ontap,
   });
   final String LawyerName;
   final String imageurl;
   final lawyeraddress;
-
+  final VoidCallback ontap;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -138,7 +139,7 @@ class categoryDetailwidget extends StatelessWidget {
                               width: 20,
                             ),
                             TextButton(
-                                onPressed: () {},
+                                onPressed: ontap,
                                 child: Text('View profile',
                                     style: Theme.of(context)
                                         .textTheme

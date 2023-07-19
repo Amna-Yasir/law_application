@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20appointment%20secreens/lawyer_appointment_screen.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20screen/lawyerHomeScreen.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20profile%20section/lawyer_profile.dart';
 import 'package:law_application/views/client/dashboard/case_managment.dart';
 import 'package:law_application/views/client/dashboard/chatscreen.dart';
-import 'package:law_application/views/client/homescreen/homepage.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../../../res/colors.dart';
@@ -19,7 +19,7 @@ class _lawyerdashboardViewState extends State<lawyerdashboardView> {
   final PersistentController = PersistentTabController(initialIndex: 0);
   List<Widget> _buildscreens() {
     return [
-      homescreen(),
+      lawyerhomescreen(),
       chatscreen(),
       lawyer_appointment_screen(),
       casemanagement(),
@@ -61,11 +61,11 @@ class _lawyerdashboardViewState extends State<lawyerdashboardView> {
       ),
       PersistentBottomNavBarItem(
         icon: Icon(
-          Icons.line_style,
+          Icons.library_books,
         ),
         activeColorPrimary: AppColors.primaryColor,
         inactiveIcon: Icon(
-          Icons.line_style,
+          Icons.library_books,
           color: Colors.grey,
         ),
       ),
@@ -88,7 +88,7 @@ class _lawyerdashboardViewState extends State<lawyerdashboardView> {
       context,
       screens: _buildscreens(),
       items: _navbarItem(),
-      navBarHeight: 20,
+      navBarHeight: 40,
       controller: PersistentController,
       backgroundColor: AppColors.otpBackgroundColor,
       decoration: NavBarDecoration(

@@ -18,7 +18,7 @@ class forgotpassword with ChangeNotifier {
     setloaading(true);
     try {
       auth.sendPasswordResetEmail(email: emailaddress).then((value) {
-        Navigator.pushNamed(context, RouteName.loginView);
+        Navigator.pushNamed(context, RouteName.clientloginView);
         setloaading(false);
         utils
             .toastmessage('Password Change Successfully')

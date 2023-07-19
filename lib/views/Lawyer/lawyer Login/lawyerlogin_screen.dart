@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:law_application/res/colors.dart';
 import 'package:law_application/views/Lawyer/lawyer%20Login/lawyerlogin_controller.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -172,15 +171,15 @@ class _lawyerloginscreenState extends State<lawyerloginscreen> {
                       Navigator.pushNamed(
                           context, RouteName.LoginWithPhoneNumber);
                     },
-                    child: Container(
-                      height: 50,
-                      width: 200,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border:
-                              Border.all(color: AppColors.primarybuttonColor)),
-                      child: Center(child: Text('Login with phone')),
-                    ),
+                    // child: Container(
+                    //   height: 50,
+                    //   width: 200,
+                    //   decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(50),
+                    //       border:
+                    //           Border.all(color: AppColors.primarybuttonColor)),
+                    //   child: Center(child: Text('Login with phone')),
+                    // ),
                   )
                 ]),
           ),

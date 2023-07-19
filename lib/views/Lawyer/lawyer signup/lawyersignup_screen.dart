@@ -199,7 +199,8 @@ class _lawyersignUpScreenState extends State<lawyersignUpScreen> {
                           ),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, RouteName.loginView);
+                              Navigator.pushNamed(
+                                  context, RouteName.clientloginView);
                             },
                             child: Text.rich(
                               TextSpan(
