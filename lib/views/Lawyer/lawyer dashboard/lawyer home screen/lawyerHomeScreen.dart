@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../res/components/list/categoryList.dart';
-import '../../../../res/components/list/populartlawyerlist.dart';
-import '../../../../res/components/list/profilelist.dart';
+import 'package:law_application/res/components/lawyer%20view%20list/lawyercategorylist.dart';
+import 'package:law_application/res/components/lawyer%20view%20list/popularlawyerlist.dart';
+import 'package:law_application/res/components/lawyer%20view%20list/profilelist.dart';
 
 class lawyerhomescreen extends StatefulWidget {
   const lawyerhomescreen({super.key});
@@ -37,7 +37,7 @@ class _lawyerhomescreenState extends State<lawyerhomescreen> {
               ),
               Container(
                 height: 160,
-                child: CategoryList(),
+                child: lawyerCategoryList(),
               ),
               Align(
                 alignment: Alignment.centerRight,
@@ -70,7 +70,7 @@ class _lawyerhomescreenState extends State<lawyerhomescreen> {
               ),
               Container(
                 height: 170,
-                child: profilelist(),
+                child: Lawyerprofilelist(),
               ),
               Align(
                 alignment: Alignment.centerRight,
@@ -102,7 +102,7 @@ class _lawyerhomescreenState extends State<lawyerhomescreen> {
               ),
               Container(
                 height: 180,
-                child: popularlawyerlist(),
+                child: Fullpopularlawyerlist(),
               )
             ]),
           ),

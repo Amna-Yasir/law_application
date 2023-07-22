@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20appointment%20secreens/case%20managment%20module/case_managment.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20appointment%20secreens/lawyer_appointment_screen.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20screen/lawyerHomeScreen.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20profile%20section/lawyer_profile.dart';
-import 'package:law_application/views/client/dashboard/case_managment.dart';
+
 import 'package:law_application/views/client/dashboard/chatscreen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -22,7 +23,7 @@ class _lawyerdashboardViewState extends State<lawyerdashboardView> {
       lawyerhomescreen(),
       chatscreen(),
       lawyer_appointment_screen(),
-      casemanagement(),
+      L_casemanagement(),
       lawyerprofile()
     ];
   }

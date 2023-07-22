@@ -40,150 +40,157 @@ class _lawyerloginscreenState extends State<lawyerloginscreen> {
     final height = MediaQuery.of(context).size.height * .01;
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         title: Text('Login'),
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-          child: SingleChildScrollView(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // Text(
-                  //   'Login',
-                  //   style: Theme.of(context).textTheme.headline3,
-                  // ),
-                  Lottie.asset('assets/login.json',
-                      width: 200, height: 150, repeat: true),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+            child: Expanded(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    // Text(
+                    //   'Login',
+                    //   style: Theme.of(context).textTheme.headline3,
+                    // ),
+                    Lottie.asset('assets/login.json',
+                        width: 200, height: 150, repeat: true),
 
-                  // Text(
-                  //   'Enter your credentials\nTo connect to your account',
-                  //   style: Theme.of(context).textTheme.subtitle1,
-                  //   textAlign: TextAlign.center,
-                  // ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Form(
-                      key: _formKey,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            top: height * .06, bottom: height * 0.01),
-                        child: Column(
-                          children: [
-                            Inputextfield(
-                                mycontoller: emailcontroller,
-                                focusnode: emailfocusnode,
-                                onFilledSubmittedvalue: (value) {},
-                                onValidator: (value) {
-                                  return value.isEmpty ? 'Enter Email' : null;
-                                },
-                                keyboardtype: TextInputType.emailAddress,
-                                hint: 'Email',
-                                obsecuretext: false),
-                            Inputextfield(
-                                mycontoller: passwordcontroller,
-                                focusnode: passwordfocusnode,
-                                onFilledSubmittedvalue: (value) {},
-                                onValidator: (value) {
-                                  return value.isEmpty
-                                      ? 'Enter Password'
-                                      : null;
-                                },
-                                keyboardtype: TextInputType.emailAddress,
-                                hint: 'Password',
-                                obsecuretext: false),
-                          ],
-                        ),
-                      )),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: GestureDetector(
-                      onTap: (() {
-                        Navigator.pushNamed(context, RouteName.forgotscreen);
-                      }),
-                      child: Text(
-                        'Forgot Password',
-                        style: Theme.of(context).textTheme.headline2!.copyWith(
-                            fontSize: 15, decoration: TextDecoration.underline),
-                      ),
+                    // Text(
+                    //   'Enter your credentials\nTo connect to your account',
+                    //   style: Theme.of(context).textTheme.subtitle1,
+                    //   textAlign: TextAlign.center,
+                    // ),
+                    SizedBox(
+                      height: 5,
                     ),
-                  ),
-                  SizedBox(
-                    height: height * 3,
-                  ),
-                  ChangeNotifierProvider(
-                    create: (_) => lawyerloginController(),
-                    child: Consumer<lawyerloginController>(
-                      builder: (context, provider, child) {
-                        return Center(
-                            child: roundButton(
-                          title: 'Login',
-                          onpress: () {
-                            if (_formKey.currentState!.validate()) {
-                              provider.login(context, emailcontroller.text,
-                                  passwordcontroller.text);
-                            }
-                            ;
-                          },
-                          loading: provider.loading,
-                        ));
-                      },
+                    Form(
+                        key: _formKey,
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              top: height * .06, bottom: height * 0.01),
+                          child: Column(
+                            children: [
+                              Inputextfield(
+                                  mycontoller: emailcontroller,
+                                  focusnode: emailfocusnode,
+                                  onFilledSubmittedvalue: (value) {},
+                                  onValidator: (value) {
+                                    return value.isEmpty ? 'Enter Email' : null;
+                                  },
+                                  keyboardtype: TextInputType.emailAddress,
+                                  hint: 'Email',
+                                  obsecuretext: false),
+                              Inputextfield(
+                                  mycontoller: passwordcontroller,
+                                  focusnode: passwordfocusnode,
+                                  onFilledSubmittedvalue: (value) {},
+                                  onValidator: (value) {
+                                    return value.isEmpty
+                                        ? 'Enter Password'
+                                        : null;
+                                  },
+                                  keyboardtype: TextInputType.emailAddress,
+                                  hint: 'Password',
+                                  obsecuretext: false),
+                            ],
+                          ),
+                        )),
+                    SizedBox(
+                      height: 10,
                     ),
-                  ),
-                  SizedBox(
-                    height: height * 1,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, RouteName.lawyersignupView);
-                    },
-                    child: Text.rich(
-                      TextSpan(
-                          text: "Don't have any account? ",
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: GestureDetector(
+                        onTap: (() {
+                          Navigator.pushNamed(context, RouteName.forgotscreen);
+                        }),
+                        child: Text(
+                          'Forgot Password',
                           style: Theme.of(context)
                               .textTheme
-                              .subtitle1!
-                              .copyWith(fontSize: 15),
-                          children: [
-                            TextSpan(
-                              text: 'Signup',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline2!
-                                  .copyWith(
-                                      fontSize: 15,
-                                      decoration: TextDecoration.underline),
-                            )
-                          ]),
+                              .headline2!
+                              .copyWith(
+                                  fontSize: 15,
+                                  decoration: TextDecoration.underline),
+                        ),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(
-                          context, RouteName.LoginWithPhoneNumber);
-                    },
-                    // child: Container(
-                    //   height: 50,
-                    //   width: 200,
-                    //   decoration: BoxDecoration(
-                    //       borderRadius: BorderRadius.circular(50),
-                    //       border:
-                    //           Border.all(color: AppColors.primarybuttonColor)),
-                    //   child: Center(child: Text('Login with phone')),
-                    // ),
-                  )
-                ]),
-          ),
-        ),
+                    SizedBox(
+                      height: height * 3,
+                    ),
+                    ChangeNotifierProvider(
+                      create: (_) => lawyerloginController(),
+                      child: Consumer<lawyerloginController>(
+                        builder: (context, provider, child) {
+                          return Center(
+                              child: roundButton(
+                            title: 'Login',
+                            onpress: () {
+                              if (_formKey.currentState!.validate()) {
+                                provider.login(
+                                  context,
+                                  emailcontroller.text,
+                                  passwordcontroller.text,
+                                );
+                              }
+                              ;
+                            },
+                            loading: provider.loading,
+                          ));
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * 1,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, RouteName.lawyersignupView);
+                      },
+                      child: Text.rich(
+                        TextSpan(
+                            text: "Don't have any account? ",
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle1!
+                                .copyWith(fontSize: 15),
+                            children: [
+                              TextSpan(
+                                text: 'Signup',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline2!
+                                    .copyWith(
+                                        fontSize: 15,
+                                        decoration: TextDecoration.underline),
+                              )
+                            ]),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, RouteName.LoginWithPhoneNumber);
+                      },
+                      // child: Container(
+                      //   height: 50,
+                      //   width: 200,
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(50),
+                      //       border:
+                      //           Border.all(color: AppColors.primarybuttonColor)),
+                      //   child: Center(child: Text('Login with phone')),
+                      // ),
+                    )
+                  ]),
+            )),
       ),
     );
   }

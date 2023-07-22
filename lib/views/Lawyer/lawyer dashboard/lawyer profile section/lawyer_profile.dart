@@ -50,7 +50,7 @@ class _lawyerprofileState extends State<lawyerprofile> {
                   FirebaseAuth auth = FirebaseAuth.instance;
                   auth.signOut().then((value) {
                     SessionController().userid = '';
-                    Navigator.pushNamed(context, RouteName.clientloginView);
+                    Navigator.pushNamed(context, RouteName.usermanagerView);
                   });
                 },
                 icon: Icon(Icons.logout_outlined))

@@ -15,19 +15,17 @@ import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20appoint
 import 'package:law_application/views/client/dashboard/chatscreen.dart';
 import 'package:law_application/views/services/session_manager.dart';
 
-import '../homescreen/case managment module/case_detail.dart';
-
-class casemanagement extends StatefulWidget {
-  const casemanagement({super.key});
+class L_casemanagement extends StatefulWidget {
+  const L_casemanagement({super.key});
 
   @override
-  State<casemanagement> createState() => _casemanagementState();
+  State<L_casemanagement> createState() => _L_casemanagementState();
 }
 
-class _casemanagementState extends State<casemanagement> {
+class _L_casemanagementState extends State<L_casemanagement> {
   DatabaseReference ref = FirebaseDatabase.instance
       .ref()
-      .child('User')
+      .child('lawyer')
       .child(SessionController().userid.toString())
       .child('Case');
   // final auth = FirebaseAuth.instance;
@@ -76,7 +74,7 @@ class _casemanagementState extends State<casemanagement> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => C_CourtCasePage(
+                              builder: (context) => CourtCasePage(
                                     casenumber:
                                         snapshot.child('id').value.toString(),
                                     Casetitle: snapshot
@@ -110,6 +108,10 @@ class _casemanagementState extends State<casemanagement> {
                                         .toString(),
                                     judgeremarks: snapshot
                                         .child('CaseDescription')
+                                        .value
+                                        .toString(),
+                                    clientid: snapshot
+                                        .child('clientID')
                                         .value
                                         .toString(),
                                   )));

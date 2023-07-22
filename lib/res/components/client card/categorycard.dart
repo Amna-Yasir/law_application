@@ -37,7 +37,6 @@ class categorycard extends StatelessWidget {
             lawyercategory,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
-          
         ],
       ),
     );

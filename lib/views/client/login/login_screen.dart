@@ -48,7 +48,7 @@ class _loginscreenState extends State<loginscreen> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-          child: SingleChildScrollView(
+          child: Container(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,

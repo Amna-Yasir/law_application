@@ -51,6 +51,7 @@ dependencies:
   flip_card: ^0.7.0
   table_calendar: ^3.0.9
   animated_widgets: ^1.1.0
+  shared_preferences: ^2.2.0
   
 
 dev_dependencies:

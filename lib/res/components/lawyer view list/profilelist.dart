@@ -8,10 +8,10 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20screen/lawyer_detail.dart';
 
-import '../card/profilecard.dart';
+import '../client card/profilecard.dart';
 
-class profilelist extends StatelessWidget {
-  const profilelist({
+class Lawyerprofilelist extends StatelessWidget {
+  const Lawyerprofilelist({
     super.key,
   });
 

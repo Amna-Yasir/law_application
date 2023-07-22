@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:law_application/res/colors.dart';
+import 'package:law_application/views/client/homescreen/case%20managment%20module/case_page.dart';
+import 'package:law_application/views/services/session_manager.dart';
 
-class lawyerdetail extends StatelessWidget {
-  const lawyerdetail({
+import '../../Lawyer/lawyer dashboard/lawyer appointment secreens/booking_screen.dart';
+
+class client_lawyer_detail extends StatelessWidget {
+  const client_lawyer_detail({
     required this.lawyerName,
     super.key,
     required this.address,
@@ -190,65 +194,68 @@ class lawyerdetail extends StatelessWidget {
                             color: AppColors.primaryColor,
                           )),
                     ),
-                    // Container(
-                    //   width: 80,
-                    //   height: 50,
-                    //   decoration: BoxDecoration(
-                    //       boxShadow: [
-                    //         BoxShadow(
-                    //             color: Colors.lightGreen.withOpacity(0.2),
-                    //             blurRadius: 2,
-                    //             spreadRadius: 1,
-                    //             offset: Offset(0, 4))
-                    //       ],
-                    //       color: Colors.lightGreen.withOpacity(0.2),
-                    //       borderRadius: BorderRadius.circular(15)),
-                    //   //
-                    //   child: IconButton(
-                    //       onPressed: () {
-                    //         Navigator.push(
-                    //             context,
-                    //             MaterialPageRoute(
-                    //                 builder: (context) => casedescriptionpage(
-                    //                       lawyerid: lawyerid,
-                    //                       location: address,
-                    //                       phonenumber: phone,
-                    //                       username: lawyerName,
-                    //                     )));
-                    //       },
-                    //       icon: Icon(
-                    //         Icons.work,
-                    //         color: Colors.lightGreen,
-                    //       )),
-                    // ),
-                    // Container(
-                    //   width: 80,
-                    //   height: 50,
-                    //   decoration: BoxDecoration(
-                    //       boxShadow: [
-                    //         BoxShadow(
-                    //             color: Colors.blueAccent.withOpacity(0.2),
-                    //             blurRadius: 2,
-                    //             spreadRadius: 1,
-                    //             offset: Offset(0, 4))
-                    //       ],
-                    //       color: Colors.blueAccent.withOpacity(0.2),
-                    //       borderRadius: BorderRadius.circular(15)),
-                    //   //
-                    //   child: IconButton(
-                    //       onPressed: () {
-                    //         Navigator.push(
-                    //             context,
-                    //             MaterialPageRoute(
-                    //                 builder: (context) => bookingcalender(
-                    //                     username: lawyerName,
-                    //                     location: address,
-                    //                     phonenumber: phone,
-                    //                     lawyerid: lawyerid)));
-                    //       },
-                    //       icon: Icon(Icons.calendar_month_outlined,
-                    //           color: Colors.blueAccent)),
-                    // )
+                    Container(
+                      width: 80,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.lightGreen.withOpacity(0.2),
+                                blurRadius: 2,
+                                spreadRadius: 1,
+                                offset: Offset(0, 4))
+                          ],
+                          color: Colors.lightGreen.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(15)),
+                      //
+                      child: IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => C_casedescriptionpage(
+                                          lawyerid: lawyerid,
+                                          location: address,
+                                          phonenumber: phone,
+                                          username: lawyerName,
+                                          Clientid: SessionController()
+                                              .userid
+                                              .toString(),
+                                        )));
+                          },
+                          icon: Icon(
+                            Icons.work,
+                            color: Colors.lightGreen,
+                          )),
+                    ),
+                    Container(
+                      width: 80,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.blueAccent.withOpacity(0.2),
+                                blurRadius: 2,
+                                spreadRadius: 1,
+                                offset: Offset(0, 4))
+                          ],
+                          color: Colors.blueAccent.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(15)),
+                      //
+                      child: IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => bookingcalender(
+                                        username: lawyerName,
+                                        location: address,
+                                        phonenumber: phone,
+                                        lawyerid: lawyerid)));
+                          },
+                          icon: Icon(Icons.calendar_month_outlined,
+                              color: Colors.blueAccent)),
+                    )
                   ],
                 ),
                 SizedBox(

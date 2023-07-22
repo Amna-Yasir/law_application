@@ -4,9 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-import '../../../res/components/list/categoryList.dart';
-import '../../../res/components/list/populartlawyerlist.dart';
-import '../../../res/components/list/profilelist.dart';
+import '../../../res/components/client list/categoryList.dart';
+import '../../../res/components/client list/populartlawyerlist.dart';
+import '../../../res/components/client list/profilelist.dart';
 
 class homescreen extends StatefulWidget {
   const homescreen({super.key});

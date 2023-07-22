@@ -4,10 +4,10 @@ import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20screen/lawyer%20category/govt_lawyers.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20screen/lawyer%20category/tax_lawyer.dart';
 
-import '../card/categorycard.dart';
+import '../client card/categorycard.dart';
 
-class CategoryList extends StatelessWidget {
-  const CategoryList({
+class lawyerCategoryList extends StatelessWidget {
+  const lawyerCategoryList({
     super.key,
   });
 

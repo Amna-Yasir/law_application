@@ -3,8 +3,8 @@ import 'dart:math';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:law_application/res/components/card/popularlawyercard.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20screen/lawyer_detail.dart';
+import 'package:law_application/res/components/client%20card/popularlawyercard.dart';
+import 'package:law_application/views/client/homescreen/lawyer_detail.dart';
 
 class popularlawyerlist extends StatelessWidget {
   const popularlawyerlist({
@@ -44,7 +44,7 @@ class popularlawyerlist extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => lawyerdetail(
+                    builder: (context) => client_lawyer_detail(
                       lawyerName: snapshot.child('username').value.toString(),
                       address: snapshot
                           .child('extrainfo')

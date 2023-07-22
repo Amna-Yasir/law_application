@@ -21,7 +21,11 @@ class lawyerloginController with ChangeNotifier {
     notifyListeners();
   }
 
-  void login(BuildContext context, String emailaddress, String Password) async {
+  void login(
+    BuildContext context,
+    String emailaddress,
+    String Password,
+  ) async {
     setloaading(true);
 
     try {
@@ -30,8 +34,7 @@ class lawyerloginController with ChangeNotifier {
               email: emailaddress.trim(), password: Password.trim())
           .then((value) async {
         SessionController().userid = value.user!.uid.toString();
-        utils.toastmessage('Succesfully');
-
+        // Inside the _login method after successful authentication
         Navigator.pushNamed(context, RouteName.lawyerdashboardView);
       }).onError((error, stackTrace) {
         print(error);
