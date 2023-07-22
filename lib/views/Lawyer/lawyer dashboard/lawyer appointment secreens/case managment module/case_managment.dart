@@ -77,7 +77,7 @@ class _L_casemanagementState extends State<L_casemanagement> {
                               builder: (context) => CourtCasePage(
                                     casenumber:
                                         snapshot.child('id').value.toString(),
-                                    Casetitle: snapshot
+                                    casetitle: snapshot
                                             .child('clientname')
                                             .value
                                             .toString() +
@@ -88,11 +88,11 @@ class _L_casemanagementState extends State<L_casemanagement> {
                                             .child('oppname')
                                             .value
                                             .toString(),
-                                    Court: snapshot
+                                    court: snapshot
                                         .child('location')
                                         .value
                                         .toString(),
-                                    Startingdate:
+                                    startingdate:
                                         snapshot.child('date').value.toString(),
                                     opname: snapshot
                                         .child('oppname')

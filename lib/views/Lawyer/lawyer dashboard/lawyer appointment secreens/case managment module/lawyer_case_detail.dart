@@ -9,18 +9,18 @@ class CourtCasePage extends StatefulWidget {
   CourtCasePage(
       {super.key,
       required this.casenumber,
-      required this.Casetitle,
-      required this.Court,
-      required this.Startingdate,
+      required this.casetitle,
+      required this.court,
+      required this.startingdate,
       required this.opname,
       required this.clientname,
       required this.hearingstatus,
       required this.judgeremarks,
       required this.clientid});
   final String casenumber;
-  final String Casetitle;
-  final String Court;
-  final String Startingdate;
+  final String casetitle;
+  final String court;
+  final String startingdate;
   final String opname;
   final String clientname;
   final String hearingstatus;
@@ -69,17 +69,17 @@ class _CourtCasePageState extends State<CourtCasePage> {
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Case Title:' + widget.Casetitle,
+                    'Case Title:' + widget.casetitle,
                     style: TextStyle(fontSize: 18),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Court : ' + widget.Court,
+                    'Court : ' + widget.court,
                     style: TextStyle(fontSize: 18),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Starting Date:' + widget.Startingdate,
+                    'Starting Date:' + widget.startingdate,
                     style: TextStyle(fontSize: 18),
                   ),
                   SizedBox(height: 24),
