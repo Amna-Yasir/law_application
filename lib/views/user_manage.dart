@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:law_application/res/components/roundbutton.dart';
 import 'package:law_application/utils/routes/routesname.dart';
 import 'package:law_application/views/services/splash-services.dart';
+import 'package:law_application/views/splashscreen/admin_splash_screen.dart';
 
 class usermanager extends StatefulWidget {
   const usermanager({super.key});
@@ -43,6 +44,17 @@ class _usermanagerState extends State<usermanager> {
                 title: 'Continue as a Client',
                 onpress: () {
                   Navigator.pushNamed(context, RouteName.clientsplashScreen);
+                }),
+            SizedBox(
+              height: 10,
+            ),
+            roundButton(
+                title: 'Continue as a admin',
+                onpress: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => adminsplashScreen()));
                 }),
           ],
         ),

@@ -4,6 +4,10 @@ import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20profile%20section/lawyer_other_information.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20profile%20section/lawyer_profile.dart';
 import 'package:law_application/views/Lawyer/lawyer%20signup/lawyersignup_screen.dart';
+import 'package:law_application/views/admin/admin%20login/admin_login_screen.dart';
+import 'package:law_application/views/admin/admin%20signup/admin_signup_screen.dart';
+import 'package:law_application/views/admin/admin_dashboard.dart';
+import 'package:law_application/views/admin/profile%20module/admin_other_information.dart';
 import 'package:law_application/views/client/dashboard/case_managment.dart';
 import 'package:law_application/views/client/dashboard/dashboardview.dart';
 import 'package:law_application/views/client/dashboard/profilescreen/basic_information.dart';
@@ -22,6 +26,11 @@ class Routes {
     switch (settings.name) {
       case RouteName.usermanagerView:
         return MaterialPageRoute(builder: (_) => const usermanager());
+      case RouteName.adminbasicInfo:
+        return MaterialPageRoute(builder: (_) => const adminBasicInfo());
+
+      case RouteName.admindashboardView:
+        return MaterialPageRoute(builder: (_) => const admin_dashboard_View());
       case RouteName.clientbasicinfo:
         return MaterialPageRoute(builder: (_) => clientBasicInfo());
       case RouteName.lawyerProfileView:
@@ -36,6 +45,10 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const lawyerloginscreen());
       case RouteName.lawyerotherInfo:
         return MaterialPageRoute(builder: (_) => const lawyerOtherInfo());
+      case RouteName.adminloginView:
+        return MaterialPageRoute(builder: (_) => const admin_loginscreen());
+      case RouteName.adminsignupView:
+        return MaterialPageRoute(builder: (_) => const admin_signUpScreen());
 
       case RouteName.lawyersignupView:
         return MaterialPageRoute(builder: (_) => const lawyersignUpScreen());

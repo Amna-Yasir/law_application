@@ -8,7 +8,7 @@ import 'package:law_application/views/services/session_manager.dart';
 import '../../Lawyer/lawyer dashboard/lawyer appointment secreens/booking_screen.dart';
 
 class client_lawyer_detail extends StatelessWidget {
-  const client_lawyer_detail({
+  client_lawyer_detail({
     required this.lawyerName,
     super.key,
     required this.address,

@@ -5,6 +5,8 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:law_application/views/admin/admin%20login/admin_login_screen.dart';
+import 'package:law_application/views/admin/admin_dashboard.dart';
 import 'package:law_application/views/services/session_manager.dart';
 
 import '../../utils/routes/routesname.dart';
@@ -38,6 +40,25 @@ class splashServices {
     } else {
       Timer(Duration(seconds: 3),
           () => Navigator.pushNamed(context, RouteName.clientloginView));
+    }
+  }
+
+  void adminlogin(BuildContext context) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final user = auth.currentUser;
+
+    if (user != null) {
+      SessionController().userid = user.uid.toString();
+
+      Timer(
+          Duration(seconds: 3),
+          () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => admin_dashboard_View())));
+    } else {
+      Timer(
+          Duration(seconds: 3),
+          () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => admin_loginscreen())));
     }
   }
 }

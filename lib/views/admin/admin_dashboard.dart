@@ -1,30 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:law_application/Chat/user_chat_list.dart';
-import 'package:law_application/views/client/dashboard/clientappointment_screen.dart.dart';
-import 'package:law_application/views/client/dashboard/case_managment.dart';
+import 'package:law_application/views/admin/profile%20module/admin_profile_screen.dart';
 
-import 'package:law_application/views/client/dashboard/profilescreen/profile_screen.dart';
-import 'package:law_application/views/client/homescreen/homepage.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../../res/colors.dart';
 
-class dashboardView extends StatefulWidget {
-  const dashboardView({super.key});
+class admin_dashboard_View extends StatefulWidget {
+  const admin_dashboard_View({super.key});
 
   @override
-  State<dashboardView> createState() => _dashboardViewState();
+  State<admin_dashboard_View> createState() => _admin_dashboard_ViewState();
 }
 
-class _dashboardViewState extends State<dashboardView> {
+class _admin_dashboard_ViewState extends State<admin_dashboard_View> {
   final persistentcontroller = PersistentTabController(initialIndex: 0);
   List<Widget> _buildscreens() {
     return [
-      homescreen(),
-      clientappointmentscreen(),
-      casemanagement(),
-      chatlist(),
-      profilescreen(),
+      Text('Lawyer'),
+      Text('Lawyer'),
+      admin_profilescreen(),
     ];
   }
 
@@ -32,51 +26,31 @@ class _dashboardViewState extends State<dashboardView> {
     return [
       PersistentBottomNavBarItem(
         icon: Icon(
-          Icons.home,
-        ),
-        activeColorPrimary: AppColors.primaryColor,
-        inactiveIcon: Icon(
-          Icons.home,
-          color: Colors.grey,
-        ),
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(
-          Icons.message,
-        ),
-        activeColorPrimary: AppColors.primaryColor,
-        inactiveIcon: Icon(
-          Icons.message,
-          color: Colors.grey,
-        ),
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(
-          Icons.calendar_month_outlined,
-        ),
-        activeColorPrimary: AppColors.primaryColor,
-        inactiveIcon: Icon(
-          Icons.calendar_month_outlined,
-          color: Colors.grey,
-        ),
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(
-          Icons.library_books,
-        ),
-        activeColorPrimary: AppColors.primaryColor,
-        inactiveIcon: Icon(
-          Icons.library_books,
-          color: Colors.grey,
-        ),
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(
           Icons.person,
         ),
         activeColorPrimary: AppColors.primaryColor,
         inactiveIcon: Icon(
           Icons.person,
+          color: Colors.grey,
+        ),
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(
+          Icons.person_4,
+        ),
+        activeColorPrimary: AppColors.primaryColor,
+        inactiveIcon: Icon(
+          Icons.person_4,
+          color: Colors.grey,
+        ),
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(
+          Icons.home,
+        ),
+        activeColorPrimary: AppColors.primaryColor,
+        inactiveIcon: Icon(
+          Icons.home,
           color: Colors.grey,
         ),
       ),

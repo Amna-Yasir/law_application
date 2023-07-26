@@ -3,8 +3,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:law_application/res/colors.dart';
 
+// ignore: camel_case_types, must_be_immutable
 class lawyerdetail extends StatelessWidget {
-  const lawyerdetail({
+  lawyerdetail({
     required this.lawyerName,
     super.key,
     required this.address,

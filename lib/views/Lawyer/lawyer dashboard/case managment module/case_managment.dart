@@ -11,8 +11,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:law_application/res/colors.dart';
 import 'package:law_application/res/components/roundbutton.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20appointment%20secreens/booking_screen.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20appointment%20secreens/case%20managment%20module/lawyer_case_detail.dart';
-import 'package:law_application/views/client/dashboard/chatscreen.dart';
+import 'package:law_application/views/Lawyer/lawyer%20dashboard/case%20managment%20module/lawyer_case_detail.dart';
+
 import 'package:law_application/views/services/session_manager.dart';
 
 class L_casemanagement extends StatefulWidget {
