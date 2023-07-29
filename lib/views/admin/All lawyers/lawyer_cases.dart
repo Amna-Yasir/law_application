@@ -12,114 +12,107 @@ import 'package:law_application/res/colors.dart';
 import 'package:law_application/res/components/roundbutton.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20appointment%20secreens/booking_screen.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/case%20managment%20module/lawyer_case_detail.dart';
+import 'package:law_application/views/client/homescreen/case%20managment%20module/case_detail.dart';
 
 import 'package:law_application/views/services/session_manager.dart';
 
-class L_casemanagement extends StatefulWidget {
-  const L_casemanagement({super.key});
+class admin_view_of_cases extends StatefulWidget {
+  const admin_view_of_cases({
+    super.key,
+    required this.lawyerid,
+  });
+  final lawyerid;
 
   @override
-  State<L_casemanagement> createState() => _L_casemanagementState();
+  State<admin_view_of_cases> createState() => _admin_view_of_casesState();
 }
 
-class _L_casemanagementState extends State<L_casemanagement> {
-  DatabaseReference ref = FirebaseDatabase.instance
-      .ref()
-      .child('lawyer')
-      .child(SessionController().userid.toString())
-      .child('Case');
-  // final auth = FirebaseAuth.instance;
-  // final ref = FirebaseDatabase.instance
-  //     .ref('User')
-  //     .child(SessionController().userid.toString())
-  //     .child('post');
+class _admin_view_of_casesState extends State<admin_view_of_cases> {
+  DatabaseReference ref = FirebaseDatabase.instance.ref().child('lawyer');
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 1,
       child: Scaffold(
           appBar: AppBar(
-            centerTitle: false,
-            title: Text('Manage Cases'),
+            centerTitle: true,
+            title: Text(' Case'),
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 8),
                 child: Icon(Icons.filter_list),
               ),
             ],
-            bottom: TabBar(
-                indicatorColor: AppColors.primaryColor,
-                labelStyle: Theme.of(context).textTheme.bodyMedium,
-                tabs: [
-                  Text('Active Cases'),
-                ]),
           ),
           body: SafeArea(
             child: FirebaseAnimatedList(
-              query: ref,
               itemBuilder: (BuildContext context, DataSnapshot snapshot,
                   Animation<double> animation, int index) {
-                if (snapshot.exists) {
-                  return caseCard(
-                    casenumber:
-                        'Case number:' + snapshot.child('id').value.toString(),
-                    casetitle: snapshot.child('clientname').value.toString() +
-                        '  ' +
-                        'v' +
-                        '  ' +
-                        snapshot.child('oppname').value.toString(),
-                    location: snapshot.child('location').value.toString(),
-                    startdate: snapshot.child('date').value.toString(),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CourtCasePage(
-                                    casenumber:
-                                        snapshot.child('id').value.toString(),
-                                    casetitle: snapshot
-                                            .child('clientname')
-                                            .value
-                                            .toString() +
-                                        '  ' +
-                                        'v' +
-                                        '  ' +
-                                        snapshot
-                                            .child('oppname')
-                                            .value
-                                            .toString(),
-                                    court: snapshot
-                                        .child('location')
-                                        .value
-                                        .toString(),
-                                    startingdate:
-                                        snapshot.child('date').value.toString(),
-                                    opname: snapshot
-                                        .child('oppname')
-                                        .value
-                                        .toString(),
-                                    clientname: snapshot
-                                        .child('clientname')
-                                        .value
-                                        .toString(),
-                                    hearingstatus: snapshot
-                                        .child('nexthearing')
-                                        .value
-                                        .toString(),
-                                    judgeremarks: snapshot
-                                        .child('CaseDescription')
-                                        .value
-                                        .toString(),
-                                    clientid: snapshot
-                                        .child('clientID')
-                                        .value
-                                        .toString(),
-                                  )));
-                    },
-                  );
-                }
-                return Text('Something went wrong');
+                return Column(
+                  children: [
+                    Text(
+                      'Active Cases',
+                      style: Theme.of(context).textTheme.displaySmall,
+                    ),
+                    caseCard(
+                      casenumber: snapshot.child('id').value.toString(),
+                      casetitle: snapshot.child('clientname').value.toString() +
+                          '  ' +
+                          'v' +
+                          '  ' +
+                          snapshot.child('oppname').value.toString(),
+                      location: snapshot.child('location').value.toString(),
+                      startdate: snapshot.child('date').value.toString(),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => C_CourtCasePage(
+                                      casenumber:
+                                          snapshot.child('id').value.toString(),
+                                      Casetitle: snapshot
+                                              .child('clientname')
+                                              .value
+                                              .toString() +
+                                          '  ' +
+                                          'v' +
+                                          '  ' +
+                                          snapshot
+                                              .child('oppname')
+                                              .value
+                                              .toString(),
+                                      Court: snapshot
+                                          .child('location')
+                                          .value
+                                          .toString(),
+                                      Startingdate: snapshot
+                                          .child('date')
+                                          .value
+                                          .toString(),
+                                      opname: snapshot
+                                          .child('oppname')
+                                          .value
+                                          .toString(),
+                                      clientname: snapshot
+                                          .child('clientname')
+                                          .value
+                                          .toString(),
+                                      hearingstatus: snapshot
+                                          .child('nexthearing')
+                                          .value
+                                          .toString(),
+                                      judgeremarks: snapshot
+                                          .child('CaseDescription')
+                                          .value
+                                          .toString(),
+                                    )));
+                      },
+                    ),
+                  ],
+                );
               },
+              query: ref.child(widget.lawyerid).child('Case'),
             ),
           )),
     );

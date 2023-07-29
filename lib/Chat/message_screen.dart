@@ -82,7 +82,11 @@ class _MessageScreenState extends State<MessageScreen> {
                                 child: Padding(
                                   padding: EdgeInsets.only(right: 15),
                                   child: CircleAvatar(
-                                    child: Icon(Icons.send),
+                                    backgroundColor: AppColors.primaryColor,
+                                    child: Icon(
+                                      Icons.send,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -157,7 +161,7 @@ class MessageBubble extends StatelessWidget {
           Text(
             sender,
             style: TextStyle(
-              fontSize: 12.0,
+              fontSize: 15.0,
               color: Colors.black54,
             ),
           ),
@@ -173,14 +177,14 @@ class MessageBubble extends StatelessWidget {
                     topRight: Radius.circular(30.0),
                   ),
             elevation: 5.0,
-            color: isMe ? Colors.lightBlueAccent : Colors.white,
+            color: isMe ? AppColors.primaryColor : Colors.white,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               child: Text(
                 text,
                 style: TextStyle(
                   color: isMe ? Colors.white : Colors.black54,
-                  fontSize: 15.0,
+                  fontSize: 19.0,
                 ),
               ),
             ),

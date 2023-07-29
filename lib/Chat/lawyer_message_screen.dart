@@ -3,7 +3,6 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:law_application/utils/utils.dart';
 import 'package:law_application/views/services/session_manager.dart';
-
 import '../res/colors.dart';
 
 class lawyerMessageScreen extends StatefulWidget {
@@ -41,8 +40,8 @@ class _lawyerMessageScreenState extends State<lawyerMessageScreen> {
                         Animation<double> animation, int index) {
                       String senderid =
                           snapshot.child('sender').value.toString();
-                      String recieveremail =
-                          snapshot.child('senderemail').value.toString();
+                      // String recieveremail =
+                      //     snapshot.child('senderemail').value.toString();
                       String recieverid =
                           snapshot.child('reciever').value.toString();
                       snapshot.child('sender').value.toString();
@@ -83,7 +82,7 @@ class _lawyerMessageScreenState extends State<lawyerMessageScreen> {
                                 onTap: () {
                                   sendmessage();
                                 },
-                                child: Padding(
+                                child: const Padding(
                                   padding: EdgeInsets.only(right: 15),
                                   child: CircleAvatar(
                                     child: Icon(Icons.send),
@@ -161,18 +160,18 @@ class MessageBubble extends StatelessWidget {
         children: <Widget>[
           Text(
             sender,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 12.0,
               color: Colors.black54,
             ),
           ),
           Material(
             borderRadius: isMe
-                ? BorderRadius.only(
+                ? const BorderRadius.only(
                     topLeft: Radius.circular(30.0),
                     bottomLeft: Radius.circular(30.0),
                     bottomRight: Radius.circular(30.0))
-                : BorderRadius.only(
+                : const BorderRadius.only(
                     bottomLeft: Radius.circular(30.0),
                     bottomRight: Radius.circular(30.0),
                     topRight: Radius.circular(30.0),

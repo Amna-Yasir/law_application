@@ -15,28 +15,25 @@ import 'package:law_application/views/Lawyer/lawyer%20dashboard/case%20managment
 
 import 'package:law_application/views/services/session_manager.dart';
 
-class L_casemanagement extends StatefulWidget {
-  const L_casemanagement({super.key});
+import '../../client/homescreen/case managment module/case_detail.dart';
+
+class admin_view_client_cases extends StatefulWidget {
+  const admin_view_client_cases({super.key, this.clientid, this.clientname});
+
+  final clientid;
+  final clientname;
 
   @override
-  State<L_casemanagement> createState() => _L_casemanagementState();
+  State<admin_view_client_cases> createState() =>
+      _admin_view_client_casesState();
 }
 
-class _L_casemanagementState extends State<L_casemanagement> {
-  DatabaseReference ref = FirebaseDatabase.instance
-      .ref()
-      .child('lawyer')
-      .child(SessionController().userid.toString())
-      .child('Case');
-  // final auth = FirebaseAuth.instance;
-  // final ref = FirebaseDatabase.instance
-  //     .ref('User')
-  //     .child(SessionController().userid.toString())
-  //     .child('post');
+class _admin_view_client_casesState extends State<admin_view_client_cases> {
+  DatabaseReference ref = FirebaseDatabase.instance.ref().child('User');
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 1,
+      length: 2,
       child: Scaffold(
           appBar: AppBar(
             centerTitle: false,
@@ -56,7 +53,7 @@ class _L_casemanagementState extends State<L_casemanagement> {
           ),
           body: SafeArea(
             child: FirebaseAnimatedList(
-              query: ref,
+              query: ref.child(widget.clientid).child('Case'),
               itemBuilder: (BuildContext context, DataSnapshot snapshot,
                   Animation<double> animation, int index) {
                 if (snapshot.exists) {
@@ -74,10 +71,10 @@ class _L_casemanagementState extends State<L_casemanagement> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CourtCasePage(
+                              builder: (context) => C_CourtCasePage(
                                     casenumber:
                                         snapshot.child('id').value.toString(),
-                                    casetitle: snapshot
+                                    Casetitle: snapshot
                                             .child('clientname')
                                             .value
                                             .toString() +
@@ -88,11 +85,11 @@ class _L_casemanagementState extends State<L_casemanagement> {
                                             .child('oppname')
                                             .value
                                             .toString(),
-                                    court: snapshot
+                                    Court: snapshot
                                         .child('location')
                                         .value
                                         .toString(),
-                                    startingdate:
+                                    Startingdate:
                                         snapshot.child('date').value.toString(),
                                     opname: snapshot
                                         .child('oppname')
@@ -108,10 +105,6 @@ class _L_casemanagementState extends State<L_casemanagement> {
                                         .toString(),
                                     judgeremarks: snapshot
                                         .child('CaseDescription')
-                                        .value
-                                        .toString(),
-                                    clientid: snapshot
-                                        .child('clientID')
                                         .value
                                         .toString(),
                                   )));
