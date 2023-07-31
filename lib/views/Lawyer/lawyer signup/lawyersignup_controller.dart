@@ -37,6 +37,8 @@ class lawyersignupController with ChangeNotifier {
           'username': username,
           'role': role,
           'profile': '',
+          'license': '',
+          'cnic': '',
         }).then((value) {
           setloaading(false);
 

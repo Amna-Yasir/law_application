@@ -24,7 +24,7 @@ class _c_govt_categoryState extends State<c_govt_category> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Divorce Lawyers'),
+          title: const Text('Govt Lawyers'),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 30),

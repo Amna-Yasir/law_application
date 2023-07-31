@@ -64,7 +64,7 @@ class _C_CriminalCategorydetailState extends State<C_CriminalCategorydetail> {
                         return double.parse(randomNumber.toStringAsFixed(1));
                       }
 
-                      if (category == 'Criminal') {
+                      if (category == 'criminal') {
                         return categoryDetailwidget(
                           lawyeraddress: snapshot
                               .child('extrainfo')

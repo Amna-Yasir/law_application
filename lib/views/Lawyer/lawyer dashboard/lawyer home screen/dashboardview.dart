@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:law_application/Chat/lawyer_chat_list.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/case%20managment%20module/case_managment.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20appointment%20secreens/lawyer_appointment_screen.dart';
+
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20screen/lawyerHomeScreen.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20profile%20section/lawyer_profile.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -18,13 +17,7 @@ class lawyerdashboardView extends StatefulWidget {
 class _lawyerdashboardViewState extends State<lawyerdashboardView> {
   final PersistentController = PersistentTabController(initialIndex: 0);
   List<Widget> _buildscreens() {
-    return [
-      lawyerhomescreen(),
-      lawyer_chat_list(),
-      lawyer_appointment_screen(),
-      L_casemanagement(),
-      lawyerprofile()
-    ];
+    return [lawyerhomescreen(), lawyer_chat_list(), lawyerprofile()];
   }
 
   List<PersistentBottomNavBarItem> _navbarItem() {
@@ -46,26 +39,6 @@ class _lawyerdashboardViewState extends State<lawyerdashboardView> {
         activeColorPrimary: AppColors.primaryColor,
         inactiveIcon: Icon(
           Icons.message,
-          color: Colors.grey,
-        ),
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(
-          Icons.calendar_month_outlined,
-        ),
-        activeColorPrimary: AppColors.primaryColor,
-        inactiveIcon: Icon(
-          Icons.calendar_month_outlined,
-          color: Colors.grey,
-        ),
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(
-          Icons.library_books,
-        ),
-        activeColorPrimary: AppColors.primaryColor,
-        inactiveIcon: Icon(
-          Icons.library_books,
           color: Colors.grey,
         ),
       ),
@@ -94,7 +67,7 @@ class _lawyerdashboardViewState extends State<lawyerdashboardView> {
       decoration: NavBarDecoration(
           borderRadius: BorderRadius.circular(0),
           colorBehindNavBar: Colors.red),
-      navBarStyle: NavBarStyle.style1,
+      navBarStyle: NavBarStyle.style11,
       popAllScreensOnTapAnyTabs: false,
     );
   }

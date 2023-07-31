@@ -41,8 +41,7 @@ class _lawyerprofileState extends State<lawyerprofile> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Lawyer Profile'),
-          automaticallyImplyLeading: false,
+          title: Text('My Profile'),
           centerTitle: true,
           actions: [
             IconButton(
@@ -181,61 +180,64 @@ class _lawyerprofileState extends State<lawyerprofile> {
                               final hourlyrate = map['feeperhour'];
                               final aboutyourself = map['aboutyourself'];
                               final currentlyworking = map['practicing'];
-                              return Column(
-                                children: [
-                                  ContentRow(
-                                      content: map['Phone'],
-                                      titleName: 'Phone Number'),
-                                  ContentRow(
-                                      content: map['address'],
-                                      titleName: 'Address'),
-                                  ContentRow(
-                                      content: map['ZipCode'],
-                                      titleName: 'Zip Code'),
-                                  ContentRow(
-                                      content: map['category'],
-                                      titleName: 'Category'),
-                                  ContentRow(
-                                      content: map['feeperhour'],
-                                      titleName: 'Hourly Rate'),
-                                  ContentRow(
-                                      content: map['aboutyourself'],
-                                      titleName: 'About Yourself'),
-                                  ContentRow(
-                                      content: map['practicing'],
-                                      titleName: 'Currently Working'),
-                                  Align(
-                                    alignment: Alignment.topRight,
-                                    child: TextButton(
-                                      child: Text(
-                                        'Edit',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge
-                                            ?.copyWith(
-                                                color: AppColors.primaryColor),
+                              return Container(
+                                child: Column(
+                                  children: [
+                                    ContentRow(
+                                        content: map['Phone'],
+                                        titleName: 'Phone Number'),
+                                    ContentRow(
+                                        content: map['address'],
+                                        titleName: 'Address'),
+                                    ContentRow(
+                                        content: map['ZipCode'],
+                                        titleName: 'Zip Code'),
+                                    ContentRow(
+                                        content: map['category'],
+                                        titleName: 'Category'),
+                                    ContentRow(
+                                        content: map['feeperhour'],
+                                        titleName: 'Hourly Rate'),
+                                    ContentRow(
+                                        content: map['aboutyourself'],
+                                        titleName: 'About Yourself'),
+                                    ContentRow(
+                                        content: map['practicing'],
+                                        titleName: 'Currently Working'),
+                                    Align(
+                                      alignment: Alignment.topRight,
+                                      child: TextButton(
+                                        child: Text(
+                                          'Edit',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge
+                                              ?.copyWith(
+                                                  color:
+                                                      AppColors.primaryColor),
+                                        ),
+                                        onPressed: () {
+                                          _showinfoupdatedialogue(
+                                            phone,
+                                            address,
+                                            zipCode,
+                                            category,
+                                            hourlyrate,
+                                            aboutyourself,
+                                            currentlyworking,
+                                          );
+                                          // edit.showupdatedialogue(
+                                          //     phone,
+                                          //     address,
+                                          //     zipCode,
+                                          //     hourlyrate,
+                                          //     aboutyourself,
+                                          //     currentlyworking);
+                                        },
                                       ),
-                                      onPressed: () {
-                                        _showinfoupdatedialogue(
-                                          phone,
-                                          address,
-                                          zipCode,
-                                          category,
-                                          hourlyrate,
-                                          aboutyourself,
-                                          currentlyworking,
-                                        );
-                                        // edit.showupdatedialogue(
-                                        //     phone,
-                                        //     address,
-                                        //     zipCode,
-                                        //     hourlyrate,
-                                        //     aboutyourself,
-                                        //     currentlyworking);
-                                      },
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               );
                             } else {
                               return Text('Something Went Wrong');

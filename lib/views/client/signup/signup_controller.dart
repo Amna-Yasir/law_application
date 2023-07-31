@@ -39,6 +39,7 @@ class signupController with ChangeNotifier {
           'phone': '',
           'role': role,
           'address': '',
+          'cnic': '',
         }).then((value) {
           setloaading(false);
 

@@ -19,59 +19,95 @@ class _chatlistState extends State<chatlist> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('All Lawyers'),
+        toolbarHeight: 100,
+        centerTitle: false,
+        elevation: 0,
+        title: Text(
+          "Conversations",
+          style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+        ),
       ),
       body: SafeArea(
-          child: FirebaseAnimatedList(
-        query: ref,
-        itemBuilder: (BuildContext context, DataSnapshot snapshot,
-            Animation<double> animation, int index) {
-          if (SessionController().userid.toString() ==
-              snapshot.value.toString()) {
-            return Container();
-          } else {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                borderOnForeground: true,
-                shadowColor: AppColors.dividedColor,
-                child: ListTile(
-                  onTap: () {
-                    PersistentNavBarNavigator.pushNewScreen(context,
-                        screen: MessageScreen(
-                          email: snapshot.child('email').value.toString(),
-                          image: snapshot.child('profile').value.toString(),
-                          name: snapshot.child('username').value.toString(),
-                          recieverId: snapshot.child('Uid').value.toString(),
-                        ),
-                        withNavBar: false);
-                  },
-                  leading: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: AppColors.primarybuttonColor,
-                          )),
-                      child: snapshot.child('profile').value.toString() == ""
-                          ? Icon(Icons.percent_outlined)
-                          : ClipRRect(
-                              borderRadius: BorderRadius.circular(50),
-                              child: Image(
-                                  fit: BoxFit.cover,
-                                  image: NetworkImage(snapshot
-                                      .child('profile')
-                                      .value
-                                      .toString())),
-                            )),
-                  title: Text(snapshot.child('username').value.toString()),
-                  subtitle: Text(snapshot.child('email').value.toString()),
-                ),
+          child: Padding(
+        padding: EdgeInsets.only(top: 16, left: 16, right: 16),
+        child: Column(children: [
+          TextField(
+            decoration: InputDecoration(
+              hintText: "Search...",
+              hintStyle: TextStyle(color: Colors.grey.shade600),
+              prefixIcon: Icon(
+                Icons.search,
+                color: Colors.grey.shade600,
+                size: 20,
               ),
-            );
-          }
-        },
+              filled: true,
+              fillColor: Colors.grey.shade100,
+              contentPadding: EdgeInsets.all(8),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: BorderSide(color: Colors.grey.shade100)),
+            ),
+          ),
+          Expanded(
+            child: FirebaseAnimatedList(
+              query: ref,
+              itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                  Animation<double> animation, int index) {
+                if (SessionController().userid.toString() ==
+                    snapshot.value.toString()) {
+                  return Container();
+                } else {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      borderOnForeground: true,
+                      shadowColor: AppColors.dividedColor,
+                      child: ListTile(
+                        onTap: () {
+                          PersistentNavBarNavigator.pushNewScreen(context,
+                              screen: MessageScreen(
+                                email: snapshot.child('email').value.toString(),
+                                image:
+                                    snapshot.child('profile').value.toString(),
+                                name:
+                                    snapshot.child('username').value.toString(),
+                                recieverId:
+                                    snapshot.child('Uid').value.toString(),
+                              ),
+                              withNavBar: false);
+                        },
+                        leading: Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: AppColors.primarybuttonColor,
+                                )),
+                            child:
+                                snapshot.child('profile').value.toString() == ""
+                                    ? Icon(Icons.person)
+                                    : ClipRRect(
+                                        borderRadius: BorderRadius.circular(50),
+                                        child: Image(
+                                            fit: BoxFit.cover,
+                                            image: NetworkImage(snapshot
+                                                .child('profile')
+                                                .value
+                                                .toString())),
+                                      )),
+                        title:
+                            Text(snapshot.child('username').value.toString()),
+                        subtitle:
+                            Text(snapshot.child('email').value.toString()),
+                      ),
+                    ),
+                  );
+                }
+              },
+            ),
+          ),
+        ]),
       )),
     );
   }

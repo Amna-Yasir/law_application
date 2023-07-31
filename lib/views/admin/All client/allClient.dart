@@ -47,7 +47,7 @@ class _clientlistState extends State<clientlist> {
                       child: ListTile(
                         onTap: () {
                           PersistentNavBarNavigator.pushNewScreen(context,
-                              screen: clientRecod(
+                              screen: clientRecord(
                                 username:
                                     snapshot.child('username').value.toString(),
                                 email: snapshot.child('email').value.toString(),

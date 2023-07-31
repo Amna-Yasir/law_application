@@ -65,7 +65,7 @@ class _tax_categoryState extends State<tax_category> {
                         return double.parse(randomNumber.toStringAsFixed(1));
                       }
 
-                      if (category == 'Tax') {
+                      if (category == 'tax') {
                         return categoryDetailwidget(
                           lawyeraddress: snapshot
                               .child('extrainfo')

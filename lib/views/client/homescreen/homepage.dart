@@ -3,6 +3,10 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:law_application/views/client/dashboard/case_managment.dart';
+import 'package:law_application/views/client/dashboard/clientappointment_screen.dart.dart';
+import 'package:law_application/views/client/homescreen/uploadcnic.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../../res/components/client list/categoryList.dart';
 import '../../../res/components/client list/populartlawyerlist.dart';
@@ -23,11 +27,93 @@ class _homescreenState extends State<homescreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Client'),
-        // title: Image.asset(
-        //   'assets/images/Fav icon.png',
-        //   height: 50,
-        // ),
+        title: Text(
+          'Law Firm',
+          style: TextStyle(fontSize: 32, fontWeight: FontWeight.normal),
+        ),
+      ),
+      drawer: Drawer(
+        child: Container(
+          decoration: BoxDecoration(),
+          child: Column(
+            children: <Widget>[
+              DrawerHeader(
+                  child:
+                      Image(image: AssetImage('assets/images/Fav icon.png'))),
+              Expanded(
+                child: Column(children: <Widget>[
+                  Divider(
+                    thickness: 3,
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Upload Documents',
+                      style: TextStyle(fontSize: 18.0, color: Colors.black),
+                    ),
+                    leading: Icon(
+                      Icons.edit_document,
+                      size: 20.0,
+                      color: Colors.black,
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      PersistentNavBarNavigator.pushNewScreen(context,
+                          screen: Client_Cnic(), withNavBar: false);
+                    },
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Appointments',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                      ),
+                    ),
+                    leading: Icon(
+                      Icons.calendar_month,
+                      size: 20.0,
+                      color: Colors.black,
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      PersistentNavBarNavigator.pushNewScreen(context,
+                          screen: clientappointmentscreen(), withNavBar: false);
+                    },
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Cases',
+                      style: TextStyle(fontSize: 18.0, color: Colors.black),
+                    ),
+                    leading: Icon(
+                      Icons.library_books,
+                      size: 20.0,
+                      color: Colors.black,
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      PersistentNavBarNavigator.pushNewScreen(context,
+                          screen: casemanagement(), withNavBar: false);
+                    },
+                  ),
+                ]),
+              ),
+              Container(
+                  child: Align(
+                      alignment: FractionalOffset.bottomCenter,
+                      child: Column(
+                        children: <Widget>[
+                          Divider(),
+                          ListTile(
+                              leading: Icon(Icons.help),
+                              title: Text('Help Center')),
+                          ListTile(
+                              leading: Icon(Icons.settings),
+                              title: Text('Settings'))
+                        ],
+                      ))),
+            ],
+          ),
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(

@@ -7,8 +7,8 @@ import 'package:law_application/views/admin/All%20client/client_case.dart';
 
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-class clientRecod extends StatefulWidget {
-  const clientRecod({
+class clientRecord extends StatefulWidget {
+  const clientRecord({
     super.key,
     required this.username,
     required this.email,
@@ -25,10 +25,10 @@ class clientRecod extends StatefulWidget {
   final String Userid;
 
   @override
-  State<clientRecod> createState() => _clientRecodState();
+  State<clientRecord> createState() => _clientRecordState();
 }
 
-class _clientRecodState extends State<clientRecod> {
+class _clientRecordState extends State<clientRecord> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
