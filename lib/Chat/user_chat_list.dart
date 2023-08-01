@@ -13,8 +13,11 @@ class chatlist extends StatefulWidget {
   State<chatlist> createState() => _chatlistState();
 }
 
+final serachfilter = TextEditingController();
+
 class _chatlistState extends State<chatlist> {
   DatabaseReference ref = FirebaseDatabase.instance.ref().child('lawyer');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +35,12 @@ class _chatlistState extends State<chatlist> {
         padding: EdgeInsets.only(top: 16, left: 16, right: 16),
         child: Column(children: [
           TextField(
+            controller: serachfilter,
+            onChanged: (value) {
+              setState(() {});
+            },
             decoration: InputDecoration(
-              hintText: "Search...",
+              hintText: "Search by name",
               hintStyle: TextStyle(color: Colors.grey.shade600),
               prefixIcon: Icon(
                 Icons.search,
@@ -53,10 +60,10 @@ class _chatlistState extends State<chatlist> {
               query: ref,
               itemBuilder: (BuildContext context, DataSnapshot snapshot,
                   Animation<double> animation, int index) {
-                if (SessionController().userid.toString() ==
-                    snapshot.value.toString()) {
-                  return Container();
-                } else {
+                final name = Text(
+                  snapshot.child('username').value.toString(),
+                );
+                if (serachfilter.text.isEmpty) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
@@ -103,6 +110,58 @@ class _chatlistState extends State<chatlist> {
                       ),
                     ),
                   );
+                } else if (name
+                    .toString()
+                    .toLowerCase()
+                    .contains(serachfilter.text.toLowerCase())) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      borderOnForeground: true,
+                      shadowColor: AppColors.dividedColor,
+                      child: ListTile(
+                        onTap: () {
+                          PersistentNavBarNavigator.pushNewScreen(context,
+                              screen: MessageScreen(
+                                email: snapshot.child('email').value.toString(),
+                                image:
+                                    snapshot.child('profile').value.toString(),
+                                name:
+                                    snapshot.child('username').value.toString(),
+                                recieverId:
+                                    snapshot.child('Uid').value.toString(),
+                              ),
+                              withNavBar: false);
+                        },
+                        leading: Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: AppColors.primarybuttonColor,
+                                )),
+                            child:
+                                snapshot.child('profile').value.toString() == ""
+                                    ? Icon(Icons.person)
+                                    : ClipRRect(
+                                        borderRadius: BorderRadius.circular(50),
+                                        child: Image(
+                                            fit: BoxFit.cover,
+                                            image: NetworkImage(snapshot
+                                                .child('profile')
+                                                .value
+                                                .toString())),
+                                      )),
+                        title:
+                            Text(snapshot.child('username').value.toString()),
+                        subtitle:
+                            Text(snapshot.child('email').value.toString()),
+                      ),
+                    ),
+                  );
+                } else {
+                  return Container();
                 }
               },
             ),

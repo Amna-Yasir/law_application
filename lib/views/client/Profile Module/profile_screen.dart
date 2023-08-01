@@ -13,18 +13,18 @@ import 'package:law_application/views/client/Profile%20Module/profile_screen_con
 
 import 'package:law_application/views/services/session_manager.dart';
 import 'package:provider/provider.dart';
-import '../../../../utils/utils.dart';
-import '../../../../res/colors.dart';
-import '../../../../res/components/textfield and row/reusablerow.dart';
+import '../../../utils/utils.dart';
+import '../../../res/colors.dart';
+import '../../../res/components/textfield and row/reusablerow.dart';
 
-class admin_profilescreen extends StatefulWidget {
-  const admin_profilescreen({super.key});
+class profilescreen extends StatefulWidget {
+  const profilescreen({super.key});
 
   @override
-  State<admin_profilescreen> createState() => _admin_profilescreenState();
+  State<profilescreen> createState() => _profilescreenState();
 }
 
-class _admin_profilescreenState extends State<admin_profilescreen> {
+class _profilescreenState extends State<profilescreen> {
   final editusernamecontroller = TextEditingController();
   final editemailcontroller = TextEditingController();
   final editphonecontroller = TextEditingController();
@@ -35,7 +35,7 @@ class _admin_profilescreenState extends State<admin_profilescreen> {
   final locationdocusnode = FocusNode();
   bool loading = true;
   FirebaseAuth auth = FirebaseAuth.instance;
-  DatabaseReference ref = FirebaseDatabase.instance.ref().child('admin');
+  DatabaseReference ref = FirebaseDatabase.instance.ref().child('User');
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class _admin_profilescreenState extends State<admin_profilescreen> {
                 FirebaseAuth auth = FirebaseAuth.instance;
                 auth.signOut().then((value) {
                   SessionController().userid = '';
-                  Navigator.pushNamed(context, RouteName.usermanagerView);
+                  Navigator.pushNamed(context, RouteName.clientloginView);
                 });
               },
               icon: Icon(Icons.logout_outlined))

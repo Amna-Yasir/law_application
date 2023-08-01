@@ -27,41 +27,25 @@ class _clientsplashScreenState extends State<clientsplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: AnimateGradient(
-        primaryBegin: Alignment.topLeft,
-        primaryEnd: Alignment.bottomLeft,
-        secondaryBegin: Alignment.bottomLeft,
-        secondaryEnd: Alignment.topRight,
-        primaryColors: const [
-          Colors.purple,
-          Colors.deepPurple,
-          Colors.white,
-        ],
-        secondaryColors: const [
-          Colors.purple,
-          Colors.deepPurple,
-          Colors.white,
-        ],
-        child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Image(
-                image: AssetImage('assets/images/Law firm logo.png'),
-                width: 300,
-                height: 200,
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const [
+            Image(
+              image: AssetImage('assets/images/Law firm logo.png'),
+              width: 300,
+              height: 200,
+            ),
+            Center(
+              child: Text(
+                'Your Legal Solution',
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                    fontFamily: AppFonts.sfProDisplayBold, fontSize: 15),
               ),
-              Center(
-                child: Text(
-                  'Your Legal Solution',
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
-                      fontFamily: AppFonts.sfProDisplayBold, fontSize: 15),
-                ),
-              )
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );

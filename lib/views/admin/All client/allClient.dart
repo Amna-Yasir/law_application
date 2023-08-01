@@ -21,7 +21,7 @@ class _clientlistState extends State<clientlist> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Registerd lawyers'),
+        title: Text('Registerd Clients'),
       ),
       body: SafeArea(
           child: Padding(
@@ -55,6 +55,10 @@ class _clientlistState extends State<clientlist> {
                                 address:
                                     snapshot.child('address').value.toString(),
                                 Userid: snapshot.child('Uid').value.toString(),
+                                profilePicture: snapshot
+                                    .child('Profilepicture')
+                                    .value
+                                    .toString(),
                               ));
                         },
                         leading: Container(
@@ -65,15 +69,18 @@ class _clientlistState extends State<clientlist> {
                                 border: Border.all(
                                   color: AppColors.primarybuttonColor,
                                 )),
-                            child: snapshot.child('profile').value.toString() ==
-                                    " "
+                            child: snapshot
+                                        .child('Profilepicture')
+                                        .value
+                                        .toString() ==
+                                    ""
                                 ? Icon(Icons.percent_outlined)
                                 : ClipRRect(
                                     borderRadius: BorderRadius.circular(60),
                                     child: Image(
                                         fit: BoxFit.cover,
                                         image: NetworkImage(snapshot
-                                            .child('profile')
+                                            .child('Profilepicture')
                                             .value
                                             .toString())),
                                   )),

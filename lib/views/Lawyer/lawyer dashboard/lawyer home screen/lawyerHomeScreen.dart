@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:law_application/res/components/lawyer%20view%20list/lawyercategorylist.dart';
 import 'package:law_application/res/components/lawyer%20view%20list/popularlawyerlist.dart';
@@ -5,7 +6,11 @@ import 'package:law_application/res/components/lawyer%20view%20list/profilelist.
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/case%20managment%20module/case_managment.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20appointment%20secreens/lawyer_appointment_screen.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20screen/license.dart';
+import 'package:law_application/views/client/complaint/complaint.dart';
+import 'package:law_application/views/services/session_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
+import '../../../../utils/routes/routesname.dart';
 
 class lawyerhomescreen extends StatefulWidget {
   const lawyerhomescreen({super.key});
@@ -25,6 +30,17 @@ class _lawyerhomescreenState extends State<lawyerhomescreen> {
           'Law Firm',
           style: TextStyle(fontSize: 32, fontWeight: FontWeight.normal),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                FirebaseAuth auth = FirebaseAuth.instance;
+                auth.signOut().then((value) {
+                  SessionController().userid = '';
+                  Navigator.pushNamed(context, RouteName.usermanagerView);
+                });
+              },
+              icon: Icon(Icons.logout_outlined))
+        ],
       ),
       drawer: Drawer(
         child: Container(
@@ -99,11 +115,13 @@ class _lawyerhomescreenState extends State<lawyerhomescreen> {
                         children: <Widget>[
                           Divider(),
                           ListTile(
+                              onTap: () {
+                                Navigator.pop(context);
+                                PersistentNavBarNavigator.pushNewScreen(context,
+                                    screen: helpcenter(), withNavBar: false);
+                              },
                               leading: Icon(Icons.help),
                               title: Text('Help Center')),
-                          ListTile(
-                              leading: Icon(Icons.settings),
-                              title: Text('Settings'))
                         ],
                       ))),
             ],
@@ -130,31 +148,15 @@ class _lawyerhomescreenState extends State<lawyerhomescreen> {
                 height: 160,
                 child: const lawyerCategoryList(),
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: GestureDetector(
-                  onTap: (() {}),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'View All',
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle1!
-                          .copyWith(fontSize: 15),
-                    ),
-                  ),
-                ),
-              ),
               const SizedBox(
-                width: 10,
+                height: 30,
               ),
               Text(
                 'Lawyers Near me',
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1
-                    ?.copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+                    ?.copyWith(fontWeight: FontWeight.bold),
               ),
               const SizedBox(
                 height: 15,
@@ -163,30 +165,15 @@ class _lawyerhomescreenState extends State<lawyerhomescreen> {
                 height: 170,
                 child: const Lawyerprofilelist(),
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: GestureDetector(
-                  onTap: (() {}),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'View All',
-                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                            fontSize: 15,
-                          ),
-                    ),
-                  ),
-                ),
-              ),
               const SizedBox(
-                height: 10,
+                height: 30,
               ),
               Text(
-                'Popular Lawyer',
+                'All Lawyer',
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1
-                    ?.copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+                    ?.copyWith(fontWeight: FontWeight.bold),
               ),
               const SizedBox(
                 height: 15,

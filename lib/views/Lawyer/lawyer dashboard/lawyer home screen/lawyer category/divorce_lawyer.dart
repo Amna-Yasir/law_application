@@ -29,22 +29,6 @@ class _divorce_categoryState extends State<divorce_category> {
           padding: const EdgeInsets.symmetric(vertical: 30),
           child: Column(
             children: [
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: TextFormField(
-                    controller: serachfilter,
-                    onChanged: (value) {
-                      setState(() {});
-                    },
-                    decoration: const InputDecoration(
-                        hintText: 'Search',
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15)))),
-                  ),
-                ),
-              ),
               Expanded(
                 child: FirebaseAnimatedList(
                   query: ref,
@@ -64,7 +48,7 @@ class _divorce_categoryState extends State<divorce_category> {
                         return double.parse(randomNumber.toStringAsFixed(1));
                       }
 
-                      if (category == 'Divorce') {
+                      if (category == 'divorce') {
                         return categoryDetailwidget(
                           lawyeraddress: snapshot
                               .child('extrainfo')
@@ -73,8 +57,7 @@ class _divorce_categoryState extends State<divorce_category> {
                               .toString(),
                           LawyerName:
                               snapshot.child('username').value.toString(),
-                          imageurl:
-                              'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+                          imageurl: snapshot.child('profile').value.toString(),
                           ontap: () {
                             Navigator.push(
                                 context,

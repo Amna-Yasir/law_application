@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:law_application/res/colors.dart';
 import 'package:law_application/views/admin/All%20lawyers/lawyer_appointments.dart';
 import 'package:law_application/views/admin/All%20lawyers/lawyer_cases.dart';
+import 'package:law_application/views/admin/All%20lawyers/lawyer_documents.dart';
 import 'package:law_application/views/admin/All%20lawyers/lawyer_profile.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -16,6 +17,7 @@ class lawyerRecord extends StatefulWidget {
     required this.description,
     required this.category,
     required this.Userid,
+    required this.profilepicture,
     // required this.casenumber,
     // required this.casetitle,
     // required this.court,
@@ -27,6 +29,7 @@ class lawyerRecord extends StatefulWidget {
   });
 
   final String username;
+  final String profilepicture;
   final String email;
   final String phone;
   final String address;
@@ -58,53 +61,24 @@ class _lawyerRecordState extends State<lawyerRecord> {
             Center(
               child: Column(
                 children: [
-                  Stack(alignment: Alignment.bottomCenter, children: [
-                    Container(
-                      height: 140,
-                      width: 140,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border:
-                              Border.all(color: Color(0xffD0CDF3), width: 7)),
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child:
-                              // provider.image == null
-                              //  map['Profilepicture'].toString() == ''
-                              //     ? const Icon(Icons.person)
-                              //     :
-                              Image(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                'https://images.unsplash.com/photo-1597586124394-fbd6ef244026?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'),
-                            loadingBuilder: (context, child, loadingProgress) {
-                              if (loadingProgress == null) return child;
-                              return const Center(
-                                  child: CircularProgressIndicator());
-                            },
-                          )
-                          // : Image.file(
-                          //     File(provider.image!.path).absolute,
-                          //     fit: BoxFit.cover,
-                          //   ),
-                          ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        // provider
-                        //     .pickimage(context);
-                      },
-                      child: CircleAvatar(
-                        radius: 14,
-                        backgroundColor: AppColors.primaryColor,
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 18,
-                        ),
-                      ),
-                    )
-                  ]),
+                  Container(
+                    height: 140,
+                    width: 140,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Color(0xffD0CDF3), width: 7)),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(widget.profilepicture),
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return const Center(
+                                child: CircularProgressIndicator());
+                          },
+                        )),
+                  ),
                 ],
               ),
             ),
@@ -139,15 +113,6 @@ class _lawyerRecordState extends State<lawyerRecord> {
                     PersistentNavBarNavigator.pushNewScreen(context,
                         screen: admin_view_of_cases(
                           lawyerid: widget.Userid,
-                          // casenumber: widget.casenumber,
-                          // casetitle: widget.casetitle,
-                          // court: widget.court,
-                          // startingdate: widget.startingdate,
-                          // opname: widget.opname,
-                          // clientname: widget.clientname,
-                          // hearingstatus: widget.hearingstatus,
-                          // judgeremarks: widget.judgeremarks,
-                          // clientid: '',
                         ));
                   },
                   withArrow: true,
@@ -177,6 +142,13 @@ class _lawyerRecordState extends State<lawyerRecord> {
                 top: 6.0,
               ),
               child: SettingsContainer(
+                  onTap: () {
+                    PersistentNavBarNavigator.pushNewScreen(context,
+                        screen: lawyer_documents(
+                          userid: widget.Userid,
+                          lawyername: widget.username,
+                        ));
+                  },
                   withArrow: true,
                   child: Text(
                     'Documents Verfication',

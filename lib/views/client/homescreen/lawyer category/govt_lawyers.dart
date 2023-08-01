@@ -24,27 +24,15 @@ class _c_govt_categoryState extends State<c_govt_category> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Govt Lawyers'),
+          title: const Text('Law Firm'),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 30),
           child: Column(
             children: [
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: TextFormField(
-                    controller: serachfilter,
-                    onChanged: (value) {
-                      setState(() {});
-                    },
-                    decoration: const InputDecoration(
-                        hintText: 'Search',
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15)))),
-                  ),
-                ),
+              Text(
+                'Goverment Lawyers of Law Firm',
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
               Expanded(
                 child: FirebaseAnimatedList(
@@ -65,7 +53,7 @@ class _c_govt_categoryState extends State<c_govt_category> {
                         return double.parse(randomNumber.toStringAsFixed(1));
                       }
 
-                      if (category == 'Govt') {
+                      if (category == 'govt') {
                         return categoryDetailwidget(
                           lawyeraddress: snapshot
                               .child('extrainfo')
@@ -74,8 +62,7 @@ class _c_govt_categoryState extends State<c_govt_category> {
                               .toString(),
                           LawyerName:
                               snapshot.child('username').value.toString(),
-                          imageurl:
-                              'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+                          imageurl: snapshot.child('profile').value.toString(),
                           ontap: () {
                             Navigator.push(
                                 context,

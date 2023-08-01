@@ -4,17 +4,17 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 
-import '../categorydetailwidget.dart';
-import '../lawyer_detail.dart';
+import '../../lawyer dashboard/lawyer home screen/categorydetailwidget.dart';
+import '../../lawyer dashboard/lawyer home screen/lawyer_detail.dart';
 
-class govt_category extends StatefulWidget {
-  const govt_category({super.key});
+class tax_category extends StatefulWidget {
+  const tax_category({super.key});
 
   @override
-  State<govt_category> createState() => _govt_categoryState();
+  State<tax_category> createState() => _tax_categoryState();
 }
 
-class _govt_categoryState extends State<govt_category> {
+class _tax_categoryState extends State<tax_category> {
   final serachfilter = TextEditingController();
 
   @override
@@ -23,14 +23,31 @@ class _govt_categoryState extends State<govt_category> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Govt Lawyers'),
+          title: const Text('Tax Lawyers'),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 30),
           child: Column(
             children: [
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: TextFormField(
+                    controller: serachfilter,
+                    onChanged: (value) {
+                      setState(() {});
+                    },
+                    decoration: const InputDecoration(
+                        hintText: 'Search',
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10)))),
+                  ),
+                ),
+              ),
               Expanded(
                 child: FirebaseAnimatedList(
+                  defaultChild: Text('No Lawyer Found'),
                   query: ref,
                   itemBuilder: (BuildContext context, DataSnapshot snapshot,
                       Animation<double> animation, int index) {
@@ -48,7 +65,7 @@ class _govt_categoryState extends State<govt_category> {
                         return double.parse(randomNumber.toStringAsFixed(1));
                       }
 
-                      if (category == 'govt') {
+                      if (category == 'tax') {
                         return categoryDetailwidget(
                           lawyeraddress: snapshot
                               .child('extrainfo')
@@ -57,7 +74,8 @@ class _govt_categoryState extends State<govt_category> {
                               .toString(),
                           LawyerName:
                               snapshot.child('username').value.toString(),
-                          imageurl: snapshot.child('profile').value.toString(),
+                          imageurl:
+                              'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
                           ontap: () {
                             Navigator.push(
                                 context,

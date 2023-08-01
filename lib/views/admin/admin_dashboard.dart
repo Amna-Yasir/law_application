@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:law_application/views/admin/All%20client/allClient.dart';
 import 'package:law_application/views/admin/All%20lawyers/allLawyer.dart';
+import 'package:law_application/views/admin/complain.dart';
 import 'package:law_application/views/admin/profile%20module/admin_profile_screen.dart';
 
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -20,7 +21,7 @@ class _admin_dashboard_ViewState extends State<admin_dashboard_View> {
       appBar: AppBar(
         title: Text('Home'),
         leading: Icon(Icons.list),
-        actions: [Icon(Icons.person_3_rounded)],
+        actions: const [Icon(Icons.person_3_rounded)],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
@@ -47,7 +48,7 @@ class _admin_dashboard_ViewState extends State<admin_dashboard_View> {
                     height: 150,
                     width: 150,
                     decoration: BoxDecoration(
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               color: Colors.black,
                               blurRadius: 2,
@@ -87,7 +88,7 @@ class _admin_dashboard_ViewState extends State<admin_dashboard_View> {
                     height: 150,
                     width: 150,
                     decoration: BoxDecoration(
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               color: Colors.black,
                               blurRadius: 2,
@@ -135,7 +136,7 @@ class _admin_dashboard_ViewState extends State<admin_dashboard_View> {
                     height: 150,
                     width: 150,
                     decoration: BoxDecoration(
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                               color: Colors.black,
                               blurRadius: 2,
@@ -166,37 +167,43 @@ class _admin_dashboard_ViewState extends State<admin_dashboard_View> {
                     ),
                   ),
                 ),
-                Container(
-                  height: 150,
-                  width: 150,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black,
-                            blurRadius: 2,
-                            spreadRadius: 1,
-                            offset: Offset(0, 4))
-                      ],
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.primaryIconColor),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Column(
-                      children: [
-                        Icon(
-                          Icons.list_alt,
-                          color: Colors.white,
-                          size: 95,
-                        ),
-                        Text(
-                          'Cause list',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(color: AppColors.whiteColor),
-                        )
-                      ],
+                InkWell(
+                  onTap: () {
+                    PersistentNavBarNavigator.pushNewScreen(context,
+                        screen: complaint());
+                  },
+                  child: Container(
+                    height: 150,
+                    width: 150,
+                    decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.black,
+                              blurRadius: 2,
+                              spreadRadius: 1,
+                              offset: Offset(0, 4))
+                        ],
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(10),
+                        color: AppColors.primaryIconColor),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.list_alt,
+                            color: Colors.white,
+                            size: 95,
+                          ),
+                          Text(
+                            'Complaint',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge
+                                ?.copyWith(color: AppColors.whiteColor),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 )

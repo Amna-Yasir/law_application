@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../res/colors.dart';
+import '../../../../res/colors.dart';
 
 class C_CourtCasePage extends StatelessWidget {
   const C_CourtCasePage({

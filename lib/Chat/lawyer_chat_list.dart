@@ -12,8 +12,11 @@ class lawyer_chat_list extends StatefulWidget {
   State<lawyer_chat_list> createState() => _lawyer_chat_listState();
 }
 
+final serachfilter = TextEditingController();
+
 class _lawyer_chat_listState extends State<lawyer_chat_list> {
   DatabaseReference ref = FirebaseDatabase.instance.ref().child('User');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +35,10 @@ class _lawyer_chat_listState extends State<lawyer_chat_list> {
         child: Column(
           children: [
             TextField(
+              controller: serachfilter,
+              onChanged: (value) {
+                setState(() {});
+              },
               decoration: InputDecoration(
                 hintText: "Search...",
                 hintStyle: TextStyle(color: Colors.grey.shade600),
@@ -57,10 +64,9 @@ class _lawyer_chat_listState extends State<lawyer_chat_list> {
                 query: ref,
                 itemBuilder: (BuildContext context, DataSnapshot snapshot,
                     Animation<double> animation, int index) {
-                  if (SessionController().userid.toString() ==
-                      snapshot.value.toString()) {
-                    return Container();
-                  } else {
+                  final name =
+                      Text(snapshot.child('username').value.toString());
+                  if (serachfilter.text.isEmpty) {
                     return Column(
                       children: [
                         Container(
@@ -120,6 +126,71 @@ class _lawyer_chat_listState extends State<lawyer_chat_list> {
                         Divider()
                       ],
                     );
+                  } else if (name
+                      .toString()
+                      .toLowerCase()
+                      .contains(serachfilter.text.toLowerCase())) {
+                    return Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                          ),
+                          child: ListTile(
+                            onTap: () {
+                              PersistentNavBarNavigator.pushNewScreen(context,
+                                  screen: lawyerMessageScreen(
+                                    email: snapshot
+                                        .child('email')
+                                        .value
+                                        .toString(),
+                                    image: snapshot
+                                        .child('profile')
+                                        .value
+                                        .toString(),
+                                    name: snapshot
+                                        .child('username')
+                                        .value
+                                        .toString(),
+                                    recieverId:
+                                        snapshot.child('Uid').value.toString(),
+                                  ),
+                                  withNavBar: false);
+                            },
+                            leading: Container(
+                                height: 60,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: snapshot
+                                            .child('profile')
+                                            .value
+                                            .toString() ==
+                                        " "
+                                    ? Icon(Icons.percent_outlined)
+                                    : ClipRRect(
+                                        borderRadius: BorderRadius.circular(50),
+                                        child: Image(
+                                            fit: BoxFit.cover,
+                                            image: NetworkImage(snapshot
+                                                .child('profile')
+                                                .value
+                                                .toString())),
+                                      )),
+                            title: Text(
+                              snapshot.child('username').value.toString(),
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
+                            subtitle:
+                                Text(snapshot.child('email').value.toString()),
+                          ),
+                        ),
+                        Divider()
+                      ],
+                    );
+                  } else {
+                    return Container();
                   }
                 },
               ),

@@ -34,9 +34,9 @@ class Lawyerprofilelist extends StatelessWidget {
           }
 
           if (snapshot.exists) {
-            if (address == 'Gujrat') {
+            if (address == 'gujrat') {
               return Padding(
-                padding: const EdgeInsets.only(left: 8.0),
+                padding: const EdgeInsets.only(left: 2.0, right: 4),
                 child: profilecard(
                   LawyerName: snapshot.child('username').value.toString(),
                   lawyercategory: snapshot
@@ -87,7 +87,61 @@ class Lawyerprofilelist extends StatelessWidget {
                   imageurl: snapshot.child('profile').value.toString(),
                 ),
               );
-            }
+            } else
+              () {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: profilecard(
+                    LawyerName: snapshot.child('username').value.toString(),
+                    lawyercategory: snapshot
+                        .child('extrainfo')
+                        .child('category')
+                        .value
+                        .toString(),
+                    finalRating: generateRandomNumberString(),
+                    ontap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => lawyerdetail(
+                              lawyerName:
+                                  snapshot.child('username').value.toString(),
+                              address: snapshot
+                                  .child('extrainfo')
+                                  .child('address')
+                                  .value
+                                  .toString(),
+                              rating: generateRandomNumberString(),
+                              about: snapshot
+                                  .child('extrainfo')
+                                  .child('aboutyourself')
+                                  .value
+                                  .toString(),
+                              feeperhour: snapshot
+                                  .child('extrainfo')
+                                  .child('feeperhour')
+                                  .value
+                                  .toString(),
+                              phone: snapshot
+                                  .child('extrainfo')
+                                  .child('Phone')
+                                  .value
+                                  .toString(),
+                              currentlyWorking: snapshot
+                                  .child('extrainfo')
+                                  .child('practicing')
+                                  .value
+                                  .toString(),
+                              lawyerid: snapshot.child('Uid').value.toString(),
+                              imageUrl:
+                                  snapshot.child('profile').value.toString(),
+                            ),
+                          ));
+                    },
+                    imageurl: snapshot.child('profile').value.toString(),
+                  ),
+                );
+              };
           } else {
             return Text('No Lawyer Registered');
           }

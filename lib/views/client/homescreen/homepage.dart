@@ -3,8 +3,9 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:law_application/views/client/dashboard/case_managment.dart';
-import 'package:law_application/views/client/dashboard/clientappointment_screen.dart.dart';
+import 'package:law_application/views/client/Case%20Managment%20Module/case_managment.dart';
+import 'package:law_application/views/client/Appointment%20Module/clientappointment_screen.dart.dart';
+import 'package:law_application/views/client/complaint/complaint.dart';
 import 'package:law_application/views/client/homescreen/uploadcnic.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -104,11 +105,13 @@ class _homescreenState extends State<homescreen> {
                         children: <Widget>[
                           Divider(),
                           ListTile(
+                              onTap: () {
+                                Navigator.pop(context);
+                                PersistentNavBarNavigator.pushNewScreen(context,
+                                    screen: helpcenter(), withNavBar: false);
+                              },
                               leading: Icon(Icons.help),
                               title: Text('Help Center')),
-                          ListTile(
-                              leading: Icon(Icons.settings),
-                              title: Text('Settings'))
                         ],
                       ))),
             ],
@@ -135,31 +138,15 @@ class _homescreenState extends State<homescreen> {
                 height: 160,
                 child: CategoryList(),
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: GestureDetector(
-                  onTap: (() {}),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'View All',
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle1!
-                          .copyWith(fontSize: 15),
-                    ),
-                  ),
-                ),
-              ),
               SizedBox(
-                width: 10,
+                height: 30,
               ),
               Text(
                 'Lawyers Near me',
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1
-                    ?.copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+                    ?.copyWith(fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 15,
@@ -168,30 +155,15 @@ class _homescreenState extends State<homescreen> {
                 height: 170,
                 child: profilelist(),
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: GestureDetector(
-                  onTap: (() {}),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'View All',
-                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                            fontSize: 15,
-                          ),
-                    ),
-                  ),
-                ),
-              ),
               SizedBox(
-                height: 10,
+                height: 30,
               ),
               Text(
-                'Popular Lawyer',
+                'All Lawyer',
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1
-                    ?.copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+                    ?.copyWith(fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 15,

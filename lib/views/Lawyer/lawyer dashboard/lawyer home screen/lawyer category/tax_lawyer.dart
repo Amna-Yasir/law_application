@@ -29,22 +29,6 @@ class _tax_categoryState extends State<tax_category> {
           padding: const EdgeInsets.symmetric(vertical: 30),
           child: Column(
             children: [
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: TextFormField(
-                    controller: serachfilter,
-                    onChanged: (value) {
-                      setState(() {});
-                    },
-                    decoration: const InputDecoration(
-                        hintText: 'Search',
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10)))),
-                  ),
-                ),
-              ),
               Expanded(
                 child: FirebaseAnimatedList(
                   defaultChild: Text('No Lawyer Found'),
@@ -74,8 +58,7 @@ class _tax_categoryState extends State<tax_category> {
                               .toString(),
                           LawyerName:
                               snapshot.child('username').value.toString(),
-                          imageurl:
-                              'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+                          imageurl: snapshot.child('profile').value.toString(),
                           ontap: () {
                             Navigator.push(
                                 context,

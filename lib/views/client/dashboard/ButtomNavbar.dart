@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:law_application/Chat/user_chat_list.dart';
 
-import 'package:law_application/views/client/dashboard/profilescreen/profile_screen.dart';
+import 'package:law_application/views/client/Profile%20Module/profile_screen.dart';
 import 'package:law_application/views/client/homescreen/homepage.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 

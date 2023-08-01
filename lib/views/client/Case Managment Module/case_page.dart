@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:law_application/res/components/roundbutton.dart';
 import 'package:law_application/utils/utils.dart';
 
-import '../../../services/session_manager.dart';
+import '../../services/session_manager.dart';
 
 // ignore: must_be_immutable
 class C_casedescriptionpage extends StatefulWidget {

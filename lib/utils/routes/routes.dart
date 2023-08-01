@@ -8,14 +8,14 @@ import 'package:law_application/views/admin/admin%20login/admin_login_screen.dar
 import 'package:law_application/views/admin/admin%20signup/admin_signup_screen.dart';
 import 'package:law_application/views/admin/admin_dashboard.dart';
 import 'package:law_application/views/admin/profile%20module/admin_other_information.dart';
-import 'package:law_application/views/client/dashboard/case_managment.dart';
-import 'package:law_application/views/client/dashboard/dashboardview.dart';
-import 'package:law_application/views/client/dashboard/profilescreen/basic_information.dart';
 import 'package:law_application/views/client/login/Auth/loginwithPhone.dart';
 import 'package:law_application/views/splashscreen/clientSplashScreen.dart';
 import 'package:law_application/views/user_manage.dart';
 
 import '../../views/Lawyer/lawyer Login/lawyerlogin_screen.dart';
+import '../../views/client/Case Managment Module/case_managment.dart';
+import '../../views/client/Profile Module/basic_information.dart';
+import '../../views/client/dashboard/ButtomNavbar.dart';
 import '../../views/client/forgot password/forgot_screen.dart';
 import '../../views/client/login/login_screen.dart';
 import '../../views/client/signup/signup_screen.dart';

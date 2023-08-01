@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:law_application/res/colors.dart';
-import 'package:law_application/views/client/homescreen/case%20managment%20module/case_page.dart';
+import 'package:law_application/views/client/Case%20Managment%20Module/case_page.dart';
 import 'package:law_application/views/services/session_manager.dart';
 
-import '../../Lawyer/lawyer dashboard/lawyer appointment secreens/booking_screen.dart';
+import '../Appointment Module/booking_screen.dart';
 
 class client_lawyer_detail extends StatelessWidget {
   client_lawyer_detail({
@@ -173,27 +173,6 @@ class client_lawyer_detail extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                      width: 80,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                color: AppColors.primaryColor.withOpacity(0.2),
-                                blurRadius: 2,
-                                spreadRadius: 1,
-                                offset: Offset(0, 4))
-                          ],
-                          color: AppColors.primaryColor.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(15)),
-                      //
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.chat_bubble_rounded,
-                            color: AppColors.primaryColor,
-                          )),
-                    ),
                     Container(
                       width: 80,
                       height: 50,

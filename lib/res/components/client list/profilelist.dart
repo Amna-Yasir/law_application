@@ -34,9 +34,9 @@ class profilelist extends StatelessWidget {
           }
 
           if (snapshot.exists) {
-            if (address == 'Gujrat') {
+            if (address == 'gujrat') {
               return Padding(
-                padding: const EdgeInsets.only(left: 8.0),
+                padding: const EdgeInsets.only(left: 2.0, right: 4),
                 child: profilecard(
                   LawyerName: snapshot.child('username').value.toString(),
                   lawyercategory: snapshot

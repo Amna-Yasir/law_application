@@ -74,6 +74,8 @@ class _All_lawyerState extends State<All_lawyer> {
                                     .value
                                     .toString(),
                                 Userid: snapshot.child('Uid').value.toString(),
+                                profilepicture:
+                                    snapshot.child('profile').value.toString(),
                               ));
                         },
                         leading: Container(
@@ -84,18 +86,18 @@ class _All_lawyerState extends State<All_lawyer> {
                                 border: Border.all(
                                   color: AppColors.primarybuttonColor,
                                 )),
-                            child: snapshot.child('profile').value.toString() ==
-                                    " "
-                                ? Icon(Icons.percent_outlined)
-                                : ClipRRect(
-                                    borderRadius: BorderRadius.circular(60),
-                                    child: Image(
-                                        fit: BoxFit.cover,
-                                        image: NetworkImage(snapshot
-                                            .child('profile')
-                                            .value
-                                            .toString())),
-                                  )),
+                            child:
+                                snapshot.child('profile').value.toString() == ""
+                                    ? Icon(Icons.person)
+                                    : ClipRRect(
+                                        borderRadius: BorderRadius.circular(60),
+                                        child: Image(
+                                            fit: BoxFit.cover,
+                                            image: NetworkImage(snapshot
+                                                .child('profile')
+                                                .value
+                                                .toString())),
+                                      )),
                         title: Text(
                           snapshot.child('username').value.toString(),
                           style: TextStyle(fontSize: 20),

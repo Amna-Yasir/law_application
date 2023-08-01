@@ -39,7 +39,11 @@ class popularlawyerlist extends StatelessWidget {
             LawyerName: snapshot.child('username').value.toString(),
             location:
                 snapshot.child('extrainfo').child('address').value.toString(),
-            experience: '14 years Experience',
+            experience: snapshot
+                .child('extrainfo')
+                .child('practicing')
+                .value
+                .toString(),
             ontap: () {
               Navigator.push(
                   context,

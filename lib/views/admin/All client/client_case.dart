@@ -10,12 +10,12 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:law_application/res/colors.dart';
 import 'package:law_application/res/components/roundbutton.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20appointment%20secreens/booking_screen.dart';
+import 'package:law_application/views/client/Appointment%20Module/booking_screen.dart';
 import 'package:law_application/views/Lawyer/lawyer%20dashboard/case%20managment%20module/lawyer_case_detail.dart';
 
 import 'package:law_application/views/services/session_manager.dart';
 
-import '../../client/homescreen/case managment module/case_detail.dart';
+import '../../client/Case Managment Module/case_detail.dart';
 
 class admin_view_client_cases extends StatefulWidget {
   const admin_view_client_cases({super.key, this.clientid, this.clientname});
