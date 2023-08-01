@@ -77,61 +77,50 @@ class _loginscreenState extends State<loginscreen> {
                         child: Padding(
                           padding: EdgeInsets.only(
                               top: height * .06, bottom: height * 0.01),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.2),
-                                      blurRadius: 5.0,
-                                      spreadRadius: 1.1)
-                                ],
-                                borderRadius: BorderRadius.circular(15)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Email',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 18,
-                                        color: Colors.grey),
-                                  ),
-                                  Inputextfield(
-                                      mycontoller: emailcontroller,
-                                      focusnode: emailfocusnode,
-                                      onFilledSubmittedvalue: (value) {},
-                                      onValidator: (value) {
-                                        return value.isEmpty
-                                            ? 'Enter Email'
-                                            : null;
-                                      },
-                                      keyboardtype: TextInputType.emailAddress,
-                                      hint: 'Email',
-                                      obsecuretext: false),
-                                  Text(
-                                    'Password',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 18,
-                                        color: Colors.grey),
-                                  ),
-                                  Inputextfield(
-                                      mycontoller: passwordcontroller,
-                                      focusnode: passwordfocusnode,
-                                      onFilledSubmittedvalue: (value) {},
-                                      onValidator: (value) {
-                                        return value.isEmpty
-                                            ? 'Enter Password'
-                                            : null;
-                                      },
-                                      keyboardtype: TextInputType.emailAddress,
-                                      hint: 'Password',
-                                      obsecuretext: false),
-                                ],
-                              ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Email',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18,
+                                      color: Colors.grey),
+                                ),
+                                Inputextfield(
+                                    mycontoller: emailcontroller,
+                                    focusnode: emailfocusnode,
+                                    onFilledSubmittedvalue: (value) {},
+                                    onValidator: (value) {
+                                      return value.isEmpty
+                                          ? 'Enter Email'
+                                          : null;
+                                    },
+                                    keyboardtype: TextInputType.emailAddress,
+                                    hint: 'Email',
+                                    obsecuretext: false),
+                                Text(
+                                  'Password',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18,
+                                      color: Colors.grey),
+                                ),
+                                Inputextfield(
+                                    mycontoller: passwordcontroller,
+                                    focusnode: passwordfocusnode,
+                                    onFilledSubmittedvalue: (value) {},
+                                    onValidator: (value) {
+                                      return value.isEmpty
+                                          ? 'Enter Password'
+                                          : null;
+                                    },
+                                    keyboardtype: TextInputType.emailAddress,
+                                    hint: 'Password',
+                                    obsecuretext: false),
+                              ],
                             ),
                           ),
                         )),
