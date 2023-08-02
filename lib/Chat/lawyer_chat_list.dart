@@ -81,7 +81,7 @@ class _lawyer_chat_listState extends State<lawyer_chat_list> {
                                         .value
                                         .toString(),
                                     image: snapshot
-                                        .child('profile')
+                                        .child('Profilepicture')
                                         .value
                                         .toString(),
                                     name: snapshot
@@ -100,7 +100,7 @@ class _lawyer_chat_listState extends State<lawyer_chat_list> {
                                   shape: BoxShape.circle,
                                 ),
                                 child: snapshot
-                                            .child('profile')
+                                            .child('Profilepicture')
                                             .value
                                             .toString() ==
                                         " "
@@ -110,7 +110,7 @@ class _lawyer_chat_listState extends State<lawyer_chat_list> {
                                         child: Image(
                                             fit: BoxFit.cover,
                                             image: NetworkImage(snapshot
-                                                .child('profile')
+                                                .child('Profilepicture')
                                                 .value
                                                 .toString())),
                                       )),

@@ -216,7 +216,7 @@ class _admin_dashboard_ViewState extends State<admin_dashboard_View> {
                               screen: complaint());
                         },
                         child: Container(
-                          height: 150,
+                          height: 140,
                           width: 150,
                           decoration: BoxDecoration(
                               boxShadow: const [
