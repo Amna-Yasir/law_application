@@ -9,7 +9,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:law_application/utils/routes/routesname.dart';
-import 'package:law_application/views/client/Profile%20Module/profile_screen_controller.dart';
+import 'package:law_application/views/admin/profile%20module/admin_profile_controller.dart';
 
 import 'package:law_application/views/services/session_manager.dart';
 import 'package:provider/provider.dart';
@@ -55,8 +55,8 @@ class _admin_profilescreenState extends State<admin_profilescreen> {
         ],
       ),
       body: ChangeNotifierProvider(
-          create: (_) => clientprofilecontroller(),
-          child: Consumer<clientprofilecontroller>(
+          create: (_) => adminprofilecontroller(),
+          child: Consumer<adminprofilecontroller>(
             builder: (context, provider, child) {
               return SingleChildScrollView(
                 child: Column(

@@ -1,8 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:law_application/Chat/lawyer_message_screen.dart';
-import 'package:law_application/views/services/session_manager.dart';
+import 'package:law_application/Chat/message_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class lawyer_chat_list extends StatefulWidget {
@@ -76,7 +75,7 @@ class _lawyer_chat_listState extends State<lawyer_chat_list> {
                           child: ListTile(
                             onTap: () {
                               PersistentNavBarNavigator.pushNewScreen(context,
-                                  screen: lawyerMessageScreen(
+                                  screen: MessageScreen(
                                     email: snapshot
                                         .child('email')
                                         .value
@@ -139,7 +138,7 @@ class _lawyer_chat_listState extends State<lawyer_chat_list> {
                           child: ListTile(
                             onTap: () {
                               PersistentNavBarNavigator.pushNewScreen(context,
-                                  screen: lawyerMessageScreen(
+                                  screen: MessageScreen(
                                     email: snapshot
                                         .child('email')
                                         .value

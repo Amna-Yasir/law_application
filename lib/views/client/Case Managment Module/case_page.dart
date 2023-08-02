@@ -81,15 +81,6 @@ class _C_casedescriptionpageState extends State<C_casedescriptionpage> {
                     border: OutlineInputBorder(),
                   ),
                 )),
-            Text(
-              'Upload Your Documents',
-              style: TextStyle(fontSize: 18),
-            ),
-            ListTile(
-              leading: Icon(Icons.add_card),
-              title: Text('Add CNIC'),
-              trailing: IconButton(onPressed: () {}, icon: Icon(Icons.add)),
-            ),
             SizedBox(height: 24),
             roundButton(
               onpress: () {

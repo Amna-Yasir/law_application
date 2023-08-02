@@ -3,7 +3,6 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:law_application/Chat/message_screen.dart';
 import 'package:law_application/res/colors.dart';
-import 'package:law_application/views/services/session_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class chatlist extends StatefulWidget {

@@ -35,6 +35,7 @@ class lawyerloginController with ChangeNotifier {
           .then((value) async {
         SessionController().userid = value.user!.uid.toString();
         // Inside the _login method after successful authentication
+
         Navigator.pushNamed(context, RouteName.lawyerdashboardView);
       }).onError((error, stackTrace) {
         print(error);

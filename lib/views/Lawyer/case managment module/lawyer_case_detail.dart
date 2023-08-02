@@ -2,8 +2,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:law_application/utils/utils.dart';
 
-import '../../../../res/colors.dart';
-import '../../../services/session_manager.dart';
+import '../../../res/colors.dart';
+import '../../services/session_manager.dart';
 
 class CourtCasePage extends StatefulWidget {
   CourtCasePage(

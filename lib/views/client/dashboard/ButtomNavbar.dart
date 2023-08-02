@@ -40,7 +40,7 @@ class _dashboardViewState extends State<dashboardView> {
         icon: Icon(
           Icons.message,
         ),
-        activeColorPrimary: AppColors.primaryColor,
+        activeColorPrimary: Colors.blue,
         inactiveIcon: Icon(
           Icons.message,
           color: Colors.grey,
@@ -50,7 +50,7 @@ class _dashboardViewState extends State<dashboardView> {
         icon: Icon(
           Icons.person,
         ),
-        activeColorPrimary: AppColors.primaryColor,
+        activeColorPrimary: Colors.green,
         inactiveIcon: Icon(
           Icons.person,
           color: Colors.grey,
@@ -72,7 +72,7 @@ class _dashboardViewState extends State<dashboardView> {
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(0),
       ),
-      navBarStyle: NavBarStyle.style8,
+      navBarStyle: NavBarStyle.style12,
       popAllScreensOnTapAnyTabs: false,
     );
   }

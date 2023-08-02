@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:law_application/res/colors.dart';
 import 'package:law_application/views/client/Case%20Managment%20Module/case_page.dart';
 import 'package:law_application/views/services/session_manager.dart';
@@ -19,10 +18,11 @@ class client_lawyer_detail extends StatelessWidget {
     required this.currentlyWorking,
     required this.lawyerid,
     required this.imageUrl,
+    required this.description,
   });
 
   final String lawyerName;
-
+  final String description;
   final String address;
   final double rating;
   final String about;
@@ -68,7 +68,7 @@ class client_lawyer_detail extends StatelessWidget {
                               image: NetworkImage(imageUrl))),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 30),
+                      padding: const EdgeInsets.only(left: 60),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -94,74 +94,12 @@ class client_lawyer_detail extends StatelessWidget {
                               SizedBox(
                                 width: 10,
                               ),
-                              RatingBarIndicator(
-                                rating: rating,
-                                itemSize: 10,
-                                itemBuilder: (context, index) {
-                                  return Icon(
-                                    Icons.star,
-                                    color: Colors.yellow,
-                                  );
-                                },
-                              ),
-                              Text(
-                                rating.toString(),
-                                style: TextStyle(fontSize: 12),
-                              ),
                             ],
                           ),
                           SizedBox(
                             height: 10,
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Row(
-                              children: [
-                                Column(
-                                  children: [
-                                    Text(
-                                      '70',
-                                      style: TextStyle(fontSize: 12),
-                                    ),
-                                    Text(
-                                      'Cases',
-                                      style: TextStyle(fontSize: 10),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  width: 18,
-                                ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      '60',
-                                      style: TextStyle(fontSize: 12),
-                                    ),
-                                    Text(
-                                      'Clients',
-                                      style: TextStyle(fontSize: 10),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  width: 18,
-                                ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      '300',
-                                      style: TextStyle(fontSize: 12),
-                                    ),
-                                    Text(
-                                      'Followers',
-                                      style: TextStyle(fontSize: 10),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
+                          Text(description),
                         ],
                       ),
                     ),

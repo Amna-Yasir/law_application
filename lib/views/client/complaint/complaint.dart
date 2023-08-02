@@ -14,8 +14,6 @@ class helpcenter extends StatefulWidget {
 }
 
 class _helpcenterState extends State<helpcenter> {
-  final _formKey = GlobalKey<FormState>();
-
   FirebaseAuth auth = FirebaseAuth.instance;
   DatabaseReference ref = FirebaseDatabase.instance.ref().child('complaints');
   TextEditingController complainController = TextEditingController();

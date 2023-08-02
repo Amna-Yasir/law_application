@@ -4,7 +4,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:law_application/res/colors.dart';
 
-import '../../../services/session_manager.dart';
+import '../../services/session_manager.dart';
 
 class lawyer_appointment_screen extends StatefulWidget {
   const lawyer_appointment_screen({super.key});

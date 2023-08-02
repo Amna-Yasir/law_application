@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../colors.dart';
 
-class LawyerFullProfileCard extends StatelessWidget {
-  const LawyerFullProfileCard({
+class FullProfileCard extends StatelessWidget {
+  const FullProfileCard({
     super.key,
     required this.workinghour,
     required this.imageUrl,
@@ -87,15 +86,6 @@ class LawyerFullProfileCard extends StatelessWidget {
                   SizedBox(
                     height: 5,
                   ),
-                  RatingBarIndicator(
-                      rating: 5,
-                      itemSize: 11,
-                      itemBuilder: (context, index) {
-                        return Icon(
-                          Icons.star,
-                          color: Colors.yellow,
-                        );
-                      }),
                   Row(
                     children: [
                       Icon(

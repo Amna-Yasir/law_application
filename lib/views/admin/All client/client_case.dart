@@ -11,7 +11,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:law_application/res/colors.dart';
 import 'package:law_application/res/components/roundbutton.dart';
 import 'package:law_application/views/client/Appointment%20Module/booking_screen.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/case%20managment%20module/lawyer_case_detail.dart';
+import 'package:law_application/views/Lawyer/case%20managment%20module/lawyer_case_detail.dart';
 
 import 'package:law_application/views/services/session_manager.dart';
 

@@ -1,7 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:law_application/views/client/homescreen/uploadcnicController.dart';
-import 'package:law_application/views/services/session_manager.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../res/colors.dart';
@@ -71,7 +70,7 @@ class _lawyer_documentsState extends State<lawyer_documents> {
                                         child: map['cnic'].toString() == ""
                                             ? const Icon(Icons.person)
                                             : Image(
-                                                fit: BoxFit.cover,
+                                                fit: BoxFit.contain,
                                                 image: NetworkImage(
                                                     map['cnic'].toString()),
                                                 loadingBuilder: (context, child,

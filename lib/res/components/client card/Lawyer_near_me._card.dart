@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../colors.dart';
 
@@ -64,7 +63,7 @@ class profilecard extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      lawyercategory,
+                      lawyercategory + ' lawyer',
                       style: Theme.of(context)
                           .textTheme
                           .bodyMedium
@@ -73,24 +72,6 @@ class profilecard extends StatelessWidget {
                     SizedBox(
                       width: 10,
                     ),
-                    Column(
-                      children: [
-                        Text(
-                          finalRating.toString(),
-                          style: TextStyle(fontSize: 10),
-                        ),
-                        RatingBarIndicator(
-                          rating: finalRating,
-                          itemSize: 10,
-                          itemBuilder: (context, index) {
-                            return Icon(
-                              Icons.star,
-                              color: Colors.yellow,
-                            );
-                          },
-                        ),
-                      ],
-                    )
                   ],
                 ),
               ],

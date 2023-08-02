@@ -8,7 +8,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:law_application/views/client/homescreen/lawyer_detail.dart';
 
-import '../client card/profilecard.dart';
+import '../client card/Lawyer_near_me._card.dart';
 
 class profilelist extends StatelessWidget {
   const profilelist({
@@ -81,6 +81,11 @@ class profilelist extends StatelessWidget {
                             lawyerid: snapshot.child('Uid').value.toString(),
                             imageUrl:
                                 snapshot.child('profile').value.toString(),
+                            description: snapshot
+                                .child('extrainfo')
+                                .child('aboutyourself')
+                                .value
+                                .toString(),
                           ),
                         ));
                   },

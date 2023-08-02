@@ -46,6 +46,27 @@ class _All_lawyerState extends State<All_lawyer> {
                     return listContainer(
                       withArrow: true,
                       child: ListTile(
+                        trailing: PopupMenuButton(
+                            itemBuilder: (context) => [
+                                  PopupMenuItem(
+                                      value: 1,
+                                      child: ListTile(
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                          ref
+                                              .child(
+                                                snapshot
+                                                    .child('Uid')
+                                                    .value
+                                                    .toString(),
+                                              )
+                                              .remove();
+                                        },
+                                        leading:
+                                            Icon(Icons.delete_outline_rounded),
+                                        title: Text('Delete'),
+                                      ))
+                                ]),
                         onTap: () {
                           PersistentNavBarNavigator.pushNewScreen(context,
                               screen: lawyerRecord(

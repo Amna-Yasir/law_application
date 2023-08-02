@@ -4,7 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 
-import '../../../Lawyer/lawyer dashboard/lawyer home screen/categorydetailwidget.dart';
+import 'categorydetailwidget.dart';
 
 import '../lawyer_detail.dart';
 
@@ -104,6 +104,11 @@ class _c_govt_categoryState extends State<c_govt_category> {
                                               .toString(),
                                           imageUrl: snapshot
                                               .child('profile')
+                                              .value
+                                              .toString(),
+                                          description: snapshot
+                                              .child('extrainfo')
+                                              .child('aboutyourself')
                                               .value
                                               .toString(),
                                         )));

@@ -5,7 +5,6 @@ import 'package:law_application/views/admin/All%20client/clientrecord.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../../res/colors.dart';
-import '../../services/session_manager.dart';
 
 class clientlist extends StatefulWidget {
   const clientlist({super.key});
@@ -38,13 +37,33 @@ class _clientlistState extends State<clientlist> {
                 query: ref,
                 itemBuilder: (BuildContext context, snapshot,
                     Animation<double> animation, int index) {
-                  if (SessionController().userid.toString() ==
-                      snapshot.value.toString()) {
-                    return Container();
+                  if (!snapshot.exists) {
+                    return CircularProgressIndicator();
                   } else {
                     return listContainer(
                       withArrow: true,
                       child: ListTile(
+                        trailing: PopupMenuButton(
+                            itemBuilder: (context) => [
+                                  PopupMenuItem(
+                                      value: 1,
+                                      child: ListTile(
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                          ref
+                                              .child(
+                                                snapshot
+                                                    .child('Uid')
+                                                    .value
+                                                    .toString(),
+                                              )
+                                              .remove();
+                                        },
+                                        leading:
+                                            Icon(Icons.delete_outline_rounded),
+                                        title: Text('Delete'),
+                                      ))
+                                ]),
                         onTap: () {
                           PersistentNavBarNavigator.pushNewScreen(context,
                               screen: clientRecord(

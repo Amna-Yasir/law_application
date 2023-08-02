@@ -36,7 +36,7 @@ class _lawyerdashboardViewState extends State<lawyerdashboardView> {
         icon: Icon(
           Icons.message,
         ),
-        activeColorPrimary: AppColors.primaryColor,
+        activeColorPrimary: Colors.green,
         inactiveIcon: Icon(
           Icons.message,
           color: Colors.grey,
@@ -46,7 +46,7 @@ class _lawyerdashboardViewState extends State<lawyerdashboardView> {
         icon: Icon(
           Icons.person,
         ),
-        activeColorPrimary: AppColors.primaryColor,
+        activeColorPrimary: Colors.blue,
         inactiveIcon: Icon(
           Icons.person,
           color: Colors.grey,
@@ -67,7 +67,7 @@ class _lawyerdashboardViewState extends State<lawyerdashboardView> {
       decoration: NavBarDecoration(
           borderRadius: BorderRadius.circular(0),
           colorBehindNavBar: Colors.red),
-      navBarStyle: NavBarStyle.style11,
+      navBarStyle: NavBarStyle.style12,
       popAllScreensOnTapAnyTabs: false,
     );
   }

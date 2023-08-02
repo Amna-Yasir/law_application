@@ -5,7 +5,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:law_application/views/client/homescreen/lawyer_detail.dart';
 
-import '../../../Lawyer/lawyer dashboard/lawyer home screen/categorydetailwidget.dart';
+import 'categorydetailwidget.dart';
 
 class c_tax_category extends StatefulWidget {
   const c_tax_category({super.key});
@@ -104,6 +104,11 @@ class _c_tax_categoryState extends State<c_tax_category> {
                                               .toString(),
                                           imageUrl: snapshot
                                               .child('profile')
+                                              .value
+                                              .toString(),
+                                          description: snapshot
+                                              .child('extrainfo')
+                                              .child('aboutyourself')
                                               .value
                                               .toString(),
                                         )));

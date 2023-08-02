@@ -10,8 +10,8 @@ import 'package:law_application/views/client/homescreen/uploadcnic.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../../res/components/client list/categoryList.dart';
-import '../../../res/components/client list/populartlawyerlist.dart';
-import '../../../res/components/client list/profilelist.dart';
+import '../../../res/components/client list/All_lawyer_list.dart';
+import '../../../res/components/client list/lawyer_near_me_list.dart';
 
 class homescreen extends StatefulWidget {
   const homescreen({super.key});
@@ -34,88 +34,84 @@ class _homescreenState extends State<homescreen> {
         ),
       ),
       drawer: Drawer(
-        child: Container(
-          decoration: BoxDecoration(),
-          child: Column(
-            children: <Widget>[
-              DrawerHeader(
-                  child:
-                      Image(image: AssetImage('assets/images/Fav icon.png'))),
-              Expanded(
-                child: Column(children: <Widget>[
-                  Divider(
-                    thickness: 3,
+        child: Column(
+          children: <Widget>[
+            DrawerHeader(
+                child: Image(image: AssetImage('assets/images/Fav icon.png'))),
+            Expanded(
+              child: Column(children: <Widget>[
+                Divider(
+                  thickness: 3,
+                ),
+                ListTile(
+                  title: Text(
+                    'Upload Documents',
+                    style: TextStyle(fontSize: 18.0, color: Colors.black),
                   ),
-                  ListTile(
-                    title: Text(
-                      'Upload Documents',
-                      style: TextStyle(fontSize: 18.0, color: Colors.black),
-                    ),
-                    leading: Icon(
-                      Icons.edit_document,
-                      size: 20.0,
-                      color: Colors.black,
-                    ),
-                    onTap: () {
-                      Navigator.pop(context);
-                      PersistentNavBarNavigator.pushNewScreen(context,
-                          screen: Client_Cnic(), withNavBar: false);
-                    },
+                  leading: Icon(
+                    Icons.edit_document,
+                    size: 20.0,
+                    color: Colors.black,
                   ),
-                  ListTile(
-                    title: Text(
-                      'Appointments',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                      ),
+                  onTap: () {
+                    Navigator.pop(context);
+                    PersistentNavBarNavigator.pushNewScreen(context,
+                        screen: Client_Cnic(), withNavBar: false);
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    'Appointments',
+                    style: TextStyle(
+                      fontSize: 18.0,
                     ),
-                    leading: Icon(
-                      Icons.calendar_month,
-                      size: 20.0,
-                      color: Colors.black,
-                    ),
-                    onTap: () {
-                      Navigator.pop(context);
-                      PersistentNavBarNavigator.pushNewScreen(context,
-                          screen: clientappointmentscreen(), withNavBar: false);
-                    },
                   ),
-                  ListTile(
-                    title: Text(
-                      'Cases',
-                      style: TextStyle(fontSize: 18.0, color: Colors.black),
-                    ),
-                    leading: Icon(
-                      Icons.library_books,
-                      size: 20.0,
-                      color: Colors.black,
-                    ),
-                    onTap: () {
-                      Navigator.pop(context);
-                      PersistentNavBarNavigator.pushNewScreen(context,
-                          screen: casemanagement(), withNavBar: false);
-                    },
+                  leading: Icon(
+                    Icons.calendar_month,
+                    size: 20.0,
+                    color: Colors.black,
                   ),
-                ]),
-              ),
-              Container(
-                  child: Align(
-                      alignment: FractionalOffset.bottomCenter,
-                      child: Column(
-                        children: <Widget>[
-                          Divider(),
-                          ListTile(
-                              onTap: () {
-                                Navigator.pop(context);
-                                PersistentNavBarNavigator.pushNewScreen(context,
-                                    screen: helpcenter(), withNavBar: false);
-                              },
-                              leading: Icon(Icons.help),
-                              title: Text('Help Center')),
-                        ],
-                      ))),
-            ],
-          ),
+                  onTap: () {
+                    Navigator.pop(context);
+                    PersistentNavBarNavigator.pushNewScreen(context,
+                        screen: clientappointmentscreen(), withNavBar: false);
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    'Cases',
+                    style: TextStyle(fontSize: 18.0, color: Colors.black),
+                  ),
+                  leading: Icon(
+                    Icons.library_books,
+                    size: 20.0,
+                    color: Colors.black,
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                    PersistentNavBarNavigator.pushNewScreen(context,
+                        screen: casemanagement(), withNavBar: false);
+                  },
+                ),
+              ]),
+            ),
+            Container(
+                child: Align(
+                    alignment: FractionalOffset.bottomCenter,
+                    child: Column(
+                      children: <Widget>[
+                        Divider(),
+                        ListTile(
+                            onTap: () {
+                              Navigator.pop(context);
+                              PersistentNavBarNavigator.pushNewScreen(context,
+                                  screen: helpcenter(), withNavBar: false);
+                            },
+                            leading: Icon(Icons.help),
+                            title: Text('Help Center')),
+                      ],
+                    ))),
+          ],
         ),
       ),
       body: SafeArea(

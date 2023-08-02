@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:law_application/res/colors.dart';
 import 'package:law_application/views/Lawyer/lawyer%20Login/lawyerlogin_controller.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 import '../../../res/components/roundbutton.dart';
@@ -20,7 +19,6 @@ class _lawyerloginscreenState extends State<lawyerloginscreen> {
 
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
-  final otpcontroller = TextEditingController();
 
   final emailfocusnode = FocusNode();
   final passwordfocusnode = FocusNode();

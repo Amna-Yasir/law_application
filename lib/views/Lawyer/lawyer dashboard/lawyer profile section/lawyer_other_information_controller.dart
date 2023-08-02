@@ -63,7 +63,7 @@ class licenseController with ChangeNotifier {
                 ),
                 ListTile(
                   onTap: () {
-                    pickgallerycnic(context);
+                    pickgalleryimage(context);
                     Navigator.pop(context);
                   },
                   leading: Icon(

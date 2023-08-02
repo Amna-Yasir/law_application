@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:law_application/res/colors.dart';
 
 class categoryDetailwidget extends StatelessWidget {
@@ -68,13 +67,13 @@ class categoryDetailwidget extends StatelessWidget {
                       children: [
                         Text(
                           LawyerName,
-                          style: Theme.of(context).textTheme.bodyLarge,
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                         Row(
                           children: [
                             Icon(
                               Icons.location_on,
-                              size: 12,
+                              size: 20,
                               color: Colors.purple,
                             ),
                             Text(
@@ -82,54 +81,12 @@ class categoryDetailwidget extends StatelessWidget {
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium
-                                  ?.copyWith(color: Colors.grey, fontSize: 12),
+                                  ?.copyWith(color: Colors.grey, fontSize: 18),
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            Column(
-                              children: [
-                                Text(
-                                  '70',
-                                  style: TextStyle(fontSize: 12),
-                                ),
-                                Text(
-                                  'Cases',
-                                  style: TextStyle(fontSize: 10),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 18,
-                            ),
-                            Column(
-                              children: [
-                                Text(
-                                  '60',
-                                  style: TextStyle(fontSize: 12),
-                                ),
-                                Text(
-                                  'Clients',
-                                  style: TextStyle(fontSize: 10),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 18,
-                            ),
-                            Column(
-                              children: [
-                                Text(
-                                  '300',
-                                  style: TextStyle(fontSize: 12),
-                                ),
-                                Text(
-                                  'Followers',
-                                  style: TextStyle(fontSize: 10),
-                                ),
-                              ],
-                            ),
                             VerticalDivider(
                               thickness: 1,
                               width: 20,
@@ -151,44 +108,6 @@ class categoryDetailwidget extends StatelessWidget {
                         ),
                         SizedBox(
                           height: 5,
-                        ),
-                        Row(
-                          children: [
-                            RatingBarIndicator(
-                              rating: 5,
-                              itemSize: 10,
-                              itemBuilder: (context, index) {
-                                return Icon(
-                                  Icons.star,
-                                  color: Colors.yellow,
-                                );
-                              },
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              '5',
-                              style: TextStyle(fontSize: 10),
-                            ),
-                            SizedBox(
-                              width: 25,
-                            ),
-                            Container(
-                              width: 40,
-                              height: 15,
-                              color: AppColors.primaryColor,
-                              child: Padding(
-                                padding: const EdgeInsets.all(1.0),
-                                child: Text(
-                                  'Book Now ',
-                                  style: TextStyle(
-                                      fontSize: 8, color: AppColors.whiteColor),
-                                ),
-                              ),
-                            ),
-                            //
-                          ],
                         ),
                       ],
                     ),

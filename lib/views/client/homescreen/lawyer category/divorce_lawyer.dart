@@ -5,7 +5,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:law_application/views/client/homescreen/lawyer_detail.dart';
 
-import '../../../Lawyer/lawyer dashboard/lawyer home screen/categorydetailwidget.dart';
+import 'categorydetailwidget.dart';
 
 class C_divorce_category extends StatefulWidget {
   const C_divorce_category({super.key});
@@ -103,6 +103,11 @@ class _C_divorce_categoryState extends State<C_divorce_category> {
                                               .toString(),
                                           imageUrl: snapshot
                                               .child('profile')
+                                              .value
+                                              .toString(),
+                                          description: snapshot
+                                              .child('extrainfo')
+                                              .child('aboutyourself')
                                               .value
                                               .toString(),
                                         )));

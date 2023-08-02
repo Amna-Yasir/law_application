@@ -71,7 +71,7 @@ class _Client_CnicState extends State<Client_Cnic> {
                                         child: map['cnic'].toString() == ''
                                             ? const Icon(Icons.person)
                                             : Image(
-                                                fit: BoxFit.cover,
+                                                fit: BoxFit.contain,
                                                 image: NetworkImage(
                                                     map['cnic'].toString()),
                                                 loadingBuilder: (context, child,

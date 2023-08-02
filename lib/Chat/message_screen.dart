@@ -49,13 +49,15 @@ class _MessageScreenState extends State<MessageScreen> {
                                     SessionController().userid.toString()) ||
                             recieverid == SessionController().userid) {
                           return MessageBubble(
-                              sender: senderid ==
-                                      SessionController().userid.toString()
-                                  ? 'Me'
-                                  : widget.name,
-                              text: snapshot.child('message').value.toString(),
-                              isMe: senderid ==
-                                  SessionController().userid.toString());
+                            sender: senderid ==
+                                    SessionController().userid.toString()
+                                ? 'Me'
+                                : widget.name,
+                            text: snapshot.child('message').value.toString(),
+                            isMe: senderid ==
+                                SessionController().userid.toString(),
+                            date: snapshot.child('todaytime').value.toString(),
+                          );
                         }
                       }
 
@@ -130,12 +132,23 @@ class _MessageScreenState extends State<MessageScreen> {
       utils.toastmessage('Enter Message');
     } else {
       final timestamp = DateTime.now().microsecondsSinceEpoch.toString();
+      DateTime now = DateTime.now();
+      final date = now.day.toString() +
+          "-" +
+          now.month.toString() +
+          "-" +
+          now.year.toString() +
+          "," +
+          now.hour.toString() +
+          ":" +
+          now.minute.toString();
       ref.child(timestamp).set({
         'isSeen': false,
         'message': messagecontroller.text.toString(),
         'sender': SessionController().userid.toString(),
         'reciever': widget.recieverId,
-        'time': timestamp.toString()
+        'time': timestamp.toString(),
+        'todaytime': date.toString(),
       }).then((value) {
         messagecontroller.clear();
       });
@@ -144,10 +157,15 @@ class _MessageScreenState extends State<MessageScreen> {
 }
 
 class MessageBubble extends StatelessWidget {
-  MessageBubble({required this.sender, required this.text, required this.isMe});
+  MessageBubble(
+      {required this.sender,
+      required this.text,
+      required this.isMe,
+      required this.date});
 
   final String sender;
   final String text;
+  final String date;
   final bool isMe;
 
   @override
@@ -189,6 +207,11 @@ class MessageBubble extends StatelessWidget {
               ),
             ),
           ),
+          Text(date,
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 19.0,
+              )),
         ],
       ),
     );

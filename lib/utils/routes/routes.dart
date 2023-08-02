@@ -8,7 +8,6 @@ import 'package:law_application/views/admin/admin%20login/admin_login_screen.dar
 import 'package:law_application/views/admin/admin%20signup/admin_signup_screen.dart';
 import 'package:law_application/views/admin/admin_dashboard.dart';
 import 'package:law_application/views/admin/profile%20module/admin_other_information.dart';
-import 'package:law_application/views/client/login/Auth/loginwithPhone.dart';
 import 'package:law_application/views/splashscreen/clientSplashScreen.dart';
 import 'package:law_application/views/user_manage.dart';
 
@@ -62,8 +61,6 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const lawyerdashboardView());
       case RouteName.postView:
         return MaterialPageRoute(builder: (_) => const casemanagement());
-      case RouteName.LoginWithPhoneNumber:
-        return MaterialPageRoute(builder: (_) => const LoginwithPhonenumber());
 
       default:
         return MaterialPageRoute(builder: (_) {

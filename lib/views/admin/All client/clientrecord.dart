@@ -142,7 +142,10 @@ class _clientRecordState extends State<clientRecord> {
                     'Documents Verfication',
                     style: Theme.of(context).textTheme.headlineSmall,
                   )),
-            )
+            ),
+            SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),

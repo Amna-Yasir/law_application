@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:law_application/views/services/session_manager.dart';
-import '../../../../utils/utils.dart';
+import '../../../utils/utils.dart';
 
-class clientprofilecontroller with ChangeNotifier {
-  DatabaseReference ref = FirebaseDatabase.instance.ref().child('User');
+class adminprofilecontroller with ChangeNotifier {
+  DatabaseReference ref = FirebaseDatabase.instance.ref().child('admin');
   firebase_storage.FirebaseStorage storage =
       firebase_storage.FirebaseStorage.instance;
   final picker = ImagePicker();

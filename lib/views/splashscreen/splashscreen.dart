@@ -1,5 +1,3 @@
-import 'package:animate_gradient/animate_gradient.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 

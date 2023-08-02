@@ -50,7 +50,10 @@ class C_CourtCasePage extends StatelessWidget {
                 children: [
                   Text(
                     'Case Number:' + casenumber,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.primaryColor),
                   ),
                   SizedBox(height: 16),
                   Text(

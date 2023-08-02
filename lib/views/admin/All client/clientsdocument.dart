@@ -1,7 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:law_application/views/client/homescreen/uploadcnicController.dart';
-import 'package:law_application/views/services/session_manager.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../res/colors.dart';
@@ -34,6 +33,9 @@ class _documentsState extends State<documents> {
                       builder: (context, AsyncSnapshot snapshot) {
                         Map<dynamic, dynamic> map =
                             snapshot.data.snapshot.value;
+                        if (!snapshot.hasData) {
+                          return Center(child: CircularProgressIndicator());
+                        }
                         return Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +71,7 @@ class _documentsState extends State<documents> {
                                         child: map['cnic'].toString() == ""
                                             ? const Icon(Icons.person)
                                             : Image(
-                                                fit: BoxFit.cover,
+                                                fit: BoxFit.contain,
                                                 image: NetworkImage(
                                                     map['cnic'].toString()),
                                                 loadingBuilder: (context, child,

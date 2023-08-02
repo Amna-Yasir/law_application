@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:law_application/views/Lawyer/lawyer%20dashboard/lawyer%20home%20screen/categorydetailwidget.dart';
+import 'package:law_application/views/client/homescreen/lawyer%20category/categorydetailwidget.dart';
 import 'package:law_application/views/client/homescreen/lawyer_detail.dart';
 
 class C_CriminalCategorydetail extends StatefulWidget {
@@ -101,6 +101,11 @@ class _C_CriminalCategorydetailState extends State<C_CriminalCategorydetail> {
                                         snapshot.child('Uid').value.toString(),
                                     imageUrl: snapshot
                                         .child('profile')
+                                        .value
+                                        .toString(),
+                                    description: snapshot
+                                        .child('extrainfo')
+                                        .child('aboutyourself')
                                         .value
                                         .toString(),
                                   ),
